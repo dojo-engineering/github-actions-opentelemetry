@@ -14,6 +14,7 @@ export type WorkflowStepResponse = NonNullable<
 const STEP_CONCLUSION_VALUES = [
   'success',
   'failure',
+  'cancelled',
   'timed_out',
   'skipped',
   'neutral'
