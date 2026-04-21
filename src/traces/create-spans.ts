@@ -138,7 +138,11 @@ const buildWorkflowAttributes = (
   repository: workflowRun.repository.full_name,
   run_id: workflowRun.id,
   run_attempt: workflowRun.run_attempt,
-  url: workflowRun.html_url
+  url: workflowRun.html_url,
+  // OTEL attributes
+  'cicd.pipeline.task.run.id': workflowRun.id,
+  'cicd.pipeline.name': workflowRun.name,
+  'cicd.pipeline.run.url.full': workflowRun.html_url
 })
 
 // TODO: add tests for these functions
