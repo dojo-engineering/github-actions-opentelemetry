@@ -53,8 +53,10 @@ export const fetchWorkflowResults = async (
       {
         delay: delayMs,
         maxTry,
-        onError: (err, currentTry) =>
+        onError: (err, currentTry) => {
           console.error(`current try: ${currentTry}`, err)
+          return undefined
+        }
       }
     )
     return results

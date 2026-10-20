@@ -77,6 +77,13 @@ export type WorkflowResults = {
 }
 export type GitHubContext = typeof context
 
+const toSafeNumber = (value: number | bigint, field: string): number => {
+  const result = typeof value === 'bigint' ? Number(value) : value
+  if (!Number.isSafeInteger(result))
+    throw new Error(`${field} must be a safe integer: ${value}`)
+  return result
+}
+
 // Map GitHub Actions API responses to application models
 export const toWorkflowStep = (step: WorkflowStepResponse): WorkflowStep => {
   if (!step.conclusion) throw new Error('Step conclusion is required')
@@ -121,7 +128,7 @@ export const toWorkflowJob = (
     )
 
   return {
-    id: job.id,
+    id: toSafeNumber(job.id, 'Job id'),
     name: job.name,
     status: job.status,
     conclusion: job.conclusion,
@@ -129,7 +136,7 @@ export const toWorkflowJob = (
     started_at: new Date(job.started_at),
     completed_at: new Date(job.completed_at),
     workflow_name: job.workflow_name,
-    run_id: job.run_id,
+    run_id: toSafeNumber(job.run_id, 'Job run_id'),
     steps: job.steps?.map(toWorkflowStep) || [],
     runner_name: job.runner_name,
     runner_group_name: job.runner_group_name
@@ -154,7 +161,7 @@ export const toWorkflowRun = (workflowRun: WorkflowResponse): Workflow => {
     throw new Error('Workflow run attempt is required')
 
   return {
-    id: workflowRun.id,
+    id: toSafeNumber(workflowRun.id, 'Workflow run id'),
     name: workflowRun.name,
     conclusion: workflowRun.conclusion,
     created_at: new Date(workflowRun.created_at),
