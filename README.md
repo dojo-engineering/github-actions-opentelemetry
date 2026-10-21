@@ -136,7 +136,8 @@ jobs:
     steps:
       - name: Run
         id: run
-        uses: paper2/github-actions-opentelemetry@main
+        # Replace <OWNER>/<REPO>@<REF> with your chosen fork or release ref.
+        uses: <OWNER>/<REPO>@<REF>
         env:
           OTEL_SERVICE_NAME: github-actions-opentelemetry
           OTEL_EXPORTER_OTLP_ENDPOINT: https://collector-example.com
@@ -188,7 +189,8 @@ jobs:
     if: always() # Run even if other jobs fail
     steps:
       - name: Send Telemetry
-        uses: paper2/github-actions-opentelemetry@main
+        # Replace <OWNER>/<REPO>@<REF> with your chosen fork or release ref.
+        uses: <OWNER>/<REPO>@<REF>
         env:
           OTEL_SERVICE_NAME: github-actions-opentelemetry
           OTEL_EXPORTER_OTLP_ENDPOINT: https://collector-example.com
@@ -299,8 +301,8 @@ file for details.
 
 ## Contributing
 
-Contributions are welcome! Please fork the repository and submit a pull request.
-Before contributing, ensure that your changes are well-documented and tested.
+Contributions are welcome! Submit a pull request with your changes. Before
+contributing, ensure that your changes are well-documented and tested.
 
 ## Support
 

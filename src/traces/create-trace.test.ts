@@ -18,7 +18,7 @@ const workflowRunResults: WorkflowResults = {
     name: 'Test Run',
     run_attempt: 14,
     repository: {
-      full_name: 'paper2/github-actions-opentelemetry'
+      full_name: 'test-owner/test-repo'
     },
     conclusion: 'failure',
     html_url: 'http://example.com/workflow_run'
@@ -357,7 +357,7 @@ describe('should export expected spans', () => {
         name: 'Test Run',
         run_attempt: 14,
         repository: {
-          full_name: 'paper2/github-actions-opentelemetry'
+          full_name: 'test-owner/test-repo'
         },
         conclusion: 'failure',
         html_url: 'http://example.com/workflow_run'

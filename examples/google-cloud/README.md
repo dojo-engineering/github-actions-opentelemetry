@@ -36,22 +36,23 @@ Protocol (OTLP).
    Replace `<REGION>` with your desired Cloud Run region (for example,
    `us-west1`).
 
-## Step 2: Fork the GitHub Actions OpenTelemetry Repository
+## Step 2: Choose a Repository
 
-To run the sample GitHub Actions workflow, fork the
-[`github-actions-opentelemetry`](https://github.com/paper2/github-actions-opentelemetry)
-repository.
+Use the repository that contains the workflow you plan to run. You can use a
+fork or another copy; choose the owner and repository name you intend to use
+when replacing the placeholders below.
 
 ![fork repository](../../img/fork-repository.png)
 
-## Step 3: Clone the Sample Code
+## Step 3: Clone Your Repository
 
-Clone your forked repository to your local machine and navigate to the
-`google-cloud` example directory:
+Clone your chosen repository to your local machine and navigate to the
+`google-cloud` example directory. Replace `YOUR_OWNER` and `YOUR_REPOSITORY`
+with the owner and repository name you selected:
 
 ```sh
-git clone https://<YOUR_FORKED_REPOSITORY>
-cd github-actions-opentelemetry/examples/google-cloud
+git clone https://github.com/YOUR_OWNER/YOUR_REPOSITORY.git
+cd YOUR_REPOSITORY/examples/google-cloud
 ```
 
 ## Step 4: Deploy the OpenTelemetry Collector to Cloud Run
@@ -96,7 +97,7 @@ named `OTEL_EXPORTER_OTLP_ENDPOINT`.
 
 ## Step 6: Enable Workflow Runs
 
-Open the **Actions** tab in your forked repository. You should see a message
+Open the **Actions** tab in the repository you chose. You should see a message
 asking if you want to enable workflows. Review them and enable this feature.
 
 ![enable workflows](../../img/enable-workflows.png)
@@ -156,7 +157,8 @@ jobs:
     steps:
       - name: Run
         id: run
-        uses: paper2/github-actions-opentelemetry@main
+        # Replace <OWNER>/<REPO>@<REF> with your chosen fork or release ref.
+        uses: <OWNER>/<REPO>@<REF>
         env:
           OTEL_EXPORTER_OTLP_ENDPOINT:
             ${{ secrets.OTEL_EXPORTER_OTLP_ENDPOINT }}
@@ -221,4 +223,5 @@ gcloud config unset project
 gcloud config unset run/region
 ```
 
-Finally, delete your forked repository if you no longer need it.
+If you created a repository specifically for this example and no longer need it,
+delete it.

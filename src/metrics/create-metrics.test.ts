@@ -24,7 +24,7 @@ const workflowRunResults: WorkflowResults = {
     run_attempt: 14,
     conclusion: 'success',
     repository: {
-      full_name: 'paper2/github-actions-opentelemetry'
+      full_name: 'test-owner/test-repo'
     },
     html_url: 'http://example.com/workflow_run'
   },
