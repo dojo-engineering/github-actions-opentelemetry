@@ -77,7 +77,10 @@ describe('run function', () => {
       )
       expect(fetchWorkflowResultsSpy).toHaveBeenCalledTimes(1)
       expect(getWorkflowContextSpy).toHaveBeenCalledTimes(1)
-      expect(fetchWorkflowResultsSpy.mock.calls[0][1]).toEqual(workflowContext)
+      expect(fetchWorkflowResultsSpy).toHaveBeenCalledWith(
+        expect.any(Object),
+        workflowContext
+      )
       expect(initializeSpy).toHaveBeenCalledTimes(1)
       expect(forceFlushSpy).toHaveBeenCalledTimes(1)
       expect(shutdownSpy).toHaveBeenCalledTimes(1)
