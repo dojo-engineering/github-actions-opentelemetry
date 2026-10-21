@@ -1602,6 +1602,24 @@
                   "value": {
                     "stringValue": "https://example.com/actions/runs/0"
                   }
+                },
+                {
+                  "key": "cicd.pipeline.task.run.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "cicd.pipeline.name",
+                  "value": {
+                    "stringValue": "Push Event Tests"
+                  }
+                },
+                {
+                  "key": "cicd.pipeline.run.url.full",
+                  "value": {
+                    "stringValue": "https://example.com/actions/runs/0"
+                  }
                 }
               ],
               "endTimeUnixNano": "0",
