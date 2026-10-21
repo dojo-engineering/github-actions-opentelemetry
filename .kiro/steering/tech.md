@@ -2,7 +2,8 @@
 
 ## Core Technologies
 
-- **Runtime**: Node.js 20+ (ES2022 target)
+- **Runtime**: Node.js 24+ for the GitHub Action (ES2022 target); local and CI
+  tooling use Node.js 26.12.0
 - **Language**: TypeScript with strict mode enabled
 - **Module System**: ES Modules (NodeNext)
 - **Package Manager**: npm with package-lock.json
