@@ -1,11 +1,9 @@
 import { describe, test, expect, vi } from 'vitest'
-import * as github from '@actions/github'
 import { Octokit } from '@octokit/rest'
 import {
   fetchWorkflowResults,
   getLatestCompletedAt,
-  getWorkflowContext,
-  createOctokitClient
+  getWorkflowContext
 } from './github.js'
 import {
   toWorkflowJob,
@@ -14,40 +12,125 @@ import {
   WorkflowJob,
   Workflow
 } from './types.js'
-import { ApplicationSettings, settings } from '../settings.js'
+import type { ApplicationSettings } from '../settings.js'
+
+const testWorkflowContext = {
+  owner: 'test-owner',
+  repo: 'test-repo',
+  runId: 12345,
+  attempt_number: 2
+}
 
 describe('fetchWorkflowResults', () => {
-  // Tips: If API limit exceed, authenticate by using below command
-  //       $ export GITHUB_TOKEN=`gh auth token`
-  test('should fetch results using real api', async () => {
-    // not test retry because it needs mock of checkCompleted but it affects correct test case.
-    const octokit = createOctokitClient()
-    const workflowContext = getWorkflowContext(github.context, settings)
-    await expect(
-      fetchWorkflowResults(octokit, workflowContext, 0, 1)
-    ).resolves.not.toThrow()
-  })
-
-  test('should handle fetchWorkflowResults error and retry', async () => {
-    // Create a mock Octokit that fails
+  test('should fetch results and send the expected requests', async () => {
+    const getWorkflowRunAttempt = vi.fn().mockResolvedValue({
+      data: {
+        id: 12345,
+        name: 'Test Workflow',
+        status: 'completed',
+        conclusion: 'success',
+        created_at: '2023-01-01T00:00:00Z',
+        run_attempt: 2,
+        html_url: 'https://github.com/test-owner/test-repo/actions/runs/12345',
+        repository: {
+          full_name: 'test-owner/test-repo'
+        },
+        event: 'push'
+      }
+    })
+    const listJobsForWorkflowRun = vi.fn().mockResolvedValue({
+      data: {
+        jobs: [
+          {
+            id: 1,
+            name: 'test-job',
+            status: 'completed',
+            conclusion: 'success',
+            created_at: '2023-01-01T00:00:00Z',
+            started_at: '2023-01-01T00:01:00Z',
+            completed_at: '2023-01-01T00:05:00Z',
+            workflow_name: 'Test Workflow',
+            run_id: 12345,
+            steps: []
+          }
+        ]
+      }
+    })
     const mockOctokit = {
       rest: {
         actions: {
-          getWorkflowRunAttempt: async () => {
-            throw new Error('API Error')
-          },
-          listJobsForWorkflowRun: async () => {
-            throw new Error('API Error')
-          }
+          getWorkflowRunAttempt,
+          listJobsForWorkflowRun
         }
       }
     } as unknown as Octokit
 
-    const workflowContext = getWorkflowContext(github.context, settings)
+    const result = await fetchWorkflowResults(
+      mockOctokit,
+      testWorkflowContext,
+      0,
+      1
+    )
+
+    expect(getWorkflowRunAttempt).toHaveBeenCalledTimes(1)
+    expect(getWorkflowRunAttempt).toHaveBeenCalledWith({
+      owner: 'test-owner',
+      repo: 'test-repo',
+      run_id: 12345,
+      attempt_number: 2
+    })
+    expect(listJobsForWorkflowRun).toHaveBeenCalledTimes(1)
+    expect(listJobsForWorkflowRun).toHaveBeenCalledWith({
+      owner: 'test-owner',
+      repo: 'test-repo',
+      run_id: 12345,
+      per_page: 100
+    })
+    expect(result.workflow).toMatchObject({
+      id: 12345,
+      name: 'Test Workflow',
+      conclusion: 'success',
+      run_attempt: 2,
+      repository: {
+        full_name: 'test-owner/test-repo'
+      }
+    })
+    expect(result.workflowJobs).toMatchObject([
+      {
+        id: 1,
+        name: 'test-job',
+        run_id: 12345,
+        status: 'completed',
+        conclusion: 'success'
+      }
+    ])
+  })
+
+  test('should handle fetchWorkflowResults error and retry', async () => {
+    const getWorkflowRunAttempt = vi
+      .fn()
+      .mockRejectedValue(new Error('API Error'))
+    const listJobsForWorkflowRun = vi.fn()
+    const mockOctokit = {
+      rest: {
+        actions: {
+          getWorkflowRunAttempt,
+          listJobsForWorkflowRun
+        }
+      }
+    } as unknown as Octokit
 
     await expect(
-      fetchWorkflowResults(mockOctokit, workflowContext, 0, 3)
+      fetchWorkflowResults(mockOctokit, testWorkflowContext, 0, 3)
     ).rejects.toThrow('API Error')
+    expect(getWorkflowRunAttempt).toHaveBeenCalledTimes(3)
+    expect(getWorkflowRunAttempt).toHaveBeenCalledWith({
+      owner: 'test-owner',
+      repo: 'test-repo',
+      run_id: 12345,
+      attempt_number: 2
+    })
+    expect(listJobsForWorkflowRun).not.toHaveBeenCalled()
   })
 
   test('should handle no completed jobs found error', async () => {
@@ -93,10 +176,8 @@ describe('fetchWorkflowResults', () => {
       }
     } as unknown as Octokit
 
-    const workflowContext = getWorkflowContext(github.context, settings)
-
     await expect(
-      fetchWorkflowResults(mockOctokit, workflowContext, 0, 1)
+      fetchWorkflowResults(mockOctokit, testWorkflowContext, 0, 1)
     ).rejects.toThrow('no completed jobs found for workflow run.')
   })
 
@@ -169,11 +250,9 @@ describe('fetchWorkflowResults', () => {
       }
     } as unknown as Octokit
 
-    const workflowContext = getWorkflowContext(github.context, settings)
-
     const result = await fetchWorkflowResults(
       mockOctokit,
-      workflowContext,
+      testWorkflowContext,
       0,
       1
     )

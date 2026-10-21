@@ -18,6 +18,10 @@ on:
           'Directory name under .github/test-data/ for expected test data'
         required: true
         type: string
+      expected-repository:
+        description: 'Repository name expected in traces and metrics'
+        required: true
+        type: string
       artifact-name:
         description: 'Name for the collector logs artifact'
         required: false
@@ -133,6 +137,20 @@ jobs:
           jq -f /tmp/normalize-traces.jq collector-logs/traces-exported-original.json > collector-logs/traces-actual.json
           jq -f /tmp/normalize-metrics.jq collector-logs/metrics-exported-original.json > collector-logs/metrics-actual.json
 
+      - name: Materialize expected files
+        env:
+          EXPECTED_REPOSITORY: ${{ inputs.expected-repository }}
+          TEST_DATA_DIRECTORY: ${{ inputs.test-data-directory }}
+        run: |
+          jq --arg expected_repository "$EXPECTED_REPOSITORY" \
+            'walk(if type == "string" then gsub("__EXPECTED_REPOSITORY__"; $expected_repository) else . end)' \
+            ".github/test-data/${TEST_DATA_DIRECTORY}/traces-expected.json" \
+            > "$RUNNER_TEMP/traces-expected.json"
+          jq --arg expected_repository "$EXPECTED_REPOSITORY" \
+            'walk(if type == "string" then gsub("__EXPECTED_REPOSITORY__"; $expected_repository) else . end)' \
+            ".github/test-data/${TEST_DATA_DIRECTORY}/metrics-expected.json" \
+            > "$RUNNER_TEMP/metrics-expected.json"
+
       # Upload collector logs as GitHub artifact for debugging
       - name: Upload collector logs as artifact
         if: always()
@@ -144,7 +162,7 @@ jobs:
 
       - name: Validate Traces
         run: |
-          diff -u collector-logs/traces-actual.json .github/test-data/${{ inputs.test-data-directory }}/traces-expected.json
+          diff -u collector-logs/traces-actual.json "$RUNNER_TEMP/traces-expected.json"
           if [ $? -ne 0 ]; then
             echo "✗ Trace structure differs from expected format"
             exit 1
@@ -152,7 +170,7 @@ jobs:
 
       - name: Validate Metrics
         run: |
-          diff -u collector-logs/metrics-actual.json .github/test-data/${{ inputs.test-data-directory }}/metrics-expected.json
+          diff -u collector-logs/metrics-actual.json "$RUNNER_TEMP/metrics-expected.json"
           if [ $? -ne 0 ]; then
             echo "✗ Metrics structure differs from expected format"
             exit 1

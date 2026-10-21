@@ -67,6 +67,7 @@ jobs:
     uses: ./.github/workflows/validate-action-output.yml
     with:
       test-data-directory: push-event-tests
+      expected-repository: ${{ github.repository }}
       artifact-name: collector-logs-push-event-tests
       retention-days: 5
     secrets: inherit

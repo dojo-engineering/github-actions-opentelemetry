@@ -20,6 +20,7 @@ jobs:
     uses: ./.github/workflows/validate-action-output.yml
     with:
       test-data-directory: workflow-run-tests
+      expected-repository: ${{ github.repository }}
       artifact-name: collector-logs-workflow-run
       retention-days: 5
     secrets: inherit

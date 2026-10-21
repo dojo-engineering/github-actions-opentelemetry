@@ -1702,7 +1702,7 @@
                 {
                   "key": "repository",
                   "value": {
-                    "stringValue": "paper2/github-actions-opentelemetry"
+                    "stringValue": "__EXPECTED_REPOSITORY__"
                   }
                 },
                 {
