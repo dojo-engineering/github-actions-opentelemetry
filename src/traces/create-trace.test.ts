@@ -14,6 +14,7 @@ import { SpanStatusCode } from '@opentelemetry/api'
 const workflowRunResults: WorkflowResults = {
   workflow: {
     created_at: new Date('2024-09-01T00:00:00Z'),
+    run_started_at: new Date('2024-09-01T00:01:00Z'),
     id: 10000000000,
     name: 'Test Run',
     run_attempt: 14,
@@ -30,6 +31,7 @@ const workflowRunResults: WorkflowResults = {
       started_at: new Date('2024-09-01T00:05:00Z'),
       completed_at: new Date('2024-09-01T00:10:00Z'),
       id: 30000000000,
+      run_attempt: 14,
       name: 'job1',
       run_id: 10000000000,
       workflow_name: 'Test Run',
@@ -67,6 +69,7 @@ const workflowRunResults: WorkflowResults = {
       started_at: new Date('2024-09-01T00:15:00Z'),
       completed_at: new Date('2024-09-01T00:20:00Z'),
       id: 30000000001,
+      run_attempt: 14,
       name: 'job2',
       run_id: 10000000000,
       workflow_name: 'Test Run',
@@ -133,7 +136,10 @@ describe('should export expected spans', () => {
     // workflow span
     expect(spans).toContainEqual({
       name: workflowRun.name,
-      startTime: [toEpochSec(workflowRun.created_at), 0],
+      startTime: [
+        toEpochSec(workflowRun.run_started_at ?? workflowRun.created_at),
+        0
+      ],
       endTime: [
         toEpochSec(workflowRunJobs[1].completed_at), // last job's completed_at
         0
@@ -325,7 +331,7 @@ describe('should export expected spans', () => {
       'workflow.conclusion': 'failure',
       'workflow.event': 'push',
       'workflow.is_retry': true,
-      'workflow.wall_clock_duration_s': 1200,
+      'workflow.wall_clock_duration_s': 1140,
       'workflow.execution_duration_s': 600,
       'workflow.queued_duration_s': 360,
       'workflow.max_queued_duration_s': 180,
@@ -342,7 +348,8 @@ describe('should export expected spans', () => {
     expect(job1Wrapper.attributes).toEqual({
       'span.type': 'job.wrapper',
       'job.id': 30000000000,
-      'job.name': 'job1'
+      'job.name': 'job1',
+      'job.run_attempt': 14
     })
 
     const job1Queue = findQueueSpanByJobName(spans, 'job1')
@@ -350,6 +357,7 @@ describe('should export expected spans', () => {
       'span.type': 'queue',
       'job.id': 30000000000,
       'job.name': 'job1',
+      'job.run_attempt': 14,
       'job.labels': ['ubuntu-latest'],
       'job.queued_duration_s': 180,
       'runner.runs_on': 'ubuntu-latest',
@@ -362,6 +370,7 @@ describe('should export expected spans', () => {
       'span.type': 'job',
       'job.id': 30000000001,
       'job.name': 'job2',
+      'job.run_attempt': 14,
       'job.conclusion': 'failure',
       'job.labels': ['macos-14'],
       'runner.runs_on': 'macos-14',
@@ -379,7 +388,9 @@ describe('should export expected spans', () => {
     const step1Span = findSpanByName(spans, 'step1_1')
     expect(step1Span.attributes).toEqual({
       'span.type': 'step',
+      'job.id': 30000000000,
       'job.name': 'job1',
+      'job.run_attempt': 14,
       'step.name': 'step1_1',
       'step.conclusion': 'success',
       'step.number': 1
@@ -397,7 +408,7 @@ describe('should export expected spans', () => {
       ...workflowRunResults,
       workflow: {
         ...workflowRun,
-        created_at: new Date('2024-09-01T00:30:00Z')
+        run_started_at: new Date('2024-09-01T00:30:00Z')
       }
     }
 

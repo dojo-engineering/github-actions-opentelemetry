@@ -61812,6 +61812,9 @@ const toWorkflowRun = (workflowRun) => {
         name: workflowRun.name,
         conclusion: workflowRun.conclusion,
         created_at: new Date(workflowRun.created_at),
+        ...(workflowRun.run_started_at !== undefined && {
+            run_started_at: new Date(workflowRun.run_started_at)
+        }),
         run_attempt: workflowRun.run_attempt,
         html_url: workflowRun.html_url,
         repository: {
@@ -61843,8 +61846,8 @@ const fetchWorkflowResults = async (octokit, workflowContext, delayMs = 1000, ma
         const results = await (0,cjs/* retryAsync */.tH)(async () => {
             const workflowRes = await fetchWorkflow(octokit, workflowContext);
             const workflowJobsRes = await fetchWorkflowJobs(octokit, workflowContext);
-            const latestWorkflowJobs = selectLatestJobsForAttempt(workflowJobsRes, workflowContext.attempt_number);
-            const workflowJobs = latestWorkflowJobs
+            const attemptWorkflowJobs = selectJobsForAttempt(workflowJobsRes, workflowContext.attempt_number);
+            const workflowJobs = attemptWorkflowJobs
                 .map(job => toWorkflowJob(job, workflowRes.event))
                 .filter((job) => job !== null);
             if (workflowJobs.length === 0) {
@@ -61905,23 +61908,7 @@ const fetchWorkflowJobs = async (octokit, workflowContext) => {
         page++;
     }
 };
-const selectLatestJobsForAttempt = (workflowJobs, targetAttemptNumber) => {
-    const latestJobsByName = new Map();
-    for (const job of workflowJobs) {
-        const attemptNumber = job.run_attempt ?? 1;
-        if (attemptNumber > targetAttemptNumber) {
-            continue;
-        }
-        const existing = latestJobsByName.get(job.name);
-        if (!existing || attemptNumber > existing.attemptNumber) {
-            latestJobsByName.set(job.name, { attemptNumber, jobs: [job] });
-        }
-        else if (attemptNumber === existing.attemptNumber) {
-            existing.jobs.push(job);
-        }
-    }
-    return [...latestJobsByName.values()].flatMap(entry => entry.jobs);
-};
+const selectJobsForAttempt = (workflowJobs, targetAttemptNumber) => workflowJobs.filter(job => (job.run_attempt ?? 1) === targetAttemptNumber);
 const getWorkflowContext = (context, settings) => {
     const owner = settings.owner ?? context.repo.owner;
     const repo = settings.repository ?? context.repo.repo;
@@ -61948,6 +61935,20 @@ const getLatestCompletedAt = (jobs) => {
     const jobCompletedAtDates = jobs.map(job => job.completed_at);
     const maxDateNumber = Math.max(...jobCompletedAtDates.map(Number));
     return new Date(maxDateNumber);
+};
+const getWorkflowAttemptStartedAt = (workflow, jobs) => {
+    if (workflow.run_started_at &&
+        Number.isFinite(workflow.run_started_at.getTime())) {
+        return workflow.run_started_at;
+    }
+    const jobCreatedAtNumbers = jobs
+        .map(job => job.created_at.getTime())
+        .filter(Number.isFinite);
+    if (jobCreatedAtNumbers.length === 0) {
+        throw new Error('no valid job created_at dates found to get workflow attempt start time.');
+    }
+    notice('Workflow run_started_at is unavailable; using the earliest job created_at for attempt duration.');
+    return new Date(Math.min(...jobCreatedAtNumbers));
 };
 
 ;// CONCATENATED MODULE: ./src/github/summary.ts
@@ -62145,8 +62146,10 @@ const attributeKeys = {
     WORKFLOW_CONCLUSION: 'workflow.conclusion',
     WORKFLOW_EVENT: 'workflow.event',
     WORKFLOW_IS_RETRY: 'workflow.is_retry',
+    WORKFLOW_RUN_ATTEMPT: 'workflow.run_attempt',
     JOB_NAME: 'job.name',
     JOB_CONCLUSION: 'job.conclusion',
+    JOB_RUN_ATTEMPT: 'job.run_attempt',
     RUNNER_GROUP: 'runner.group',
     RUNNER_RUNS_ON: 'runner.runs_on',
     RUNNER_OS: 'runner.os',
@@ -62171,7 +62174,12 @@ const createMetricsAttributes = (workflow, job, billable) => ({
     ...(workflow.conclusion && { [attributeKeys.WORKFLOW_CONCLUSION]: workflow.conclusion }),
     ...(workflow.event && { [attributeKeys.WORKFLOW_EVENT]: workflow.event }),
     [attributeKeys.WORKFLOW_IS_RETRY]: workflow.run_attempt > 1 ? 'true' : 'false',
+    [attributeKeys.WORKFLOW_RUN_ATTEMPT]: workflow.run_attempt,
     ...(job && { [attributeKeys.JOB_NAME]: job.name }),
+    ...(job &&
+        job.run_attempt !== undefined && {
+        [attributeKeys.JOB_RUN_ATTEMPT]: job.run_attempt
+    }),
     ...(job && job.conclusion && { [attributeKeys.JOB_CONCLUSION]: job.conclusion }), // conclusion specification: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks#check-statuses-and-conclusions
     ...(job &&
         job.runner_group_name && { [attributeKeys.RUNNER_GROUP]: job.runner_group_name }),
@@ -62183,6 +62191,7 @@ const createWorkflowCounters = (workflow, workflowRunJobs) => {
     const workflowMetricsAttributes = createMetricsAttributes(workflow);
     // workflow run context has no end time, so use the latest job's completed_at
     const jobCompletedAtMax = getLatestCompletedAt(workflowRunJobs);
+    const attemptStartedAt = getWorkflowAttemptStartedAt(workflow, workflowRunJobs);
     let totalExecutionDurationSec = 0;
     let totalBillableMinutes = 0;
     let totalRoundingWasteSec = 0;
@@ -62196,7 +62205,7 @@ const createWorkflowCounters = (workflow, workflowRunJobs) => {
     createCounter(descriptorNames.WORKFLOW_RUNS, 1, workflowMetricsAttributes, {
         unit: '{run}'
     });
-    createCounter(descriptorNames.WORKFLOW_DURATION, Math.max(0, calcDiffSec(workflow.created_at, jobCompletedAtMax)), workflowMetricsAttributes, { unit: 's' });
+    createCounter(descriptorNames.WORKFLOW_DURATION, Math.max(0, calcDiffSec(attemptStartedAt, jobCompletedAtMax)), workflowMetricsAttributes, { unit: 's' });
     createCounter(descriptorNames.WORKFLOW_EXECUTION_DURATION, totalExecutionDurationSec, workflowMetricsAttributes, { unit: 's' });
     createCounter(descriptorNames.WORKFLOW_BILLABLE_TIME, totalBillableMinutes, workflowMetricsAttributes, { unit: 'min' });
     createCounter(descriptorNames.WORKFLOW_ROUNDING_WASTE, totalRoundingWasteSec, workflowMetricsAttributes, { unit: 's' });
@@ -62256,8 +62265,11 @@ const createMetrics = async (results) => {
 
 const createWorkflowTrace = (workflow, workflowJobs) => {
     const latestCompletedAt = getLatestCompletedAt(workflowJobs);
-    const span = createSpan(src.ROOT_CONTEXT, workflow.name, workflow.created_at, latestCompletedAt, workflow.conclusion || '', // '' is converted to UNSET status. we should not use ''.
-    { ...buildWorkflowAttributes(workflow, workflowJobs, latestCompletedAt) });
+    const attemptStartedAt = getWorkflowAttemptStartedAt(workflow, workflowJobs);
+    const span = createSpan(src.ROOT_CONTEXT, workflow.name, attemptStartedAt, latestCompletedAt, workflow.conclusion || '', // '' is converted to UNSET status. we should not use ''.
+    {
+        ...buildWorkflowAttributes(workflow, workflowJobs, latestCompletedAt, attemptStartedAt)
+    });
     return src.trace.setSpan(src.ROOT_CONTEXT, span);
 };
 const createWorkflowJobSpan = (ctx, job) => {
@@ -62312,8 +62324,8 @@ const getSpanStatusFromConclusion = (status) => {
             return { code: src.SpanStatusCode.UNSET };
     }
 };
-const buildWorkflowAttributes = (workflowRun, workflowJobs, latestCompletedAt) => {
-    const wallClockDurationSec = Math.max(0, calcDiffSec(workflowRun.created_at, latestCompletedAt));
+const buildWorkflowAttributes = (workflowRun, workflowJobs, latestCompletedAt, attemptStartedAt) => {
+    const wallClockDurationSec = Math.max(0, calcDiffSec(attemptStartedAt, latestCompletedAt));
     let totalExecutionDurationSec = 0;
     let totalQueuedDurationSec = 0;
     let maxQueuedDurationSec = 0;
@@ -62361,7 +62373,10 @@ const buildWorkflowAttributes = (workflowRun, workflowJobs, latestCompletedAt) =
 const buildJobWrapperAttributes = (job) => ({
     'span.type': 'job.wrapper',
     'job.id': job.id,
-    'job.name': job.name
+    'job.name': job.name,
+    ...(job.run_attempt !== undefined && {
+        'job.run_attempt': job.run_attempt
+    })
 });
 const buildJobQueueAttributes = (job, jobQueuedDuration) => {
     const billable = calcJobBillable(0, job.conclusion, job.labels);
@@ -62369,6 +62384,9 @@ const buildJobQueueAttributes = (job, jobQueuedDuration) => {
         'span.type': 'queue',
         'job.id': job.id,
         'job.name': job.name,
+        ...(job.run_attempt !== undefined && {
+            'job.run_attempt': job.run_attempt
+        }),
         'job.labels': job.labels ? [...job.labels] : undefined,
         'job.queued_duration_s': jobQueuedDuration,
         'runner.name': job.runner_name || undefined,
@@ -62385,6 +62403,9 @@ const buildWorkflowJobAttributes = (job, completedAt, jobQueuedDuration) => {
         'span.type': 'job',
         'job.id': job.id,
         'job.name': job.name,
+        ...(job.run_attempt !== undefined && {
+            'job.run_attempt': job.run_attempt
+        }),
         'job.conclusion': job.conclusion,
         'job.labels': job.labels ? [...job.labels] : undefined,
         'runner.name': job.runner_name || undefined,
@@ -62403,7 +62424,11 @@ const buildWorkflowJobAttributes = (job, completedAt, jobQueuedDuration) => {
 };
 const buildWorkflowStepAttributes = (job, step) => ({
     'span.type': 'step',
+    'job.id': job.id,
     'job.name': job.name,
+    ...(job.run_attempt !== undefined && {
+        'job.run_attempt': job.run_attempt
+    }),
     'step.name': step.name,
     'step.conclusion': step.conclusion,
     'step.number': step.number

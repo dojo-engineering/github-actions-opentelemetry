@@ -5,7 +5,8 @@ import {
   WorkflowResults,
   GitHubContext,
   WorkflowJob,
-  WorkflowJobResponse,
+  Workflow,
+  WorkflowJobs,
   toWorkflowRun as toWorkflow,
   toWorkflowJob,
   WorkflowResponse,
@@ -40,11 +41,11 @@ export const fetchWorkflowResults = async (
           octokit,
           workflowContext
         )
-        const latestWorkflowJobs = selectLatestJobsForAttempt(
+        const attemptWorkflowJobs = selectJobsForAttempt(
           workflowJobsRes,
           workflowContext.attempt_number
         )
-        const workflowJobs = latestWorkflowJobs
+        const workflowJobs = attemptWorkflowJobs
           .map(job => toWorkflowJob(job, workflowRes.event))
           .filter((job): job is WorkflowJob => job !== null)
         if (workflowJobs.length === 0) {
@@ -115,31 +116,11 @@ const fetchWorkflowJobs = async (
   }
 }
 
-const selectLatestJobsForAttempt = (
+const selectJobsForAttempt = (
   workflowJobs: WorkflowJobsResponse,
   targetAttemptNumber: number
-): WorkflowJobsResponse => {
-  const latestJobsByName = new Map<
-    string,
-    { attemptNumber: number; jobs: WorkflowJobResponse[] }
-  >()
-
-  for (const job of workflowJobs) {
-    const attemptNumber = job.run_attempt ?? 1
-    if (attemptNumber > targetAttemptNumber) {
-      continue
-    }
-
-    const existing = latestJobsByName.get(job.name)
-    if (!existing || attemptNumber > existing.attemptNumber) {
-      latestJobsByName.set(job.name, { attemptNumber, jobs: [job] })
-    } else if (attemptNumber === existing.attemptNumber) {
-      existing.jobs.push(job)
-    }
-  }
-
-  return [...latestJobsByName.values()].flatMap(entry => entry.jobs)
-}
+): WorkflowJobsResponse =>
+  workflowJobs.filter(job => (job.run_attempt ?? 1) === targetAttemptNumber)
 
 export const getWorkflowContext = (
   context: GitHubContext,
@@ -173,4 +154,30 @@ export const getLatestCompletedAt = (jobs: WorkflowJob[]): Date => {
   const jobCompletedAtDates = jobs.map(job => job.completed_at)
   const maxDateNumber = Math.max(...jobCompletedAtDates.map(Number))
   return new Date(maxDateNumber)
+}
+
+export const getWorkflowAttemptStartedAt = (
+  workflow: Workflow,
+  jobs: WorkflowJobs
+): Date => {
+  if (
+    workflow.run_started_at &&
+    Number.isFinite(workflow.run_started_at.getTime())
+  ) {
+    return workflow.run_started_at
+  }
+
+  const jobCreatedAtNumbers = jobs
+    .map(job => job.created_at.getTime())
+    .filter(Number.isFinite)
+  if (jobCreatedAtNumbers.length === 0) {
+    throw new Error(
+      'no valid job created_at dates found to get workflow attempt start time.'
+    )
+  }
+
+  core.notice(
+    'Workflow run_started_at is unavailable; using the earliest job created_at for attempt duration.'
+  )
+  return new Date(Math.min(...jobCreatedAtNumbers))
 }

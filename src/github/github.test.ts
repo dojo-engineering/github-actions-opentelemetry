@@ -3,6 +3,7 @@ import { Octokit } from '@octokit/rest'
 import {
   fetchWorkflowResults,
   getLatestCompletedAt,
+  getWorkflowAttemptStartedAt,
   getWorkflowContext
 } from './github.js'
 import {
@@ -30,6 +31,7 @@ describe('fetchWorkflowResults', () => {
         status: 'completed',
         conclusion: 'success',
         created_at: '2023-01-01T00:00:00Z',
+        run_started_at: '2023-01-01T00:01:00Z',
         run_attempt: 2,
         html_url: 'https://github.com/test-owner/test-repo/actions/runs/12345',
         repository: {
@@ -50,6 +52,7 @@ describe('fetchWorkflowResults', () => {
             created_at: '2023-01-01T00:00:00Z',
             started_at: '2023-01-01T00:01:00Z',
             completed_at: '2023-01-01T00:05:00Z',
+            run_attempt: 2,
             workflow_name: 'Test Workflow',
             run_id: 12345,
             steps: []
@@ -93,6 +96,7 @@ describe('fetchWorkflowResults', () => {
       id: 12345,
       name: 'Test Workflow',
       conclusion: 'success',
+      run_started_at: new Date('2023-01-01T00:01:00Z'),
       run_attempt: 2,
       repository: {
         full_name: 'test-owner/test-repo'
@@ -109,7 +113,7 @@ describe('fetchWorkflowResults', () => {
     ])
   })
 
-  test('should keep the latest job attempt up to the requested attempt', async () => {
+  test('should include only jobs from the requested attempt', async () => {
     const getWorkflowRunAttempt = vi.fn().mockResolvedValue({
       data: {
         id: 12345,
@@ -217,14 +221,64 @@ describe('fetchWorkflowResults', () => {
         run_attempt,
         conclusion
       }))
-    ).toEqual([
-      { name: 'rerun-job', run_attempt: 2, conclusion: 'failure' },
-      {
-        name: 'previously-successful-job',
-        run_attempt: 1,
-        conclusion: 'success'
+    ).toEqual([{ name: 'rerun-job', run_attempt: 2, conclusion: 'failure' }])
+  })
+
+  test('should retain every job from the requested attempt, including duplicate names', async () => {
+    const jobFields = {
+      status: 'completed' as const,
+      created_at: '2023-01-01T00:00:00Z',
+      started_at: '2023-01-01T00:01:00Z',
+      completed_at: '2023-01-01T00:05:00Z',
+      conclusion: 'success',
+      run_attempt: 2,
+      workflow_name: 'Test Workflow',
+      run_id: 12345,
+      runner_name: null,
+      runner_group_name: null,
+      steps: []
+    }
+    const getWorkflowRunAttempt = vi.fn().mockResolvedValue({
+      data: {
+        id: 12345,
+        name: 'Test Workflow',
+        status: 'completed',
+        conclusion: 'success',
+        created_at: '2023-01-01T00:00:00Z',
+        run_started_at: '2023-01-01T00:01:00Z',
+        run_attempt: 2,
+        html_url: 'https://github.com/test-owner/test-repo/actions/runs/12345',
+        repository: {
+          full_name: 'test-owner/test-repo'
+        },
+        event: 'push'
       }
-    ])
+    })
+    const mockOctokit = {
+      rest: {
+        actions: {
+          getWorkflowRunAttempt,
+          listJobsForWorkflowRun: vi.fn().mockResolvedValue({
+            data: {
+              total_count: 2,
+              jobs: [
+                { ...jobFields, id: 1, name: 'matrix-job' },
+                { ...jobFields, id: 2, name: 'matrix-job' }
+              ]
+            }
+          })
+        }
+      }
+    } as unknown as Octokit
+
+    const result = await fetchWorkflowResults(
+      mockOctokit,
+      testWorkflowContext,
+      0,
+      1
+    )
+
+    expect(result.workflowJobs.map(job => job.id)).toEqual([1, 2])
   })
 
   test('should handle fetchWorkflowResults error and retry', async () => {
@@ -375,7 +429,7 @@ describe('fetchWorkflowResults', () => {
 
     const result = await fetchWorkflowResults(
       mockOctokit,
-      testWorkflowContext,
+      { ...testWorkflowContext, attempt_number: 1 },
       0,
       1
     )
@@ -605,6 +659,62 @@ describe('getLatestCompletedAt', () => {
     expect(() => getLatestCompletedAt(emptyJobs)).toThrow(
       'no jobs found to get latest completed_at date.'
     )
+  })
+})
+
+describe('getWorkflowAttemptStartedAt', () => {
+  const workflow: Workflow = {
+    id: 12345,
+    name: 'Test Workflow',
+    conclusion: 'success',
+    created_at: new Date('2023-01-01T00:00:00Z'),
+    run_started_at: new Date('2023-01-01T00:01:00Z'),
+    run_attempt: 2,
+    html_url: 'https://github.com/test-owner/test-repo/actions/runs/12345',
+    repository: {
+      full_name: 'test-owner/test-repo'
+    }
+  }
+  const createJob = (id: number, createdAt: string): WorkflowJob => ({
+    id,
+    name: `test-job-${id}`,
+    run_id: 12345,
+    status: 'completed',
+    conclusion: 'success',
+    created_at: new Date(createdAt),
+    started_at: new Date('2023-01-01T00:01:00Z'),
+    completed_at: new Date('2023-01-01T00:05:00Z'),
+    runner_name: null,
+    runner_group_name: null,
+    workflow_name: 'Test Workflow',
+    steps: [],
+    run_attempt: 2
+  })
+  const jobs = [
+    createJob(1, '2023-01-01T00:04:00Z'),
+    createJob(2, '2023-01-01T00:03:00Z')
+  ]
+
+  test('should use the workflow attempt start time', () => {
+    expect(getWorkflowAttemptStartedAt(workflow, jobs)).toEqual(
+      new Date('2023-01-01T00:01:00Z')
+    )
+  })
+
+  test('should fall back to the earliest job creation time', () => {
+    const workflowWithoutAttemptStart: Workflow = {
+      id: workflow.id,
+      name: workflow.name,
+      conclusion: workflow.conclusion,
+      created_at: workflow.created_at,
+      run_attempt: workflow.run_attempt,
+      html_url: workflow.html_url,
+      repository: workflow.repository
+    }
+
+    expect(
+      getWorkflowAttemptStartedAt(workflowWithoutAttemptStart, jobs)
+    ).toEqual(new Date('2023-01-01T00:03:00Z'))
   })
 })
 
@@ -843,6 +953,7 @@ describe('Type converters', () => {
       status: 'completed' as const,
       conclusion: 'success',
       created_at: '2023-01-01T00:00:00Z',
+      run_started_at: '2023-01-01T00:00:30Z',
       run_attempt: 1,
       html_url: 'https://github.com/test/repo/actions/runs/12345',
       repository: {
@@ -854,6 +965,7 @@ describe('Type converters', () => {
       name: 'Test Workflow',
       conclusion: 'success',
       created_at: new Date('2023-01-01T00:00:00Z'),
+      run_started_at: new Date('2023-01-01T00:00:30Z'),
       run_attempt: 1,
       html_url: 'https://github.com/test/repo/actions/runs/12345',
       repository: {

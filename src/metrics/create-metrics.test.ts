@@ -23,6 +23,7 @@ const workflowRunResults: WorkflowResults = {
     id: 10000000000,
     name: 'Test Run',
     run_attempt: 14,
+    run_started_at: new Date('2024-09-01T00:01:00Z'),
     conclusion: 'success',
     event: 'pull_request',
     repository: {
@@ -36,6 +37,7 @@ const workflowRunResults: WorkflowResults = {
       started_at: new Date('2024-09-01T00:05:00Z'),
       completed_at: new Date('2024-09-01T00:10:15Z'), // 315s (5m 15s) -> 6 raw min, 45s waste
       conclusion: 'success',
+      run_attempt: 14,
       id: 30000000000,
       name: 'job1',
       run_id: 10000000000,
@@ -70,6 +72,7 @@ const workflowRunResults: WorkflowResults = {
       started_at: new Date('2024-09-01T00:15:00Z'),
       completed_at: new Date('2024-09-01T00:16:10Z'), // 70s (1m 10s) -> 2 raw min, 50s waste, 20 billable min on macos
       conclusion: 'failure',
+      run_attempt: 14,
       id: 30000000001,
       name: 'job2',
       run_id: 10000000000,
@@ -127,6 +130,9 @@ describe('should export expected metrics', () => {
     expect(workflowRunsMetric.dataPointType).toBe(DataPointType.SUM)
     expect(workflowRunsMetric.dataPoints).toHaveLength(1)
     expect(workflowRunsMetric.dataPoints[0].value).toBe(1)
+    expect(
+      workflowRunsMetric.dataPoints[0].attributes[ak.WORKFLOW_RUN_ATTEMPT]
+    ).toBe(workflowRun.run_attempt)
 
     const jobRunsMetric = findMetricByDescriptorName(exporter, dn.JOB_RUNS)
     expect(jobRunsMetric.dataPointType).toBe(DataPointType.SUM)
@@ -207,7 +213,7 @@ describe('should export expected metrics', () => {
     if (!workflowRunJobs[1].completed_at) fail()
     expect(metric.dataPoints[0].value).toEqual(
       calcDiffSec(
-        workflowRun.created_at,
+        workflowRun.run_started_at ?? workflowRun.created_at,
         workflowRunJobs[1].completed_at // last job's complete_at
       )
     )
@@ -253,12 +259,15 @@ describe('should export expected attributes', () => {
       [ak.WORKFLOW_NAME]: workflowRun.name,
       [ak.WORKFLOW_CONCLUSION]: 'success',
       [ak.WORKFLOW_EVENT]: 'pull_request',
-      [ak.WORKFLOW_IS_RETRY]: 'true'
+      [ak.WORKFLOW_IS_RETRY]: 'true',
+      [ak.WORKFLOW_RUN_ATTEMPT]: 14
     })
     expect(metricJob.dataPoints).toHaveLength(2)
     for (const point of metricJob.dataPoints) {
       expect(point.attributes[ak.WORKFLOW_NAME]).toEqual(workflowRun.name)
       expect(point.attributes[ak.WORKFLOW_IS_RETRY]).toEqual('true')
+      expect(point.attributes[ak.WORKFLOW_RUN_ATTEMPT]).toEqual(14)
+      expect(point.attributes[ak.JOB_RUN_ATTEMPT]).toEqual(14)
     }
   })
 
@@ -278,6 +287,9 @@ describe('should export expected attributes', () => {
     expect(
       metricWorkflow.dataPoints[0].attributes[ak.WORKFLOW_IS_RETRY]
     ).toEqual('false')
+    expect(
+      metricWorkflow.dataPoints[0].attributes[ak.WORKFLOW_RUN_ATTEMPT]
+    ).toEqual(1)
   })
 
   test('should export repository name', async () => {

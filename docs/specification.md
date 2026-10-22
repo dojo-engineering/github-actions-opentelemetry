@@ -43,9 +43,9 @@ The action operates in two distinct modes based on the triggering event:
 #### Self-Exclusion & Re-run Filtering Logic
 
 - The GitHub Actions OpenTelemetry job excludes itself from telemetry collection
-- Jobs from previous workflow attempts
-  (`job.run_attempt !== workflowContext.attempt_number`) are excluded when
-  re-running failed jobs so earlier attempts are not double-counted
+- Only jobs whose `run_attempt` matches the target workflow attempt are
+  included. Earlier successful jobs are not repeated for failed-job reruns; jobs
+  actually rerun in a later attempt are counted again as new work.
 
 ## Metrics Specification
 
@@ -58,16 +58,21 @@ The action operates in two distinct modes based on the triggering event:
 
 ### Workflow Metrics
 
-- `github.workflow.runs` (unit: `1`): Count of workflow runs
-- `github.workflow.duration` (unit: `s`): `workflow.created_at` to latest
-  `job.completed_at`
+- `github.workflow.runs` (unit: `1`): Count of collected workflow attempts.
+  `workflow_run` mode captures each rerun, including partial reruns; current
+  workflow mode counts only attempts in which the telemetry job runs.
+- `github.workflow.duration` (unit: `s`): `workflow.run_started_at` to the
+  latest `job.completed_at` in that attempt (falls back to the earliest job
+  `created_at` if `run_started_at` is unavailable)
 - `github.workflow.billable_time` (unit: `min`): Sum of OS-multiplied billable
-  minutes across jobs in the workflow
+  minutes across jobs executed in that attempt. Summing by workflow name across
+  attempts gives total billable usage, including jobs actually rerun.
 - **Attributes**:
   - `workflow.name`: Workflow name
   - `repository`: Full repository name (owner/repo)
   - `workflow.conclusion`: Workflow completion status
   - `workflow.event`: Triggering GitHub event name
+  - `workflow.run_attempt`: Numeric attempt number
   - `workflow.is_retry`: `'true'` if `run_attempt > 1`, else `'false'`
 
 ### Job Metrics
@@ -86,7 +91,8 @@ The action operates in two distinct modes based on the triggering event:
   - `repository`: Full repository name
   - `job.name`: Job identifier
   - `job.conclusion`: Job completion status (success, failure, etc.)
-  - `job.is_retry`: `'true'` if `run_attempt > 1`, else `'false'`
+  - `workflow.run_attempt`: Numeric attempt number
+  - `job.run_attempt`: Numeric job attempt number
   - `runner.os`: `'linux' | 'windows' | 'macos' | 'unknown'`
   - `runner.arch`: `'arm64' | 'amd64' | 'unknown'`
   - `runner.runs_on`: Normalized `runs-on` label set (if available)
@@ -105,7 +111,8 @@ The action operates in two distinct modes based on the triggering event:
 #### Root Workflow Span
 
 - **Name**: Workflow name
-- **Duration**: `workflow.created_at` to latest `job.completed_at`
+- **Duration**: `workflow.run_started_at` to latest `job.completed_at` in that
+  attempt (falls back to the earliest job `created_at` if unavailable)
 - **Status**: Derived from workflow conclusion or 'in_progress'
 - **Attributes**:
   - `span.type`: `'workflow'`
@@ -128,6 +135,7 @@ The action operates in two distinct modes based on the triggering event:
   - `span.type`: `'job.wrapper'`
   - `job.id`: GitHub job identifier
   - `job.name`: Job name
+  - `job.run_attempt`: Numeric job attempt number
 
 #### Job Queue Spans (Child, `span.type = 'queue'`)
 
@@ -137,7 +145,8 @@ The action operates in two distinct modes based on the triggering event:
 - **Edge Case**: Skipped when queue duration is negative
 - **Attributes**:
   - `span.type`: `'queue'`
-  - `job.id`, `job.name`, `job.labels`, `job.queued_duration_s`
+  - `job.id`, `job.name`, `job.run_attempt`, `job.labels`,
+    `job.queued_duration_s`
   - `runner.name`, `runner.group`, `runner.runs_on`, `runner.os`, `runner.arch`
 
 #### Job Execution Spans (Child, `span.type = 'job'`)
@@ -147,7 +156,7 @@ The action operates in two distinct modes based on the triggering event:
 - **Status**: Derived from job conclusion
 - **Attributes**:
   - `span.type`: `'job'`
-  - `job.id`, `job.name`, `job.conclusion`, `job.labels`
+  - `job.id`, `job.name`, `job.run_attempt`, `job.conclusion`, `job.labels`
   - `runner.name`, `runner.group`, `runner.runs_on`, `runner.os`, `runner.arch`
   - `job.queued_duration_s`, `job.execution_duration_s`,
     `job.raw_billable_minutes`, `job.billable_minutes`,
@@ -161,7 +170,8 @@ The action operates in two distinct modes based on the triggering event:
 - **Validation**: Steps with null timestamps are skipped with warnings
 - **Attributes**:
   - `span.type`: `'step'`
-  - `job.name`, `step.name`, `step.conclusion`, `step.number`
+  - `job.id`, `job.name`, `job.run_attempt`, `step.name`, `step.conclusion`,
+    `step.number`
 
 ### Status Code Mapping
 

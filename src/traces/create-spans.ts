@@ -2,7 +2,8 @@ import { Context, ROOT_CONTEXT } from '@opentelemetry/api'
 import {
   WorkflowJob,
   WorkflowJobs,
-  getLatestCompletedAt
+  getLatestCompletedAt,
+  getWorkflowAttemptStartedAt
 } from '../github/index.js'
 import * as opentelemetry from '@opentelemetry/api'
 import { calcDiffSec } from '../utils/calc-diff-sec.js'
@@ -15,13 +16,21 @@ export const createWorkflowTrace = (
   workflowJobs: WorkflowJobs
 ): Context => {
   const latestCompletedAt = getLatestCompletedAt(workflowJobs)
+  const attemptStartedAt = getWorkflowAttemptStartedAt(workflow, workflowJobs)
   const span = createSpan(
     ROOT_CONTEXT,
     workflow.name,
-    workflow.created_at,
+    attemptStartedAt,
     latestCompletedAt,
     workflow.conclusion || '', // '' is converted to UNSET status. we should not use ''.
-    { ...buildWorkflowAttributes(workflow, workflowJobs, latestCompletedAt) }
+    {
+      ...buildWorkflowAttributes(
+        workflow,
+        workflowJobs,
+        latestCompletedAt,
+        attemptStartedAt
+      )
+    }
   )
 
   return opentelemetry.trace.setSpan(ROOT_CONTEXT, span)
@@ -136,11 +145,12 @@ export const getSpanStatusFromConclusion = (
 const buildWorkflowAttributes = (
   workflowRun: Workflow,
   workflowJobs: WorkflowJobs,
-  latestCompletedAt: Date
+  latestCompletedAt: Date,
+  attemptStartedAt: Date
 ): opentelemetry.Attributes => {
   const wallClockDurationSec = Math.max(
     0,
-    calcDiffSec(workflowRun.created_at, latestCompletedAt)
+    calcDiffSec(attemptStartedAt, latestCompletedAt)
   )
 
   let totalExecutionDurationSec = 0
@@ -197,7 +207,10 @@ const buildJobWrapperAttributes = (
 ): opentelemetry.Attributes => ({
   'span.type': 'job.wrapper',
   'job.id': job.id,
-  'job.name': job.name
+  'job.name': job.name,
+  ...(job.run_attempt !== undefined && {
+    'job.run_attempt': job.run_attempt
+  })
 })
 
 const buildJobQueueAttributes = (
@@ -209,6 +222,9 @@ const buildJobQueueAttributes = (
     'span.type': 'queue',
     'job.id': job.id,
     'job.name': job.name,
+    ...(job.run_attempt !== undefined && {
+      'job.run_attempt': job.run_attempt
+    }),
     'job.labels': job.labels ? [...job.labels] : undefined,
     'job.queued_duration_s': jobQueuedDuration,
     'runner.name': job.runner_name || undefined,
@@ -238,6 +254,9 @@ const buildWorkflowJobAttributes = (
     'span.type': 'job',
     'job.id': job.id,
     'job.name': job.name,
+    ...(job.run_attempt !== undefined && {
+      'job.run_attempt': job.run_attempt
+    }),
     'job.conclusion': job.conclusion,
     'job.labels': job.labels ? [...job.labels] : undefined,
     'runner.name': job.runner_name || undefined,
@@ -260,7 +279,11 @@ const buildWorkflowStepAttributes = (
   step: WorkflowStep
 ): opentelemetry.Attributes => ({
   'span.type': 'step',
+  'job.id': job.id,
   'job.name': job.name,
+  ...(job.run_attempt !== undefined && {
+    'job.run_attempt': job.run_attempt
+  }),
   'step.name': step.name,
   'step.conclusion': step.conclusion,
   'step.number': step.number

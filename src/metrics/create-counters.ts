@@ -1,6 +1,7 @@
 import * as opentelemetry from '@opentelemetry/api'
 import {
   getLatestCompletedAt,
+  getWorkflowAttemptStartedAt,
   WorkflowRun,
   WorkflowJob,
   WorkflowJobs
@@ -32,7 +33,12 @@ const createMetricsAttributes = (
   ...(workflow.conclusion && { [ak.WORKFLOW_CONCLUSION]: workflow.conclusion }),
   ...(workflow.event && { [ak.WORKFLOW_EVENT]: workflow.event }),
   [ak.WORKFLOW_IS_RETRY]: workflow.run_attempt > 1 ? 'true' : 'false',
+  [ak.WORKFLOW_RUN_ATTEMPT]: workflow.run_attempt,
   ...(job && { [ak.JOB_NAME]: job.name }),
+  ...(job &&
+    job.run_attempt !== undefined && {
+      [ak.JOB_RUN_ATTEMPT]: job.run_attempt
+    }),
   ...(job && job.conclusion && { [ak.JOB_CONCLUSION]: job.conclusion }), // conclusion specification: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks#check-statuses-and-conclusions
   ...(job &&
     job.runner_group_name && { [ak.RUNNER_GROUP]: job.runner_group_name }),
@@ -48,6 +54,10 @@ export const createWorkflowCounters = (
   const workflowMetricsAttributes = createMetricsAttributes(workflow)
   // workflow run context has no end time, so use the latest job's completed_at
   const jobCompletedAtMax = getLatestCompletedAt(workflowRunJobs)
+  const attemptStartedAt = getWorkflowAttemptStartedAt(
+    workflow,
+    workflowRunJobs
+  )
 
   let totalExecutionDurationSec = 0
   let totalBillableMinutes = 0
@@ -69,7 +79,7 @@ export const createWorkflowCounters = (
   })
   createCounter(
     dn.WORKFLOW_DURATION,
-    Math.max(0, calcDiffSec(workflow.created_at, jobCompletedAtMax)),
+    Math.max(0, calcDiffSec(attemptStartedAt, jobCompletedAtMax)),
     workflowMetricsAttributes,
     { unit: 's' }
   )

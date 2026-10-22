@@ -87,6 +87,7 @@ describe('createJobCounters', () => {
     name: 'Test Workflow',
     conclusion: 'success',
     created_at: new Date('2023-01-01T00:00:00Z'),
+    run_started_at: new Date('2023-01-01T00:00:00Z'),
     run_attempt: 1,
     html_url: 'https://github.com/test/repo/actions/runs/123',
     repository: {
@@ -150,7 +151,7 @@ describe('createJobCounters', () => {
     }
     const workflowWithNegativeDuration: WorkflowRun = {
       ...mockWorkflow,
-      created_at: new Date('2023-01-01T00:06:00Z')
+      run_started_at: new Date('2023-01-01T00:06:00Z')
     }
 
     createJobCounters(workflowWithNegativeDuration, [jobWithNegativeDuration])

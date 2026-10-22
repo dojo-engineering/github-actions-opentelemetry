@@ -26,9 +26,21 @@
                   }
                 },
                 {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
                   "key": "job.name",
                   "value": {
                     "stringValue": "Example Application Pipeline (1, 1) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
@@ -68,6 +80,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -77,6 +95,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Build"
@@ -113,6 +137,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -122,6 +152,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Build"
@@ -158,6 +194,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -167,6 +209,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Build"
@@ -206,9 +254,21 @@
                   }
                 },
                 {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
                   "key": "job.name",
                   "value": {
                     "stringValue": "TypeScript Tests"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
@@ -251,9 +311,21 @@
                   }
                 },
                 {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
                   "key": "job.name",
                   "value": {
                     "stringValue": "Example Application Pipeline (1, 1) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
@@ -293,6 +365,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -302,6 +380,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Checkout"
@@ -338,6 +422,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -347,6 +437,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Checkout"
@@ -383,6 +479,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -392,6 +494,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Checkout"
@@ -428,6 +536,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -437,6 +551,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Checkout"
@@ -473,6 +593,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -482,6 +608,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Checkout"
@@ -518,6 +650,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -527,6 +665,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Checkout"
@@ -566,9 +710,21 @@
                   }
                 },
                 {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
                   "key": "job.name",
                   "value": {
                     "stringValue": "TypeScript Tests"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
@@ -611,9 +767,21 @@
                   }
                 },
                 {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
                   "key": "job.name",
                   "value": {
                     "stringValue": "Example Application Pipeline (1, 1) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
@@ -656,9 +824,21 @@
                   }
                 },
                 {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
                   "key": "job.name",
                   "value": {
                     "stringValue": "Example Application Pipeline (1, 2) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
@@ -698,6 +878,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -707,6 +893,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Complete job"
@@ -743,6 +935,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -752,6 +950,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Complete job"
@@ -788,6 +992,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -797,6 +1007,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Complete job"
@@ -833,6 +1049,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -842,6 +1064,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Complete job"
@@ -881,9 +1109,21 @@
                   }
                 },
                 {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
                   "key": "job.name",
                   "value": {
                     "stringValue": "Example Application Pipeline (2, 1) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
@@ -926,9 +1166,21 @@
                   }
                 },
                 {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
                   "key": "job.name",
                   "value": {
                     "stringValue": "Example Application Pipeline (2, 2) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
@@ -971,9 +1223,21 @@
                   }
                 },
                 {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
                   "key": "job.name",
                   "value": {
                     "stringValue": "Example Application Pipeline (2, 2) / Deploy Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
@@ -1016,9 +1280,21 @@
                   }
                 },
                 {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
                   "key": "job.name",
                   "value": {
                     "stringValue": "Example Application Pipeline (2, 2) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
@@ -1061,9 +1337,21 @@
                   }
                 },
                 {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
                   "key": "job.name",
                   "value": {
                     "stringValue": "TypeScript Tests"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
@@ -1106,9 +1394,21 @@
                   }
                 },
                 {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
                   "key": "job.name",
                   "value": {
                     "stringValue": "Example Application Pipeline (1, 1) / Deploy Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
@@ -1148,6 +1448,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -1157,6 +1463,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Deploy"
@@ -1193,6 +1505,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -1202,6 +1520,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Deploy"
@@ -1241,9 +1565,21 @@
                   }
                 },
                 {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
                   "key": "job.name",
                   "value": {
                     "stringValue": "Example Application Pipeline (2, 2) / Deploy Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
@@ -1295,6 +1631,12 @@
                   "key": "job.name",
                   "value": {
                     "stringValue": "Example Application Pipeline (1, 1) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
@@ -1419,6 +1761,12 @@
                   "value": {
                     "stringValue": "Example Application Pipeline (1, 1) / Build Application"
                   }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
                 }
               ],
               "endTimeUnixNano": "0",
@@ -1451,6 +1799,12 @@
                   "key": "job.name",
                   "value": {
                     "stringValue": "Example Application Pipeline (1, 1) / Deploy Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
@@ -1575,6 +1929,12 @@
                   "value": {
                     "stringValue": "Example Application Pipeline (1, 1) / Deploy Application"
                   }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
                 }
               ],
               "endTimeUnixNano": "0",
@@ -1607,6 +1967,12 @@
                   "key": "job.name",
                   "value": {
                     "stringValue": "Example Application Pipeline (1, 1) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
@@ -1731,6 +2097,12 @@
                   "value": {
                     "stringValue": "Example Application Pipeline (1, 1) / Test Application"
                   }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
                 }
               ],
               "endTimeUnixNano": "0",
@@ -1763,6 +2135,12 @@
                   "key": "job.name",
                   "value": {
                     "stringValue": "Example Application Pipeline (1, 2) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
@@ -1887,6 +2265,12 @@
                   "value": {
                     "stringValue": "Example Application Pipeline (1, 2) / Build Application"
                   }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
                 }
               ],
               "endTimeUnixNano": "0",
@@ -1919,6 +2303,12 @@
                   "key": "job.name",
                   "value": {
                     "stringValue": "Example Application Pipeline (1, 2) / Deploy Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
@@ -2043,6 +2433,12 @@
                   "value": {
                     "stringValue": "Example Application Pipeline (1, 2) / Deploy Application"
                   }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
                 }
               ],
               "endTimeUnixNano": "0",
@@ -2075,6 +2471,12 @@
                   "key": "job.name",
                   "value": {
                     "stringValue": "Example Application Pipeline (1, 2) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
@@ -2199,6 +2601,12 @@
                   "value": {
                     "stringValue": "Example Application Pipeline (1, 2) / Test Application"
                   }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
                 }
               ],
               "endTimeUnixNano": "0",
@@ -2231,6 +2639,12 @@
                   "key": "job.name",
                   "value": {
                     "stringValue": "Example Application Pipeline (2, 1) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
@@ -2355,6 +2769,12 @@
                   "value": {
                     "stringValue": "Example Application Pipeline (2, 1) / Build Application"
                   }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
                 }
               ],
               "endTimeUnixNano": "0",
@@ -2387,6 +2807,12 @@
                   "key": "job.name",
                   "value": {
                     "stringValue": "Example Application Pipeline (2, 1) / Deploy Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
@@ -2511,6 +2937,12 @@
                   "value": {
                     "stringValue": "Example Application Pipeline (2, 1) / Deploy Application"
                   }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
                 }
               ],
               "endTimeUnixNano": "0",
@@ -2543,6 +2975,12 @@
                   "key": "job.name",
                   "value": {
                     "stringValue": "Example Application Pipeline (2, 1) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
@@ -2667,6 +3105,12 @@
                   "value": {
                     "stringValue": "Example Application Pipeline (2, 1) / Test Application"
                   }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
                 }
               ],
               "endTimeUnixNano": "0",
@@ -2699,6 +3143,12 @@
                   "key": "job.name",
                   "value": {
                     "stringValue": "Example Application Pipeline (2, 2) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
@@ -2823,6 +3273,12 @@
                   "value": {
                     "stringValue": "Example Application Pipeline (2, 2) / Build Application"
                   }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
                 }
               ],
               "endTimeUnixNano": "0",
@@ -2855,6 +3311,12 @@
                   "key": "job.name",
                   "value": {
                     "stringValue": "Example Application Pipeline (2, 2) / Deploy Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
@@ -2979,6 +3441,12 @@
                   "value": {
                     "stringValue": "Example Application Pipeline (2, 2) / Deploy Application"
                   }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
                 }
               ],
               "endTimeUnixNano": "0",
@@ -3011,6 +3479,12 @@
                   "key": "job.name",
                   "value": {
                     "stringValue": "Example Application Pipeline (2, 2) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
@@ -3135,6 +3609,12 @@
                   "value": {
                     "stringValue": "Example Application Pipeline (2, 2) / Test Application"
                   }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
                 }
               ],
               "endTimeUnixNano": "0",
@@ -3158,9 +3638,21 @@
                   }
                 },
                 {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
                   "key": "job.name",
                   "value": {
                     "stringValue": "TypeScript Tests"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
@@ -3203,9 +3695,21 @@
                   }
                 },
                 {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
                   "key": "job.name",
                   "value": {
                     "stringValue": "Example Application Pipeline (1, 1) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
@@ -3245,6 +3749,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -3254,6 +3764,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Install Dependencies"
@@ -3290,6 +3806,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -3299,6 +3821,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Install Dependencies"
@@ -3335,6 +3863,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -3344,6 +3878,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Install Dependencies"
@@ -3380,6 +3920,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -3389,6 +3935,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Install Dependencies"
@@ -3425,6 +3977,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -3434,6 +3992,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Install Dependencies"
@@ -3470,6 +4034,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -3479,6 +4049,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Install Dependencies"
@@ -3515,6 +4091,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -3524,6 +4106,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Install Dependencies"
@@ -3563,9 +4151,21 @@
                   }
                 },
                 {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
                   "key": "job.name",
                   "value": {
                     "stringValue": "TypeScript Tests"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
@@ -3608,9 +4208,21 @@
                   }
                 },
                 {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
                   "key": "job.name",
                   "value": {
                     "stringValue": "Example Application Pipeline (1, 1) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
@@ -3770,9 +4382,21 @@
                   }
                 },
                 {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
                   "key": "job.name",
                   "value": {
                     "stringValue": "Example Application Pipeline (2, 1) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
@@ -3812,6 +4436,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -3821,6 +4451,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Lint"
@@ -3860,9 +4496,21 @@
                   }
                 },
                 {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
                   "key": "job.name",
                   "value": {
                     "stringValue": "TypeScript Tests"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
@@ -4026,9 +4674,21 @@
                   }
                 },
                 {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
                   "key": "job.name",
                   "value": {
                     "stringValue": "Example Application Pipeline (1, 1) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
@@ -4068,6 +4728,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -4077,6 +4743,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Set up job"
@@ -4113,6 +4785,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -4122,6 +4800,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Set up job"
@@ -4158,6 +4842,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -4167,6 +4857,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Set up job"
@@ -4203,6 +4899,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -4212,6 +4914,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Set up job"
@@ -4248,6 +4956,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -4257,6 +4971,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Set up job"
@@ -4293,6 +5013,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -4302,6 +5028,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Set up job"
@@ -4338,6 +5070,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -4347,6 +5085,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Set up job"
@@ -4383,6 +5127,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -4392,6 +5142,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Set up job"
@@ -4428,6 +5184,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -4437,6 +5199,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Set up job"
@@ -4473,6 +5241,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -4482,6 +5256,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Set up job"
@@ -4518,6 +5298,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -4527,6 +5313,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Set up job"
@@ -4566,9 +5358,21 @@
                   }
                 },
                 {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
                   "key": "job.name",
                   "value": {
                     "stringValue": "TypeScript Tests"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
@@ -4608,6 +5412,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -4617,6 +5427,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Setup"
@@ -4653,6 +5469,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -4662,6 +5484,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Setup"
@@ -4698,6 +5526,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -4707,6 +5541,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Setup"
@@ -4743,6 +5583,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -4752,6 +5598,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Setup"
@@ -4788,6 +5640,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -4797,6 +5655,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Setup"
@@ -4833,6 +5697,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -4842,6 +5712,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Setup"
@@ -4878,6 +5754,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -4887,6 +5769,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Setup"
@@ -4926,9 +5814,21 @@
                   }
                 },
                 {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
                   "key": "job.name",
                   "value": {
                     "stringValue": "TypeScript Tests"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
@@ -5038,6 +5938,12 @@
                   "value": {
                     "intValue": "6"
                   }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
                 }
               ],
               "endTimeUnixNano": "0",
@@ -5115,6 +6021,12 @@
                   "key": "job.name",
                   "value": {
                     "stringValue": "Example Application Pipeline (1, 1) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
@@ -5199,6 +6111,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "job.labels",
                   "value": {
                     "arrayValue": {
@@ -5277,6 +6195,12 @@
                   "key": "job.name",
                   "value": {
                     "stringValue": "Example Application Pipeline (1, 1) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
@@ -5361,6 +6285,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "job.labels",
                   "value": {
                     "arrayValue": {
@@ -5439,6 +6369,12 @@
                   "key": "job.name",
                   "value": {
                     "stringValue": "Example Application Pipeline (1, 2) / Deploy Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
@@ -5523,6 +6459,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "job.labels",
                   "value": {
                     "arrayValue": {
@@ -5601,6 +6543,12 @@
                   "key": "job.name",
                   "value": {
                     "stringValue": "Example Application Pipeline (2, 1) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
@@ -5685,6 +6633,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "job.labels",
                   "value": {
                     "arrayValue": {
@@ -5763,6 +6717,12 @@
                   "key": "job.name",
                   "value": {
                     "stringValue": "Example Application Pipeline (2, 1) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
@@ -5847,6 +6807,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "job.labels",
                   "value": {
                     "arrayValue": {
@@ -5928,6 +6894,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "job.labels",
                   "value": {
                     "arrayValue": {
@@ -6006,6 +6978,12 @@
                   "key": "job.name",
                   "value": {
                     "stringValue": "Example Application Pipeline (2, 2) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
