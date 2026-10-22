@@ -62075,6 +62075,12 @@ const detectRunnerArch = (labels) => {
         }
     }
     for (const label of normalized) {
+        if (/^macos-(?:\d+|latest)-xlarge(?:-|$)/.test(label)) {
+            return 'arm64';
+        }
+        if (/^macos-(?:\d+|latest)-large(?:-|$)/.test(label)) {
+            return 'amd64';
+        }
         if (/^macos-(14|15|latest)(\b|-)/.test(label)) {
             return 'arm64';
         }
@@ -62101,12 +62107,14 @@ const calcJobBillable = (durationSec, conclusion, labels) => {
     const { os: runnerOs, multiplier } = detectRunnerOs(labels);
     const runnerArch = detectRunnerArch(labels);
     const runsOn = normalizeRunsOn(labels);
-    if (conclusion === 'skipped' || durationSec <= 0) {
+    const isSelfHosted = labels?.some(label => label.trim().toLowerCase() === 'self-hosted') ?? false;
+    const billableMultiplier = isSelfHosted ? 0 : multiplier;
+    if (isSelfHosted || conclusion === 'skipped' || durationSec <= 0) {
         return {
             rawBillableMinutes: 0,
             billableMinutes: 0,
             roundingWasteSec: 0,
-            multiplier,
+            multiplier: billableMultiplier,
             runnerOs,
             runnerArch,
             runsOn
@@ -62114,12 +62122,12 @@ const calcJobBillable = (durationSec, conclusion, labels) => {
     }
     const rawBillableMinutes = Math.max(1, Math.ceil(durationSec / 60));
     const roundingWasteSec = rawBillableMinutes * 60 - durationSec;
-    const billableMinutes = rawBillableMinutes * multiplier;
+    const billableMinutes = rawBillableMinutes * billableMultiplier;
     return {
         rawBillableMinutes,
         billableMinutes,
         roundingWasteSec,
-        multiplier,
+        multiplier: billableMultiplier,
         runnerOs,
         runnerArch,
         runsOn
@@ -62147,6 +62155,7 @@ const attributeKeys = {
     WORKFLOW_EVENT: 'workflow.event',
     WORKFLOW_IS_RETRY: 'workflow.is_retry',
     WORKFLOW_RUN_ATTEMPT: 'workflow.run_attempt',
+    WORKFLOW_RUN_ID: 'workflow.run_id',
     JOB_NAME: 'job.name',
     JOB_CONCLUSION: 'job.conclusion',
     JOB_RUN_ATTEMPT: 'job.run_attempt',
@@ -62185,7 +62194,8 @@ const createMetricsAttributes = (workflow, job, billable) => ({
         job.runner_group_name && { [attributeKeys.RUNNER_GROUP]: job.runner_group_name }),
     ...(billable && billable.runsOn && { [attributeKeys.RUNNER_RUNS_ON]: billable.runsOn }),
     ...(billable && { [attributeKeys.RUNNER_OS]: billable.runnerOs }),
-    ...(billable && { [attributeKeys.RUNNER_ARCH]: billable.runnerArch })
+    ...(billable && { [attributeKeys.RUNNER_ARCH]: billable.runnerArch }),
+    [attributeKeys.WORKFLOW_RUN_ID]: workflow.id
 });
 const createWorkflowCounters = (workflow, workflowRunJobs) => {
     const workflowMetricsAttributes = createMetricsAttributes(workflow);

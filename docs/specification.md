@@ -65,15 +65,23 @@ The action operates in two distinct modes based on the triggering event:
   latest `job.completed_at` in that attempt (falls back to the earliest job
   `created_at` if `run_started_at` is unavailable)
 - `github.workflow.billable_time` (unit: `min`): Sum of OS-multiplied billable
-  minutes across jobs executed in that attempt. Summing by workflow name across
-  attempts gives total billable usage, including jobs actually rerun.
+  GitHub-hosted minutes across jobs executed in that attempt. Self-hosted jobs
+  contribute zero. Summing by workflow name across attempts gives total billable
+  usage, including jobs actually rerun.
 - **Attributes**:
   - `workflow.name`: Workflow name
+  - `workflow.run_id`: GitHub workflow run ID
   - `repository`: Full repository name (owner/repo)
   - `workflow.conclusion`: Workflow completion status
   - `workflow.event`: Triggering GitHub event name
   - `workflow.run_attempt`: Numeric attempt number
   - `workflow.is_retry`: `'true'` if `run_attempt > 1`, else `'false'`
+
+`workflow.run_id` and `workflow.run_attempt` give each run attempt a distinct
+metric stream. The OTLP exporter uses cumulative temporality by default. To
+calculate totals over a time range, sum the per-attempt points by
+`workflow.name`, dropping run, attempt, outcome, and event dimensions. Include
+`repository` when totals should remain separate across repositories.
 
 ### Job Metrics
 
@@ -82,12 +90,13 @@ The action operates in two distinct modes based on the triggering event:
 - `github.job.queued_duration` (unit: `s`): `job.created_at` to `job.started_at`
   (skipped when negative)
 - `github.job.billable_time` (unit: `min`):
-  `max(1, ceil(duration_s / 60)) * os_multiplier` (or `0` when skipped /
-  duration <= 0)
+  `max(1, ceil(duration_s / 60)) * os_multiplier` (or `0` for self-hosted,
+  skipped, or zero-duration jobs)
 - `github.job.rounding_waste` (unit: `s`):
-  `(raw_billable_minutes * 60) - duration_s`
+  `(raw_billable_minutes * 60) - duration_s` (zero for self-hosted jobs)
 - **Attributes**:
   - `workflow.name`: Parent workflow name
+  - `workflow.run_id`: Parent workflow run ID
   - `repository`: Full repository name
   - `job.name`: Job identifier
   - `job.conclusion`: Job completion status (success, failure, etc.)
@@ -97,6 +106,10 @@ The action operates in two distinct modes based on the triggering event:
   - `runner.arch`: `'arm64' | 'amd64' | 'unknown'`
   - `runner.runs_on`: Normalized `runs-on` label set (if available)
   - `runner.group`: Runner group (if available)
+
+Self-hosted jobs retain their execution-duration metrics and runner metadata;
+only GitHub-hosted billing metrics are zero. For macOS larger-runner labels,
+`*-large` is inferred as `amd64` and `*-xlarge` as `arm64`.
 
 ## Trace Specification
 

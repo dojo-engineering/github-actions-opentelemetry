@@ -19,6 +19,7 @@ export const attributeKeys = {
   WORKFLOW_EVENT: 'workflow.event',
   WORKFLOW_IS_RETRY: 'workflow.is_retry',
   WORKFLOW_RUN_ATTEMPT: 'workflow.run_attempt',
+  WORKFLOW_RUN_ID: 'workflow.run_id',
   JOB_NAME: 'job.name',
   JOB_CONCLUSION: 'job.conclusion',
   JOB_RUN_ATTEMPT: 'job.run_attempt',

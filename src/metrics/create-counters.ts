@@ -44,7 +44,8 @@ const createMetricsAttributes = (
     job.runner_group_name && { [ak.RUNNER_GROUP]: job.runner_group_name }),
   ...(billable && billable.runsOn && { [ak.RUNNER_RUNS_ON]: billable.runsOn }),
   ...(billable && { [ak.RUNNER_OS]: billable.runnerOs }),
-  ...(billable && { [ak.RUNNER_ARCH]: billable.runnerArch })
+  ...(billable && { [ak.RUNNER_ARCH]: billable.runnerArch }),
+  [ak.WORKFLOW_RUN_ID]: workflow.id
 })
 
 export const createWorkflowCounters = (

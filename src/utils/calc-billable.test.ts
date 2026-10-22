@@ -77,7 +77,12 @@ describe('detectRunnerArch', () => {
 
   test('should infer architecture from standard GitHub-hosted runner images', () => {
     expect(detectRunnerArch(['macos-14'])).toBe('arm64')
-    expect(detectRunnerArch(['macos-15-large'])).toBe('arm64')
+    expect(detectRunnerArch(['macos-14-large'])).toBe('amd64')
+    expect(detectRunnerArch(['macos-15-large'])).toBe('amd64')
+    expect(detectRunnerArch(['macos-14-xlarge'])).toBe('arm64')
+    expect(detectRunnerArch(['macos-15-xlarge'])).toBe('arm64')
+    expect(detectRunnerArch(['macos-latest-large'])).toBe('amd64')
+    expect(detectRunnerArch(['macos-latest-xlarge'])).toBe('arm64')
     expect(detectRunnerArch(['macos-latest'])).toBe('arm64')
     expect(detectRunnerArch(['macos-13'])).toBe('amd64')
     expect(detectRunnerArch(['macos-12'])).toBe('amd64')
@@ -166,6 +171,20 @@ describe('calcJobBillable', () => {
       runnerOs: 'linux',
       runnerArch: 'amd64',
       runsOn: 'ubuntu-latest'
+    })
+  })
+
+  test('should exclude self-hosted jobs from GitHub billing and preserve runner metadata', () => {
+    expect(
+      calcJobBillable(61, 'success', ['self-hosted', 'Windows-2022', 'X64'])
+    ).toEqual({
+      rawBillableMinutes: 0,
+      billableMinutes: 0,
+      roundingWasteSec: 0,
+      multiplier: 0,
+      runnerOs: 'windows',
+      runnerArch: 'amd64',
+      runsOn: 'self-hosted,windows-2022,x64'
     })
   })
 })

@@ -59,6 +59,12 @@ export const detectRunnerArch = (labels?: readonly string[]): RunnerArch => {
   }
 
   for (const label of normalized) {
+    if (/^macos-(?:\d+|latest)-xlarge(?:-|$)/.test(label)) {
+      return 'arm64'
+    }
+    if (/^macos-(?:\d+|latest)-large(?:-|$)/.test(label)) {
+      return 'amd64'
+    }
     if (/^macos-(14|15|latest)(\b|-)/.test(label)) {
       return 'arm64'
     }
@@ -97,13 +103,16 @@ export const calcJobBillable = (
   const { os: runnerOs, multiplier } = detectRunnerOs(labels)
   const runnerArch = detectRunnerArch(labels)
   const runsOn = normalizeRunsOn(labels)
+  const isSelfHosted =
+    labels?.some(label => label.trim().toLowerCase() === 'self-hosted') ?? false
+  const billableMultiplier = isSelfHosted ? 0 : multiplier
 
-  if (conclusion === 'skipped' || durationSec <= 0) {
+  if (isSelfHosted || conclusion === 'skipped' || durationSec <= 0) {
     return {
       rawBillableMinutes: 0,
       billableMinutes: 0,
       roundingWasteSec: 0,
-      multiplier,
+      multiplier: billableMultiplier,
       runnerOs,
       runnerArch,
       runsOn
@@ -112,13 +121,13 @@ export const calcJobBillable = (
 
   const rawBillableMinutes = Math.max(1, Math.ceil(durationSec / 60))
   const roundingWasteSec = rawBillableMinutes * 60 - durationSec
-  const billableMinutes = rawBillableMinutes * multiplier
+  const billableMinutes = rawBillableMinutes * billableMultiplier
 
   return {
     rawBillableMinutes,
     billableMinutes,
     roundingWasteSec,
-    multiplier,
+    multiplier: billableMultiplier,
     runnerOs,
     runnerArch,
     runsOn

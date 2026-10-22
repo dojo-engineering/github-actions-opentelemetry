@@ -20,32 +20,40 @@ Protocol (OTLP) endpoint. It helps you monitor and analyze GitHub Actions.
 
 ## Metrics
 
-All metrics are exported as OpenTelemetry **Counters** (`createCounter`) so that
-concurrent runs across branches/PRs aggregate cleanly in Prometheus and
-VictoriaMetrics without Gauge last-write-wins overwrites:
+All metrics are exported as OpenTelemetry **Counters** (`createCounter`).
+Workflow metrics include `workflow.run_id` and `workflow.run_attempt`, so
+independent workflow runs and attempts use separate metric series. The default
+OTLP exporter temporality is cumulative. To get a total over a time range, sum
+the per-attempt points by `workflow.name`, dropping run, attempt, outcome, and
+event dimensions. Keep `repository` when totals should remain separate across
+repositories:
 
 | Descriptor Name                 | Unit  | Description                                                                   |
 | ------------------------------- | ----- | ----------------------------------------------------------------------------- |
 | `github.workflow.runs`          | `1`   | Count of collected attempts (including partial reruns in `workflow_run` mode) |
 | `github.workflow.duration`      | `s`   | Elapsed duration of one workflow attempt                                      |
-| `github.workflow.billable_time` | `min` | Total billable time of workflow in minutes (with OS multipliers)              |
+| `github.workflow.billable_time` | `min` | GitHub-hosted billable time of workflow in minutes (with OS multipliers)      |
 | `github.job.runs`               | `1`   | Count of job runs                                                             |
 | `github.job.duration`           | `s`   | Duration of job                                                               |
 | `github.job.queued_duration`    | `s`   | Duration of queued job                                                        |
-| `github.job.billable_time`      | `min` | Billable time of job in minutes (rounded up to 60s + OS multiplier)           |
+| `github.job.billable_time`      | `min` | GitHub-hosted billable time of job (rounded up to 60s + OS multiplier)        |
 | `github.job.rounding_waste`     | `s`   | Billable rounding waste of job in seconds                                     |
 
 Each metric has associated attributes:
 
 - **Workflow metrics**: `workflow.name`, `repository`, `workflow.conclusion`,
-  `workflow.event`, `workflow.is_retry`, `workflow.run_attempt`
-- **Job metrics**: `workflow.name`, `workflow.run_attempt`, `repository`,
-  `job.name`, `job.conclusion`, `job.run_attempt`, `runner.os`, `runner.arch`,
-  `runner.runs_on`, `runner.group`
+  `workflow.event`, `workflow.is_retry`, `workflow.run_attempt`,
+  `workflow.run_id`
+- **Job metrics**: `workflow.name`, `workflow.run_id`, `workflow.run_attempt`,
+  `repository`, `job.name`, `job.conclusion`, `job.run_attempt`, `runner.os`,
+  `runner.arch`, `runner.runs_on`, `runner.group`
 
 Each action invocation reports only jobs executed in that workflow attempt.
-Summing `github.workflow.billable_time` by workflow name across attempts gives
-the billable total, counting jobs again when GitHub actually reruns them.
+`workflow.run_id` and `workflow.run_attempt` intentionally scope metric series
+per attempt; sum the per-attempt points by workflow name over the desired time
+range to calculate totals. Self-hosted jobs still contribute execution duration
+and runner metadata, but contribute zero to GitHub-hosted billable time and
+rounding waste.
 
 ![Prometheus Example Screen Shot](./img/metrics-prom.png)
 
