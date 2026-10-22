@@ -698,6 +698,25 @@ describe('Type converters', () => {
       }
       expect(result).toEqual(expected)
     })
+
+    test('should skip jobs from previous attempts when targetAttemptNumber does not match', () => {
+      const jobFromAttempt1 = {
+        ...mockJobResponse,
+        run_attempt: 1,
+        labels: ['ubuntu-latest']
+      }
+      const jobFromAttempt2 = {
+        ...mockJobResponse,
+        run_attempt: 2,
+        labels: ['ubuntu-latest']
+      }
+
+      expect(toWorkflowJob(jobFromAttempt1 as never, 'push', 2)).toBeNull()
+      const result = toWorkflowJob(jobFromAttempt2 as never, 'push', 2)
+      expect(result).not.toBeNull()
+      expect(result?.run_attempt).toBe(2)
+      expect(result?.labels).toEqual(['ubuntu-latest'])
+    })
   })
 
   describe('toWorkflowRun', () => {
@@ -773,7 +792,10 @@ describe('Type converters', () => {
 
       const result = toWorkflowRun(inProgressWorkflow as never)
 
-      expect(result).toEqual(expectedWorkflowBase)
+      expect(result).toEqual({
+        ...expectedWorkflowBase,
+        event: 'push'
+      })
       expect(consoleLogSpy).toHaveBeenCalledWith(
         'Processing in-progress workflow: 12345'
       )
@@ -800,7 +822,10 @@ describe('Type converters', () => {
       }
 
       const result = toWorkflowRun(pushWorkflow as never)
-      expect(result).toEqual(expectedWorkflowBase)
+      expect(result).toEqual({
+        ...expectedWorkflowBase,
+        event: 'push'
+      })
     })
 
     test('should throw error when conclusion is null', () => {
@@ -832,6 +857,21 @@ describe('Type converters', () => {
         conclusion: 'success',
         started_at: new Date('2023-01-01T00:01:00Z'),
         completed_at: new Date('2023-01-01T00:02:00Z')
+      })
+    })
+
+    test('should include step number when provided', () => {
+      const result = toWorkflowStep({
+        ...mockStepResponse,
+        number: 3
+      } as never)
+
+      expect(result).toEqual({
+        name: 'test-step',
+        conclusion: 'success',
+        started_at: new Date('2023-01-01T00:01:00Z'),
+        completed_at: new Date('2023-01-01T00:02:00Z'),
+        number: 3
       })
     })
 

@@ -61755,10 +61755,17 @@ const toWorkflowStep = (step) => {
         name: step.name,
         conclusion: step.conclusion,
         started_at: new Date(step.started_at),
-        completed_at: new Date(step.completed_at)
+        completed_at: new Date(step.completed_at),
+        ...(step.number !== undefined && { number: step.number })
     };
 };
-const toWorkflowJob = (job, eventName) => {
+const toWorkflowJob = (job, eventName, targetAttemptNumber) => {
+    if (targetAttemptNumber !== undefined &&
+        job.run_attempt !== undefined &&
+        job.run_attempt !== targetAttemptNumber) {
+        console.log(`Skipping job from previous attempt: ${job.name} (job run_attempt: ${job.run_attempt}, target attempt: ${targetAttemptNumber})`);
+        return null;
+    }
     if (eventName === 'workflow_run' && job.status !== 'completed') {
         // This error is for backward compatibility.
         throw new Error('job.status must be completed on workflow_run event');
@@ -61788,7 +61795,9 @@ const toWorkflowJob = (job, eventName) => {
         run_id: toSafeNumber(job.run_id, 'Job run_id'),
         steps: job.steps?.map(toWorkflowStep) || [],
         runner_name: job.runner_name,
-        runner_group_name: job.runner_group_name
+        runner_group_name: job.runner_group_name,
+        ...(job.labels !== undefined && { labels: job.labels }),
+        ...(job.run_attempt !== undefined && { run_attempt: job.run_attempt })
     };
 };
 const toWorkflowRun = (workflowRun) => {
@@ -61813,7 +61822,8 @@ const toWorkflowRun = (workflowRun) => {
         html_url: workflowRun.html_url,
         repository: {
             full_name: workflowRun.repository.full_name
-        }
+        },
+        ...(workflowRun.event !== undefined && { event: workflowRun.event })
     };
 };
 
@@ -61840,7 +61850,7 @@ const fetchWorkflowResults = async (octokit, workflowContext, delayMs = 1000, ma
             const workflowRes = await fetchWorkflow(octokit, workflowContext);
             const workflowJobsRes = await fetchWorkflowJobs(octokit, workflowContext);
             const workflowJobs = workflowJobsRes
-                .map(job => toWorkflowJob(job, workflowRes.event))
+                .map(job => toWorkflowJob(job, workflowRes.event, workflowContext.attempt_number))
                 .filter((job) => job !== null);
             if (workflowJobs.length === 0) {
                 throw new Error(`no completed jobs found for workflow run.`);
@@ -62003,46 +62013,181 @@ const calcDiffSec = (startDate, endDate) => {
     return Math.floor(diffMs / 1000);
 };
 
+;// CONCATENATED MODULE: ./src/utils/calc-billable.ts
+const detectRunnerOs = (labels) => {
+    if (!labels || labels.length === 0) {
+        return { os: 'unknown', multiplier: 1 };
+    }
+    const normalized = labels.map(l => l.toLowerCase());
+    if (normalized.some(l => l.includes('macos'))) {
+        return { os: 'macos', multiplier: 10 };
+    }
+    if (normalized.some(l => l.includes('windows'))) {
+        return { os: 'windows', multiplier: 2 };
+    }
+    if (normalized.some(l => l.includes('ubuntu') || l.includes('linux'))) {
+        return { os: 'linux', multiplier: 1 };
+    }
+    return { os: 'unknown', multiplier: 1 };
+};
+const detectRunnerArch = (labels) => {
+    if (!labels || labels.length === 0) {
+        return 'unknown';
+    }
+    const normalized = labels.map(l => l.trim().toLowerCase());
+    for (const label of normalized) {
+        if (/\b(arm64|aarch64|arm)\b/.test(label) ||
+            label.endsWith('-arm') ||
+            label.includes('-arm-') ||
+            label.includes('-arm64')) {
+            return 'arm64';
+        }
+        if (/\b(amd64|x64|x86_64|x86|intel)\b/.test(label) ||
+            label.includes('-x64') ||
+            label.includes('-amd64')) {
+            return 'amd64';
+        }
+    }
+    for (const label of normalized) {
+        if (/^macos-(14|15|latest)(\b|-)/.test(label)) {
+            return 'arm64';
+        }
+        if (/^macos-(11|12|13)(\b|-)/.test(label)) {
+            return 'amd64';
+        }
+        if (label.startsWith('ubuntu-') || label.startsWith('windows-')) {
+            return 'amd64';
+        }
+    }
+    return 'unknown';
+};
+const normalizeRunsOn = (labels) => {
+    if (!labels || labels.length === 0) {
+        return undefined;
+    }
+    const cleaned = labels.map(l => l.trim().toLowerCase()).filter(l => l !== '');
+    if (cleaned.length === 0) {
+        return undefined;
+    }
+    return [...cleaned].sort((a, b) => a.localeCompare(b)).join(',');
+};
+const calcJobBillable = (durationSec, conclusion, labels) => {
+    const { os: runnerOs, multiplier } = detectRunnerOs(labels);
+    const runnerArch = detectRunnerArch(labels);
+    const runsOn = normalizeRunsOn(labels);
+    if (conclusion === 'skipped' || durationSec <= 0) {
+        return {
+            rawBillableMinutes: 0,
+            billableMinutes: 0,
+            roundingWasteSec: 0,
+            multiplier,
+            runnerOs,
+            runnerArch,
+            runsOn
+        };
+    }
+    const rawBillableMinutes = Math.max(1, Math.ceil(durationSec / 60));
+    const roundingWasteSec = rawBillableMinutes * 60 - durationSec;
+    const billableMinutes = rawBillableMinutes * multiplier;
+    return {
+        rawBillableMinutes,
+        billableMinutes,
+        roundingWasteSec,
+        multiplier,
+        runnerOs,
+        runnerArch,
+        runsOn
+    };
+};
+
 ;// CONCATENATED MODULE: ./src/metrics/constants.ts
 const descriptorNames = {
+    WORKFLOW_RUNS: 'github.workflow.runs',
+    WORKFLOW_DURATION: 'github.workflow.duration',
+    WORKFLOW_EXECUTION_DURATION: 'github.workflow.execution_duration',
+    WORKFLOW_BILLABLE_TIME: 'github.workflow.billable_time',
+    WORKFLOW_ROUNDING_WASTE: 'github.workflow.rounding_waste',
+    JOB_RUNS: 'github.job.runs',
     JOB_DURATION: 'github.job.duration',
     JOB_QUEUED_DURATION: 'github.job.queued_duration',
-    WORKFLOW_DURATION: 'github.workflow.duration'
+    JOB_BILLABLE_TIME: 'github.job.billable_time',
+    JOB_RAW_BILLABLE_TIME: 'github.job.raw_billable_time',
+    JOB_ROUNDING_WASTE: 'github.job.rounding_waste'
 };
 const attributeKeys = {
     REPOSITORY: 'repository',
     WORKFLOW_NAME: 'workflow.name',
+    WORKFLOW_CONCLUSION: 'workflow.conclusion',
+    WORKFLOW_EVENT: 'workflow.event',
+    WORKFLOW_IS_RETRY: 'workflow.is_retry',
     JOB_NAME: 'job.name',
-    JOB_CONCLUSION: 'job.conclusion'
+    JOB_CONCLUSION: 'job.conclusion',
+    RUNNER_GROUP: 'runner.group',
+    RUNNER_RUNS_ON: 'runner.runs_on',
+    RUNNER_OS: 'runner.os',
+    RUNNER_ARCH: 'runner.arch'
 };
 
-;// CONCATENATED MODULE: ./src/metrics/create-gauges.ts
+;// CONCATENATED MODULE: ./src/metrics/create-counters.ts
 
 
 
 
 
-const createGauge = (name, value, attributes, option) => {
+
+const createCounter = (name, value, attributes, option) => {
     const meter = src.metrics.getMeter('github-actions-metrics');
-    const gauge = meter.createGauge(name, option);
-    gauge.record(value, attributes);
+    const counter = meter.createCounter(name, option);
+    counter.add(value, attributes);
 };
-const createMetricsAttributes = (workflow, job) => ({
+const createMetricsAttributes = (workflow, job, billable) => ({
     [attributeKeys.WORKFLOW_NAME]: workflow.name,
     [attributeKeys.REPOSITORY]: workflow.repository.full_name,
+    ...(workflow.conclusion && { [attributeKeys.WORKFLOW_CONCLUSION]: workflow.conclusion }),
+    ...(workflow.event && { [attributeKeys.WORKFLOW_EVENT]: workflow.event }),
+    [attributeKeys.WORKFLOW_IS_RETRY]: workflow.run_attempt > 1 ? 'true' : 'false',
     ...(job && { [attributeKeys.JOB_NAME]: job.name }),
-    ...(job && job.conclusion && { [attributeKeys.JOB_CONCLUSION]: job.conclusion }) // conclusion specification: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks#check-statuses-and-conclusions
+    ...(job && job.conclusion && { [attributeKeys.JOB_CONCLUSION]: job.conclusion }), // conclusion specification: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks#check-statuses-and-conclusions
+    ...(job &&
+        job.runner_group_name && { [attributeKeys.RUNNER_GROUP]: job.runner_group_name }),
+    ...(billable && billable.runsOn && { [attributeKeys.RUNNER_RUNS_ON]: billable.runsOn }),
+    ...(billable && { [attributeKeys.RUNNER_OS]: billable.runnerOs }),
+    ...(billable && { [attributeKeys.RUNNER_ARCH]: billable.runnerArch })
 });
-const createWorkflowGauges = (workflow, workflowRunJobs) => {
+const createWorkflowCounters = (workflow, workflowRunJobs) => {
     const workflowMetricsAttributes = createMetricsAttributes(workflow);
     // workflow run context has no end time, so use the latest job's completed_at
     const jobCompletedAtMax = getLatestCompletedAt(workflowRunJobs);
-    createGauge(descriptorNames.WORKFLOW_DURATION, calcDiffSec(workflow.created_at, jobCompletedAtMax), workflowMetricsAttributes, { unit: 's' });
-};
-const createJobGauges = (workflow, workflowRunJobs) => {
+    let totalExecutionDurationSec = 0;
+    let totalBillableMinutes = 0;
+    let totalRoundingWasteSec = 0;
     for (const job of workflowRunJobs) {
-        const jobMetricsAttributes = createMetricsAttributes(workflow, job);
-        createGauge(descriptorNames.JOB_DURATION, calcDiffSec(job.started_at, job.completed_at), jobMetricsAttributes, { unit: 's' });
+        const jobDurationSec = calcDiffSec(job.started_at, job.completed_at);
+        const billable = calcJobBillable(jobDurationSec, job.conclusion, job.labels);
+        totalExecutionDurationSec += Math.max(0, jobDurationSec);
+        totalBillableMinutes += billable.billableMinutes;
+        totalRoundingWasteSec += billable.roundingWasteSec;
+    }
+    createCounter(descriptorNames.WORKFLOW_RUNS, 1, workflowMetricsAttributes, {
+        unit: '{run}'
+    });
+    createCounter(descriptorNames.WORKFLOW_DURATION, calcDiffSec(workflow.created_at, jobCompletedAtMax), workflowMetricsAttributes, { unit: 's' });
+    createCounter(descriptorNames.WORKFLOW_EXECUTION_DURATION, totalExecutionDurationSec, workflowMetricsAttributes, { unit: 's' });
+    createCounter(descriptorNames.WORKFLOW_BILLABLE_TIME, totalBillableMinutes, workflowMetricsAttributes, { unit: 'min' });
+    createCounter(descriptorNames.WORKFLOW_ROUNDING_WASTE, totalRoundingWasteSec, workflowMetricsAttributes, { unit: 's' });
+};
+const createJobCounters = (workflow, workflowRunJobs) => {
+    for (const job of workflowRunJobs) {
+        const jobDurationSec = calcDiffSec(job.started_at, job.completed_at);
+        const billable = calcJobBillable(jobDurationSec, job.conclusion, job.labels);
+        const jobMetricsAttributes = createMetricsAttributes(workflow, job, billable);
+        createCounter(descriptorNames.JOB_RUNS, 1, jobMetricsAttributes, { unit: '{job}' });
+        createCounter(descriptorNames.JOB_DURATION, jobDurationSec, jobMetricsAttributes, {
+            unit: 's'
+        });
+        createCounter(descriptorNames.JOB_BILLABLE_TIME, billable.billableMinutes, jobMetricsAttributes, { unit: 'min' });
+        createCounter(descriptorNames.JOB_RAW_BILLABLE_TIME, billable.rawBillableMinutes, jobMetricsAttributes, { unit: 'min' });
+        createCounter(descriptorNames.JOB_ROUNDING_WASTE, billable.roundingWasteSec, jobMetricsAttributes, { unit: 's' });
         // The calculation method for GitHub's queue times has not been disclosed.
         // Since it is displayed in the job column, it is assumed to be calculated based on job information.
         // See. https://docs.github.com/en/actions/administering-github-actions/viewing-github-actions-metrics
@@ -62051,7 +62196,7 @@ const createJobGauges = (workflow, workflowRunJobs) => {
             notice(`${job.name}: Skip to create ${descriptorNames.JOB_QUEUED_DURATION} metrics. This is a GitHub specification issue that occasionally occurs, so it can't be recover.`);
             continue;
         }
-        createGauge(descriptorNames.JOB_QUEUED_DURATION, jobQueuedDuration, jobMetricsAttributes, { unit: 's' });
+        createCounter(descriptorNames.JOB_QUEUED_DURATION, jobQueuedDuration, jobMetricsAttributes, { unit: 's' });
     }
 };
 
@@ -62065,8 +62210,8 @@ const createMetrics = async (results) => {
         return;
     }
     try {
-        createWorkflowGauges(workflow, workflowJobs);
-        createJobGauges(workflow, workflowJobs);
+        createWorkflowCounters(workflow, workflowJobs);
+        createJobCounters(workflow, workflowJobs);
     }
     catch (error) {
         console.error('failed to create metrics');
@@ -62083,27 +62228,29 @@ const createMetrics = async (results) => {
 
 
 
+
 const createWorkflowTrace = (workflow, workflowJobs) => {
-    const span = createSpan(src.ROOT_CONTEXT, workflow.name, workflow.created_at, getLatestCompletedAt(workflowJobs), workflow.conclusion || '', // '' is converted to UNSET status. we should not use ''.
-    { ...buildWorkflowAttributes(workflow) });
+    const latestCompletedAt = getLatestCompletedAt(workflowJobs);
+    const span = createSpan(src.ROOT_CONTEXT, workflow.name, workflow.created_at, latestCompletedAt, workflow.conclusion || '', // '' is converted to UNSET status. we should not use ''.
+    { ...buildWorkflowAttributes(workflow, workflowJobs, latestCompletedAt) });
     return src.trace.setSpan(src.ROOT_CONTEXT, span);
 };
 const createWorkflowJobSpan = (ctx, job) => {
     if (!job.completed_at) {
         throw new Error(`Job completed_at is required for span creation: ${job.name} (id: ${job.id})`);
     }
-    const spanWithWaiting = createSpan(ctx, `${job.name} with time of waiting runner`, job.created_at, job.completed_at, job.conclusion, { ...buildWorkflowJobAttributes(job) });
+    const spanWithWaiting = createSpan(ctx, `${job.name} with time of waiting runner`, job.created_at, job.completed_at, job.conclusion, { ...buildJobWrapperAttributes(job) });
     const ctxWithWaiting = src.trace.setSpan(ctx, spanWithWaiting);
-    const waitingSpanName = `waiting runner for ${job.name}`;
+    const waitingSpanName = 'job.queue';
     const jobQueuedDuration = calcDiffSec(job.created_at, job.started_at);
     if (jobQueuedDuration >= 0) {
         createSpan(ctxWithWaiting, waitingSpanName, job.created_at, job.started_at, 'success', // waiting runner is not a error.
-        { ...buildWorkflowJobAttributes(job) });
+        { ...buildJobQueueAttributes(job, jobQueuedDuration) });
     }
     else {
         notice(`${job.name}: Skip to create "${waitingSpanName}" span. This is a GitHub specification issue that occasionally occurs, so it can't be recover.`);
     }
-    const jobSpan = createSpan(ctxWithWaiting, job.name, job.started_at, job.completed_at, job.conclusion, { ...buildWorkflowJobAttributes(job) });
+    const jobSpan = createSpan(ctxWithWaiting, job.name, job.started_at, job.completed_at, job.conclusion, { ...buildWorkflowJobAttributes(job, job.completed_at, jobQueuedDuration) });
     return src.trace.setSpan(ctxWithWaiting, jobSpan);
 };
 const createWorkflowRunStepSpan = (ctx, job) => {
@@ -62112,7 +62259,7 @@ const createWorkflowRunStepSpan = (ctx, job) => {
             console.warn(`Step ${step.name} in job ${job.name} has null timestamps, skipping span creation`);
             return;
         }
-        createSpan(ctx, step.name, step.started_at, step.completed_at, step.conclusion, {});
+        createSpan(ctx, step.name, step.started_at, step.completed_at, step.conclusion, { ...buildWorkflowStepAttributes(job, step) });
     });
 };
 const createSpan = (ctx, name, startAt, endAt, 
@@ -62140,23 +62287,101 @@ const getSpanStatusFromConclusion = (status) => {
             return { code: src.SpanStatusCode.UNSET };
     }
 };
-// TODO: add tests for these functions
-const buildWorkflowAttributes = (workflowRun) => ({
-    repository: workflowRun.repository.full_name,
-    run_id: workflowRun.id,
-    run_attempt: workflowRun.run_attempt,
-    url: workflowRun.html_url,
-    // OTEL attributes
-    'cicd.pipeline.task.run.id': workflowRun.id,
-    'cicd.pipeline.name': workflowRun.name,
-    'cicd.pipeline.run.url.full': workflowRun.html_url
-});
-// TODO: add tests for these functions
-const buildWorkflowJobAttributes = (job) => ({
+const buildWorkflowAttributes = (workflowRun, workflowJobs, latestCompletedAt) => {
+    const wallClockDurationSec = calcDiffSec(workflowRun.created_at, latestCompletedAt);
+    let totalExecutionDurationSec = 0;
+    let totalQueuedDurationSec = 0;
+    let maxQueuedDurationSec = 0;
+    let totalRawBillableMinutes = 0;
+    let totalBillableMinutes = 0;
+    let totalRoundingWasteSec = 0;
+    for (const job of workflowJobs) {
+        const queuedSec = Math.max(0, calcDiffSec(job.created_at, job.started_at));
+        totalQueuedDurationSec += queuedSec;
+        if (queuedSec > maxQueuedDurationSec) {
+            maxQueuedDurationSec = queuedSec;
+        }
+        const execSec = job.completed_at
+            ? Math.max(0, calcDiffSec(job.started_at, job.completed_at))
+            : 0;
+        totalExecutionDurationSec += execSec;
+        const billable = calcJobBillable(execSec, job.conclusion, job.labels);
+        totalRawBillableMinutes += billable.rawBillableMinutes;
+        totalBillableMinutes += billable.billableMinutes;
+        totalRoundingWasteSec += billable.roundingWasteSec;
+    }
+    return {
+        repository: workflowRun.repository.full_name,
+        run_id: workflowRun.id,
+        run_attempt: workflowRun.run_attempt,
+        url: workflowRun.html_url,
+        // OTEL attributes
+        'cicd.pipeline.task.run.id': workflowRun.id,
+        'cicd.pipeline.name': workflowRun.name,
+        'cicd.pipeline.run.url.full': workflowRun.html_url,
+        'span.type': 'workflow',
+        'workflow.conclusion': workflowRun.conclusion || undefined,
+        'workflow.event': workflowRun.event,
+        'workflow.is_retry': workflowRun.run_attempt > 1,
+        'workflow.wall_clock_duration_s': wallClockDurationSec,
+        'workflow.execution_duration_s': totalExecutionDurationSec,
+        'workflow.queued_duration_s': totalQueuedDurationSec,
+        'workflow.max_queued_duration_s': maxQueuedDurationSec,
+        'workflow.raw_billable_minutes': totalRawBillableMinutes,
+        'workflow.billable_minutes': totalBillableMinutes,
+        'workflow.rounding_waste_s': totalRoundingWasteSec,
+        'workflow.jobs_count': workflowJobs.length
+    };
+};
+const buildJobWrapperAttributes = (job) => ({
+    'span.type': 'job.wrapper',
     'job.id': job.id,
-    'job.conclusion': job.conclusion,
-    'runner.name': job.runner_name || undefined,
-    'runner.group': job.runner_group_name || undefined
+    'job.name': job.name
+});
+const buildJobQueueAttributes = (job, jobQueuedDuration) => {
+    const billable = calcJobBillable(0, job.conclusion, job.labels);
+    return {
+        'span.type': 'queue',
+        'job.id': job.id,
+        'job.name': job.name,
+        'job.labels': job.labels ? [...job.labels] : undefined,
+        'job.queued_duration_s': jobQueuedDuration,
+        'runner.name': job.runner_name || undefined,
+        'runner.group': job.runner_group_name || undefined,
+        'runner.runs_on': billable.runsOn,
+        'runner.os': billable.runnerOs,
+        'runner.arch': billable.runnerArch
+    };
+};
+const buildWorkflowJobAttributes = (job, completedAt, jobQueuedDuration) => {
+    const jobExecutionDuration = Math.max(0, calcDiffSec(job.started_at, completedAt));
+    const billable = calcJobBillable(jobExecutionDuration, job.conclusion, job.labels);
+    return {
+        'span.type': 'job',
+        'job.id': job.id,
+        'job.name': job.name,
+        'job.conclusion': job.conclusion,
+        'job.labels': job.labels ? [...job.labels] : undefined,
+        'runner.name': job.runner_name || undefined,
+        'runner.group': job.runner_group_name || undefined,
+        'runner.runs_on': billable.runsOn,
+        'runner.os': billable.runnerOs,
+        'runner.arch': billable.runnerArch,
+        'job.queued_duration_s': Math.max(0, jobQueuedDuration),
+        'job.execution_duration_s': jobExecutionDuration,
+        'job.raw_billable_minutes': billable.rawBillableMinutes,
+        'job.billable_minutes': billable.billableMinutes,
+        'job.billable_multiplier': billable.multiplier,
+        'job.rounding_waste_s': billable.roundingWasteSec,
+        'job.steps_count': job.steps.length
+    };
+};
+const buildWorkflowStepAttributes = (job, step) => ({
+    'span.type': 'step',
+    'job.name': job.name,
+    'step.name': step.name,
+    'step.conclusion': step.conclusion,
+    'step.number': step.number
 });
 
 ;// CONCATENATED MODULE: ./src/traces/create-trace.ts

@@ -1,6 +1,6 @@
 import { describe, test, expect, vi } from 'vitest'
 import * as opentelemetry from '@opentelemetry/api'
-import { createGauge, createJobGauges } from './create-gauges.js'
+import { createCounter, createJobCounters } from './create-counters.js'
 import {
   InMemoryMetricExporter,
   AggregationTemporality,
@@ -26,15 +26,15 @@ const createMeterProvider = (): InMemoryProvider => {
   return { provider, exporter }
 }
 
-describe('createGauge', () => {
-  test('should create a gauge and observe the value', async () => {
+describe('createCounter', () => {
+  test('should create a counter and add the value', async () => {
     const { provider, exporter } = createMeterProvider()
     const mockGetMeter = vi
       .spyOn(opentelemetry.metrics, 'getMeter')
       .mockImplementation(name => provider.getMeter(name))
     const attributes = { test1: 'test1', test2: 'test2' }
 
-    createGauge('testGauge', 42, attributes)
+    createCounter('testCounter', 42, attributes)
 
     await provider.forceFlush()
     await provider.shutdown()
@@ -51,15 +51,15 @@ describe('createGauge', () => {
             metrics: [
               {
                 descriptor: {
-                  name: 'testGauge',
-                  type: 'GAUGE',
+                  name: 'testCounter',
+                  type: 'COUNTER',
                   description: '',
                   unit: '',
                   valueType: 1,
                   advice: {}
                 },
                 aggregationTemporality: 0,
-                dataPointType: 2,
+                dataPointType: 3,
                 dataPoints: [
                   {
                     attributes: { test1: 'test1', test2: 'test2' },
@@ -72,10 +72,12 @@ describe('createGauge', () => {
         ]
       }
     ])
+
+    mockGetMeter.mockRestore()
   })
 })
 
-describe('createJobGauges', () => {
+describe('createJobCounters', () => {
   const mockWorkflow: WorkflowRun = {
     id: 123,
     name: 'Test Workflow',
@@ -88,7 +90,7 @@ describe('createJobGauges', () => {
     }
   }
 
-  test('should skip creating JOB_QUEUED_DURATION metric when jobQueuedDuration is negative', () => {
+  test('should skip creating JOB_QUEUED_DURATION metric when jobQueuedDuration is negative', async () => {
     const { provider, exporter } = createMeterProvider()
     const mockGetMeter = vi
       .spyOn(opentelemetry.metrics, 'getMeter')
@@ -110,10 +112,15 @@ describe('createJobGauges', () => {
       steps: []
     }
 
-    createJobGauges(mockWorkflow, [jobWithNegativeDuration])
+    createJobCounters(mockWorkflow, [jobWithNegativeDuration])
+    await provider.forceFlush()
+    await provider.shutdown()
 
-    // expect no JOB_QUEUED_DURATION metric to be created
-    expect(exporter.getMetrics()).toMatchObject([])
+    const metricNames = exporter
+      .getMetrics()[0]
+      .scopeMetrics[0].metrics.map(m => m.descriptor.name)
+    expect(metricNames).not.toContain('github.job.queued_duration')
+    expect(metricNames).toContain('github.job.duration')
 
     mockGetMeter.mockRestore()
   })

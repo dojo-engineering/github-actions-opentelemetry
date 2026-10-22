@@ -1,5 +1,5 @@
 import settings from '../settings.js'
-import { createWorkflowGauges, createJobGauges } from './create-gauges.js'
+import { createWorkflowCounters, createJobCounters } from './create-counters.js'
 import { WorkflowResults } from '../github/types.js'
 
 export const createMetrics = async (
@@ -11,8 +11,8 @@ export const createMetrics = async (
     return
   }
   try {
-    createWorkflowGauges(workflow, workflowJobs)
-    createJobGauges(workflow, workflowJobs)
+    createWorkflowCounters(workflow, workflowJobs)
+    createJobCounters(workflow, workflowJobs)
   } catch (error) {
     console.error('failed to create metrics')
     throw error

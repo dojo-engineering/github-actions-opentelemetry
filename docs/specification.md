@@ -40,9 +40,12 @@ The action operates in two distinct modes based on the triggering event:
 - **Required Fields**: All processed jobs must have `conclusion`,
   `completed_at`, and `workflow_name`
 
-#### Self-Exclusion Logic
+#### Self-Exclusion & Re-run Filtering Logic
 
 - The GitHub Actions OpenTelemetry job excludes itself from telemetry collection
+- Jobs from previous workflow attempts
+  (`job.run_attempt !== workflowContext.attempt_number`) are excluded when
+  re-running failed jobs so earlier attempts are not double-counted
 
 ## Metrics Specification
 
@@ -50,33 +53,44 @@ The action operates in two distinct modes based on the triggering event:
 
 - **Environment Variable**: `FEATURE_METRICS` (default: true)
 - **Meter Name**: `github-actions-metrics`
-- **Metric Type**: Gauge (point-in-time measurements)
-- **Unit**: Seconds (`s`)
+- **Metric Type**: Counter (`meter.createCounter`)
+- **Units**: Seconds (`s`), Minutes (`min`), or Count (`1`)
 
-### github.workflow.duration
+### Workflow Metrics
 
-- **Calculation**: `workflow.created_at` to latest `job.completed_at`
-- **Rationale**: GitHub workflows lack official end timestamps
+- `github.workflow.runs` (unit: `1`): Count of workflow runs
+- `github.workflow.duration` (unit: `s`): `workflow.created_at` to latest
+  `job.completed_at`
+- `github.workflow.billable_time` (unit: `min`): Sum of OS-multiplied billable
+  minutes across jobs in the workflow
 - **Attributes**:
   - `workflow.name`: Workflow name
   - `repository`: Full repository name (owner/repo)
+  - `workflow.conclusion`: Workflow completion status
+  - `workflow.event`: Triggering GitHub event name
+  - `workflow.is_retry`: `'true'` if `run_attempt > 1`, else `'false'`
 
-### github.job.duration
+### Job Metrics
 
-- **Calculation**: `job.started_at` to `job.completed_at`
-- **Scope**: Individual job execution time
+- `github.job.runs` (unit: `1`): Count of job runs
+- `github.job.duration` (unit: `s`): `job.started_at` to `job.completed_at`
+- `github.job.queued_duration` (unit: `s`): `job.created_at` to `job.started_at`
+  (skipped when negative)
+- `github.job.billable_time` (unit: `min`):
+  `max(1, ceil(duration_s / 60)) * os_multiplier` (or `0` when skipped /
+  duration <= 0)
+- `github.job.rounding_waste` (unit: `s`):
+  `(raw_billable_minutes * 60) - duration_s`
 - **Attributes**:
   - `workflow.name`: Parent workflow name
   - `repository`: Full repository name
   - `job.name`: Job identifier
   - `job.conclusion`: Job completion status (success, failure, etc.)
-
-### github.job.queued_duration
-
-- **Calculation**: `job.created_at` to `job.started_at`
-- **Edge Case**: Negative values are skipped with notice logs (GitHub API timing
-  issue)
-- **Attributes**: Same as `github.job.duration`
+  - `job.is_retry`: `'true'` if `run_attempt > 1`, else `'false'`
+  - `runner.os`: `'linux' | 'windows' | 'macos' | 'unknown'`
+  - `runner.arch`: `'arm64' | 'amd64' | 'unknown'`
+  - `runner.runs_on`: Normalized `runs-on` label set (if available)
+  - `runner.group`: Runner group (if available)
 
 ## Trace Specification
 
@@ -94,41 +108,60 @@ The action operates in two distinct modes based on the triggering event:
 - **Duration**: `workflow.created_at` to latest `job.completed_at`
 - **Status**: Derived from workflow conclusion or 'in_progress'
 - **Attributes**:
-  - `repository`: Full repository name
-  - `run_id`: Workflow run ID
-  - `run_attempt`: Attempt number
-  - `url`: Workflow HTML URL
+  - `span.type`: `'workflow'`
+  - `repository`, `run_id`, `run_attempt`, `url`
+  - `cicd.pipeline.task.run.id`, `cicd.pipeline.name`,
+    `cicd.pipeline.run.url.full`
+  - `workflow.conclusion`, `workflow.event`, `workflow.is_retry`
+  - `workflow.wall_clock_duration_s`, `workflow.execution_duration_s`,
+    `workflow.queued_duration_s`, `workflow.max_queued_duration_s`
+  - `workflow.raw_billable_minutes`, `workflow.billable_minutes`,
+    `workflow.rounding_waste_s`, `workflow.jobs_count`
 
-#### Job Container Spans
+#### Job Container Spans (`span.type = 'job.wrapper'`)
 
 - **Name**: `{job.name} with time of waiting runner`
 - **Duration**: `job.created_at` to `job.completed_at` (includes queue time)
-- **Purpose**: Provides complete job timeline including waiting period
+- **Purpose**: Provides collapsible visual container in waterfall UIs without
+  duplicating `job.conclusion` or billable attributes
+- **Attributes**:
+  - `span.type`: `'job.wrapper'`
+  - `job.id`: GitHub job identifier
+  - `job.name`: Job name
 
-#### Job Waiting Spans (Child)
+#### Job Queue Spans (Child, `span.type = 'queue'`)
 
-- **Name**: `waiting runner for {job.name}`
+- **Name**: `'job.queue'`
 - **Duration**: `job.created_at` to `job.started_at`
 - **Status**: Always 'success' (waiting is not an error condition)
 - **Edge Case**: Skipped when queue duration is negative
+- **Attributes**:
+  - `span.type`: `'queue'`
+  - `job.id`, `job.name`, `job.labels`, `job.queued_duration_s`
+  - `runner.name`, `runner.group`, `runner.runs_on`, `runner.os`, `runner.arch`
 
-#### Job Execution Spans (Child)
+#### Job Execution Spans (Child, `span.type = 'job'`)
 
 - **Name**: Job name
 - **Duration**: `job.started_at` to `job.completed_at`
 - **Status**: Derived from job conclusion
 - **Attributes**:
-  - `job.id`: GitHub job identifier
-  - `job.conclusion`: Job completion status
-  - `runner.name`: Runner name (if available)
-  - `runner.group`: Runner group (if available)
+  - `span.type`: `'job'`
+  - `job.id`, `job.name`, `job.conclusion`, `job.labels`
+  - `runner.name`, `runner.group`, `runner.runs_on`, `runner.os`, `runner.arch`
+  - `job.queued_duration_s`, `job.execution_duration_s`,
+    `job.raw_billable_minutes`, `job.billable_minutes`,
+    `job.billable_multiplier`, `job.rounding_waste_s`, `job.steps_count`
 
-#### Step Spans (Grandchildren)
+#### Step Spans (Grandchildren, `span.type = 'step'`)
 
 - **Name**: Step name
 - **Duration**: `step.started_at` to `step.completed_at`
 - **Status**: Derived from step conclusion
 - **Validation**: Steps with null timestamps are skipped with warnings
+- **Attributes**:
+  - `span.type`: `'step'`
+  - `job.name`, `step.name`, `step.conclusion`, `step.number`
 
 ### Status Code Mapping
 

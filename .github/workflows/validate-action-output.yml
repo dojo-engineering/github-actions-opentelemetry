@@ -104,12 +104,27 @@ jobs:
             elif .key == "url" then .value = {"stringValue": "https://example.com/actions/runs/0"}
             elif .key == "cicd.pipeline.run.url.full" then .value = {"stringValue": "https://example.com/actions/runs/0"}
             elif .key == "runner.name" then .value = {"stringValue": "GitHub Actions 0"}
+            elif .key == "workflow.wall_clock_duration_s" then .value = {"intValue": "0"}
+            elif .key == "workflow.execution_duration_s" then .value = {"intValue": "0"}
+            elif .key == "workflow.queued_duration_s" then .value = {"intValue": "0"}
+            elif .key == "workflow.max_queued_duration_s" then .value = {"intValue": "0"}
+            elif .key == "workflow.raw_billable_minutes" then .value = {"intValue": "0"}
+            elif .key == "workflow.billable_minutes" then .value = {"intValue": "0"}
+            elif .key == "workflow.rounding_waste_s" then .value = {"intValue": "0"}
+            elif .key == "job.queued_duration_s" then .value = {"intValue": "0"}
+            elif .key == "job.execution_duration_s" then .value = {"intValue": "0"}
+            elif .key == "job.raw_billable_minutes" then .value = {"intValue": "0"}
+            elif .key == "job.billable_minutes" then .value = {"intValue": "0"}
+            elif .key == "job.rounding_waste_s" then .value = {"intValue": "0"}
             else .
             end
           ) | 
 
-          # sort spans by name because they can be in different order
-          (.resourceSpans[]?.scopeSpans[]?.spans) |= sort_by(.name) |
+          # sort spans by name and job.name because they can be in different order
+          (.resourceSpans[]?.scopeSpans[]?.spans) |= sort_by(
+            .name,
+            ([.attributes[]? | select(.key == "job.name") | .value.stringValue][0] // "")
+          ) |
 
           # sort all entries in objects to ensure stable output
           walk(if type == "object" then to_entries | sort_by(.key) | from_entries else . end)
@@ -117,15 +132,16 @@ jobs:
 
           # replace dynamic values with fixed values
           cat > /tmp/normalize-metrics.jq << 'EOF'
-          (.resourceMetrics[]?.scopeMetrics[]?.metrics[]?.gauge?.dataPoints[]?.startTimeUnixNano) = "0" |
-          (.resourceMetrics[]?.scopeMetrics[]?.metrics[]?.gauge?.dataPoints[]?.timeUnixNano) = "0" |
-          (.resourceMetrics[]?.scopeMetrics[]?.metrics[]?.gauge?.dataPoints[]?.asDouble) = 0 |
+          (.resourceMetrics[]?.scopeMetrics[]?.metrics[]?.sum?.dataPoints[]?.startTimeUnixNano) = "0" |
+          (.resourceMetrics[]?.scopeMetrics[]?.metrics[]?.sum?.dataPoints[]?.timeUnixNano) = "0" |
+          (.resourceMetrics[]?.scopeMetrics[]?.metrics[]?.sum?.dataPoints[]? | select(has("asDouble")) | .asDouble) = 0 |
+          (.resourceMetrics[]?.scopeMetrics[]?.metrics[]?.sum?.dataPoints[]? | select(has("asInt")) | .asInt) = "0" |
 
           # sort metrics array by name to ensure stable output
           (.resourceMetrics[]?.scopeMetrics[]?.metrics) |= sort_by(.name) |
 
-          # sort gauge data points by attributes for many data points
-          (.resourceMetrics[]?.scopeMetrics[]?.metrics[]?.gauge?.dataPoints) |= sort_by(
+          # sort sum data points by attributes for many data points
+          (.resourceMetrics[]?.scopeMetrics[]?.metrics[]?.sum?.dataPoints) |= sort_by(
             [.attributes[]? | select(.key == "job.name") | .value.stringValue][0] // "",
             [.attributes[]? | select(.key == "workflow.name") | .value.stringValue][0] // ""
           ) |           

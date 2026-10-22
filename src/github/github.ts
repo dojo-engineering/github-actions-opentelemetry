@@ -40,7 +40,13 @@ export const fetchWorkflowResults = async (
           workflowContext
         )
         const workflowJobs = workflowJobsRes
-          .map(job => toWorkflowJob(job, workflowRes.event))
+          .map(job =>
+            toWorkflowJob(
+              job,
+              workflowRes.event,
+              workflowContext.attempt_number
+            )
+          )
           .filter((job): job is WorkflowJob => job !== null)
         if (workflowJobs.length === 0) {
           throw new Error(`no completed jobs found for workflow run.`)

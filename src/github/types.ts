@@ -34,6 +34,7 @@ export type WorkflowStep = {
   readonly conclusion: StepConclusion
   readonly started_at: Date
   readonly completed_at: Date
+  readonly number?: number
 }
 export type WorkflowJob = {
   readonly created_at: Date
@@ -51,6 +52,8 @@ export type WorkflowJob = {
   readonly runner_group_name: string | null
   readonly workflow_name: string
   readonly steps: WorkflowStep[]
+  readonly labels?: string[]
+  readonly run_attempt?: number
 }
 export type WorkflowJobs = WorkflowJob[]
 export type Workflow = {
@@ -64,6 +67,7 @@ export type Workflow = {
   readonly repository: {
     readonly full_name: string
   }
+  readonly event?: string
 }
 export type WorkflowContext = {
   readonly owner: string
@@ -96,13 +100,26 @@ export const toWorkflowStep = (step: WorkflowStepResponse): WorkflowStep => {
     name: step.name,
     conclusion: step.conclusion,
     started_at: new Date(step.started_at),
-    completed_at: new Date(step.completed_at)
+    completed_at: new Date(step.completed_at),
+    ...(step.number !== undefined && { number: step.number })
   }
 }
 export const toWorkflowJob = (
   job: WorkflowJobResponse,
-  eventName: string
+  eventName: string,
+  targetAttemptNumber?: number
 ): WorkflowJob | null => {
+  if (
+    targetAttemptNumber !== undefined &&
+    job.run_attempt !== undefined &&
+    job.run_attempt !== targetAttemptNumber
+  ) {
+    console.log(
+      `Skipping job from previous attempt: ${job.name} (job run_attempt: ${job.run_attempt}, target attempt: ${targetAttemptNumber})`
+    )
+    return null
+  }
+
   if (eventName === 'workflow_run' && job.status !== 'completed') {
     // This error is for backward compatibility.
     throw new Error('job.status must be completed on workflow_run event')
@@ -139,7 +156,9 @@ export const toWorkflowJob = (
     run_id: toSafeNumber(job.run_id, 'Job run_id'),
     steps: job.steps?.map(toWorkflowStep) || [],
     runner_name: job.runner_name,
-    runner_group_name: job.runner_group_name
+    runner_group_name: job.runner_group_name,
+    ...(job.labels !== undefined && { labels: job.labels }),
+    ...(job.run_attempt !== undefined && { run_attempt: job.run_attempt })
   }
 }
 export const toWorkflowRun = (workflowRun: WorkflowResponse): Workflow => {
@@ -169,6 +188,7 @@ export const toWorkflowRun = (workflowRun: WorkflowResponse): Workflow => {
     html_url: workflowRun.html_url,
     repository: {
       full_name: workflowRun.repository.full_name
-    }
+    },
+    ...(workflowRun.event !== undefined && { event: workflowRun.event })
   }
 }
