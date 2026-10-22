@@ -15,7 +15,9 @@
         {
           "metrics": [
             {
-              "gauge": {
+              "name": "github.job.billable_time",
+              "sum": {
+                "aggregationTemporality": 2,
                 "dataPoints": [
                   {
                     "asDouble": 0,
@@ -33,6 +35,18 @@
                         }
                       },
                       {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
                         "key": "job.name",
                         "value": {
                           "stringValue": "Example Application Pipeline (1, 1) / Build Application"
@@ -42,6 +56,30 @@
                         "key": "job.conclusion",
                         "value": {
                           "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
                         }
                       }
                     ],
@@ -61,6 +99,18 @@
                         "key": "repository",
                         "value": {
                           "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
                         }
                       },
                       {
@@ -74,6 +124,30 @@
                         "value": {
                           "stringValue": "success"
                         }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
                       }
                     ],
                     "startTimeUnixNano": "0",
@@ -92,6 +166,18 @@
                         "key": "repository",
                         "value": {
                           "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
                         }
                       },
                       {
@@ -105,6 +191,30 @@
                         "value": {
                           "stringValue": "success"
                         }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
                       }
                     ],
                     "startTimeUnixNano": "0",
@@ -123,6 +233,18 @@
                         "key": "repository",
                         "value": {
                           "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
                         }
                       },
                       {
@@ -136,6 +258,30 @@
                         "value": {
                           "stringValue": "success"
                         }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
                       }
                     ],
                     "startTimeUnixNano": "0",
@@ -154,6 +300,18 @@
                         "key": "repository",
                         "value": {
                           "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
                         }
                       },
                       {
@@ -167,6 +325,30 @@
                         "value": {
                           "stringValue": "success"
                         }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
                       }
                     ],
                     "startTimeUnixNano": "0",
@@ -185,6 +367,18 @@
                         "key": "repository",
                         "value": {
                           "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
                         }
                       },
                       {
@@ -198,6 +392,30 @@
                         "value": {
                           "stringValue": "success"
                         }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
                       }
                     ],
                     "startTimeUnixNano": "0",
@@ -216,6 +434,18 @@
                         "key": "repository",
                         "value": {
                           "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
                         }
                       },
                       {
@@ -229,6 +459,30 @@
                         "value": {
                           "stringValue": "success"
                         }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
                       }
                     ],
                     "startTimeUnixNano": "0",
@@ -247,6 +501,18 @@
                         "key": "repository",
                         "value": {
                           "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
                         }
                       },
                       {
@@ -260,6 +526,30 @@
                         "value": {
                           "stringValue": "success"
                         }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
                       }
                     ],
                     "startTimeUnixNano": "0",
@@ -278,6 +568,18 @@
                         "key": "repository",
                         "value": {
                           "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
                         }
                       },
                       {
@@ -291,6 +593,30 @@
                         "value": {
                           "stringValue": "success"
                         }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
                       }
                     ],
                     "startTimeUnixNano": "0",
@@ -309,6 +635,18 @@
                         "key": "repository",
                         "value": {
                           "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
                         }
                       },
                       {
@@ -322,6 +660,30 @@
                         "value": {
                           "stringValue": "success"
                         }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
                       }
                     ],
                     "startTimeUnixNano": "0",
@@ -340,6 +702,18 @@
                         "key": "repository",
                         "value": {
                           "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
                         }
                       },
                       {
@@ -353,6 +727,30 @@
                         "value": {
                           "stringValue": "success"
                         }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
                       }
                     ],
                     "startTimeUnixNano": "0",
@@ -374,6 +772,18 @@
                         }
                       },
                       {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
                         "key": "job.name",
                         "value": {
                           "stringValue": "Example Application Pipeline (2, 2) / Test Application"
@@ -383,6 +793,4167 @@
                         "key": "job.conclusion",
                         "value": {
                           "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "TypeScript Tests"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  }
+                ],
+                "isMonotonic": true
+              },
+              "unit": "min"
+            },
+            {
+              "name": "github.job.duration",
+              "sum": {
+                "aggregationTemporality": 2,
+                "dataPoints": [
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (1, 1) / Build Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (1, 1) / Deploy Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (1, 1) / Test Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (1, 2) / Build Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (1, 2) / Deploy Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (1, 2) / Test Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (2, 1) / Build Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (2, 1) / Deploy Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (2, 1) / Test Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (2, 2) / Build Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (2, 2) / Deploy Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (2, 2) / Test Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "TypeScript Tests"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  }
+                ],
+                "isMonotonic": true
+              },
+              "unit": "s"
+            },
+            {
+              "name": "github.job.queued_duration",
+              "sum": {
+                "aggregationTemporality": 2,
+                "dataPoints": [
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (1, 1) / Build Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (1, 1) / Deploy Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (1, 1) / Test Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (1, 2) / Build Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (1, 2) / Deploy Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (1, 2) / Test Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (2, 1) / Build Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (2, 1) / Deploy Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (2, 1) / Test Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (2, 2) / Build Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (2, 2) / Deploy Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (2, 2) / Test Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "TypeScript Tests"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  }
+                ],
+                "isMonotonic": true
+              },
+              "unit": "s"
+            },
+            {
+              "name": "github.job.raw_billable_time",
+              "sum": {
+                "aggregationTemporality": 2,
+                "dataPoints": [
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (1, 1) / Build Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (1, 1) / Deploy Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (1, 1) / Test Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (1, 2) / Build Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (1, 2) / Deploy Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (1, 2) / Test Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (2, 1) / Build Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (2, 1) / Deploy Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (2, 1) / Test Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (2, 2) / Build Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (2, 2) / Deploy Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (2, 2) / Test Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "TypeScript Tests"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  }
+                ],
+                "isMonotonic": true
+              },
+              "unit": "min"
+            },
+            {
+              "name": "github.job.rounding_waste",
+              "sum": {
+                "aggregationTemporality": 2,
+                "dataPoints": [
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (1, 1) / Build Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (1, 1) / Deploy Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (1, 1) / Test Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (1, 2) / Build Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (1, 2) / Deploy Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (1, 2) / Test Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (2, 1) / Build Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (2, 1) / Deploy Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (2, 1) / Test Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (2, 2) / Build Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (2, 2) / Deploy Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (2, 2) / Test Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "TypeScript Tests"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  }
+                ],
+                "isMonotonic": true
+              },
+              "unit": "s"
+            },
+            {
+              "name": "github.job.runs",
+              "sum": {
+                "aggregationTemporality": 2,
+                "dataPoints": [
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (1, 1) / Build Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (1, 1) / Deploy Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (1, 1) / Test Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (1, 2) / Build Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (1, 2) / Deploy Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (1, 2) / Test Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (2, 1) / Build Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (2, 1) / Deploy Application"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
                         }
                       }
                     ],
@@ -401,27 +4972,27 @@
                     "asDouble": 0,
                     "attributes": [
                       {
-                        "key": "workflow.name",
+                        "key": "runner.group",
                         "value": {
-                          "stringValue": "Push Event Tests"
+                          "stringValue": "GitHub Actions"
                         }
                       },
                       {
-                        "key": "repository",
+                        "key": "runner.runs_on",
                         "value": {
-                          "stringValue": "__EXPECTED_REPOSITORY__"
+                          "stringValue": "ubuntu-latest"
                         }
                       },
                       {
-                        "key": "job.name",
+                        "key": "runner.os",
                         "value": {
-                          "stringValue": "Example Application Pipeline (1, 1) / Build Application"
+                          "stringValue": "linux"
                         }
                       },
                       {
-                        "key": "job.conclusion",
+                        "key": "runner.arch",
                         "value": {
-                          "stringValue": "success"
+                          "stringValue": "amd64"
                         }
                       }
                     ],
@@ -444,251 +5015,15 @@
                         }
                       },
                       {
-                        "key": "job.name",
+                        "key": "workflow.event",
                         "value": {
-                          "stringValue": "Example Application Pipeline (1, 1) / Deploy Application"
+                          "stringValue": "push"
                         }
                       },
                       {
-                        "key": "job.conclusion",
+                        "key": "workflow.is_retry",
                         "value": {
-                          "stringValue": "success"
-                        }
-                      }
-                    ],
-                    "startTimeUnixNano": "0",
-                    "timeUnixNano": "0"
-                  },
-                  {
-                    "asDouble": 0,
-                    "attributes": [
-                      {
-                        "key": "workflow.name",
-                        "value": {
-                          "stringValue": "Push Event Tests"
-                        }
-                      },
-                      {
-                        "key": "repository",
-                        "value": {
-                          "stringValue": "__EXPECTED_REPOSITORY__"
-                        }
-                      },
-                      {
-                        "key": "job.name",
-                        "value": {
-                          "stringValue": "Example Application Pipeline (1, 1) / Test Application"
-                        }
-                      },
-                      {
-                        "key": "job.conclusion",
-                        "value": {
-                          "stringValue": "success"
-                        }
-                      }
-                    ],
-                    "startTimeUnixNano": "0",
-                    "timeUnixNano": "0"
-                  },
-                  {
-                    "asDouble": 0,
-                    "attributes": [
-                      {
-                        "key": "workflow.name",
-                        "value": {
-                          "stringValue": "Push Event Tests"
-                        }
-                      },
-                      {
-                        "key": "repository",
-                        "value": {
-                          "stringValue": "__EXPECTED_REPOSITORY__"
-                        }
-                      },
-                      {
-                        "key": "job.name",
-                        "value": {
-                          "stringValue": "Example Application Pipeline (1, 2) / Build Application"
-                        }
-                      },
-                      {
-                        "key": "job.conclusion",
-                        "value": {
-                          "stringValue": "success"
-                        }
-                      }
-                    ],
-                    "startTimeUnixNano": "0",
-                    "timeUnixNano": "0"
-                  },
-                  {
-                    "asDouble": 0,
-                    "attributes": [
-                      {
-                        "key": "workflow.name",
-                        "value": {
-                          "stringValue": "Push Event Tests"
-                        }
-                      },
-                      {
-                        "key": "repository",
-                        "value": {
-                          "stringValue": "__EXPECTED_REPOSITORY__"
-                        }
-                      },
-                      {
-                        "key": "job.name",
-                        "value": {
-                          "stringValue": "Example Application Pipeline (1, 2) / Deploy Application"
-                        }
-                      },
-                      {
-                        "key": "job.conclusion",
-                        "value": {
-                          "stringValue": "success"
-                        }
-                      }
-                    ],
-                    "startTimeUnixNano": "0",
-                    "timeUnixNano": "0"
-                  },
-                  {
-                    "asDouble": 0,
-                    "attributes": [
-                      {
-                        "key": "workflow.name",
-                        "value": {
-                          "stringValue": "Push Event Tests"
-                        }
-                      },
-                      {
-                        "key": "repository",
-                        "value": {
-                          "stringValue": "__EXPECTED_REPOSITORY__"
-                        }
-                      },
-                      {
-                        "key": "job.name",
-                        "value": {
-                          "stringValue": "Example Application Pipeline (1, 2) / Test Application"
-                        }
-                      },
-                      {
-                        "key": "job.conclusion",
-                        "value": {
-                          "stringValue": "success"
-                        }
-                      }
-                    ],
-                    "startTimeUnixNano": "0",
-                    "timeUnixNano": "0"
-                  },
-                  {
-                    "asDouble": 0,
-                    "attributes": [
-                      {
-                        "key": "workflow.name",
-                        "value": {
-                          "stringValue": "Push Event Tests"
-                        }
-                      },
-                      {
-                        "key": "repository",
-                        "value": {
-                          "stringValue": "__EXPECTED_REPOSITORY__"
-                        }
-                      },
-                      {
-                        "key": "job.name",
-                        "value": {
-                          "stringValue": "Example Application Pipeline (2, 1) / Build Application"
-                        }
-                      },
-                      {
-                        "key": "job.conclusion",
-                        "value": {
-                          "stringValue": "success"
-                        }
-                      }
-                    ],
-                    "startTimeUnixNano": "0",
-                    "timeUnixNano": "0"
-                  },
-                  {
-                    "asDouble": 0,
-                    "attributes": [
-                      {
-                        "key": "workflow.name",
-                        "value": {
-                          "stringValue": "Push Event Tests"
-                        }
-                      },
-                      {
-                        "key": "repository",
-                        "value": {
-                          "stringValue": "__EXPECTED_REPOSITORY__"
-                        }
-                      },
-                      {
-                        "key": "job.name",
-                        "value": {
-                          "stringValue": "Example Application Pipeline (2, 1) / Deploy Application"
-                        }
-                      },
-                      {
-                        "key": "job.conclusion",
-                        "value": {
-                          "stringValue": "success"
-                        }
-                      }
-                    ],
-                    "startTimeUnixNano": "0",
-                    "timeUnixNano": "0"
-                  },
-                  {
-                    "asDouble": 0,
-                    "attributes": [
-                      {
-                        "key": "workflow.name",
-                        "value": {
-                          "stringValue": "Push Event Tests"
-                        }
-                      },
-                      {
-                        "key": "repository",
-                        "value": {
-                          "stringValue": "__EXPECTED_REPOSITORY__"
-                        }
-                      },
-                      {
-                        "key": "job.name",
-                        "value": {
-                          "stringValue": "Example Application Pipeline (2, 1) / Test Application"
-                        }
-                      },
-                      {
-                        "key": "job.conclusion",
-                        "value": {
-                          "stringValue": "success"
-                        }
-                      }
-                    ],
-                    "startTimeUnixNano": "0",
-                    "timeUnixNano": "0"
-                  },
-                  {
-                    "asDouble": 0,
-                    "attributes": [
-                      {
-                        "key": "workflow.name",
-                        "value": {
-                          "stringValue": "Push Event Tests"
-                        }
-                      },
-                      {
-                        "key": "repository",
-                        "value": {
-                          "stringValue": "__EXPECTED_REPOSITORY__"
+                          "stringValue": "false"
                         }
                       },
                       {
@@ -702,6 +5037,30 @@
                         "value": {
                           "stringValue": "success"
                         }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
                       }
                     ],
                     "startTimeUnixNano": "0",
@@ -720,6 +5079,18 @@
                         "key": "repository",
                         "value": {
                           "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
                         }
                       },
                       {
@@ -733,6 +5104,30 @@
                         "value": {
                           "stringValue": "success"
                         }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
                       }
                     ],
                     "startTimeUnixNano": "0",
@@ -754,6 +5149,18 @@
                         }
                       },
                       {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
                         "key": "job.name",
                         "value": {
                           "stringValue": "Example Application Pipeline (2, 2) / Test Application"
@@ -764,18 +5171,111 @@
                         "value": {
                           "stringValue": "success"
                         }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  },
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "TypeScript Tests"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
+                      {
+                        "key": "runner.group",
+                        "value": {
+                          "stringValue": "GitHub Actions"
+                        }
+                      },
+                      {
+                        "key": "runner.runs_on",
+                        "value": {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      },
+                      {
+                        "key": "runner.os",
+                        "value": {
+                          "stringValue": "linux"
+                        }
+                      },
+                      {
+                        "key": "runner.arch",
+                        "value": {
+                          "stringValue": "amd64"
+                        }
                       }
                     ],
                     "startTimeUnixNano": "0",
                     "timeUnixNano": "0"
                   }
-                ]
+                ],
+                "isMonotonic": true
               },
-              "name": "github.job.queued_duration",
-              "unit": "s"
+              "unit": "{job}"
             },
             {
-              "gauge": {
+              "name": "github.workflow.billable_time",
+              "sum": {
+                "aggregationTemporality": 2,
                 "dataPoints": [
                   {
                     "asDouble": 0,
@@ -791,15 +5291,150 @@
                         "value": {
                           "stringValue": "__EXPECTED_REPOSITORY__"
                         }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
                       }
                     ],
                     "startTimeUnixNano": "0",
                     "timeUnixNano": "0"
                   }
-                ]
+                ],
+                "isMonotonic": true
               },
+              "unit": "min"
+            },
+            {
               "name": "github.workflow.duration",
+              "sum": {
+                "aggregationTemporality": 2,
+                "dataPoints": [
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  }
+                ],
+                "isMonotonic": true
+              },
               "unit": "s"
+            },
+            {
+              "name": "github.workflow.execution_duration",
+              "sum": {
+                "aggregationTemporality": 2,
+                "dataPoints": [
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  }
+                ],
+                "isMonotonic": true
+              },
+              "unit": "s"
+            },
+            {
+              "name": "github.workflow.runs",
+              "sum": {
+                "aggregationTemporality": 2,
+                "dataPoints": [
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "push"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  }
+                ],
+                "isMonotonic": true
+              },
+              "unit": "{run}"
             }
           ],
           "scope": {
