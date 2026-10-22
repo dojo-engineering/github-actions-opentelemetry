@@ -1,0 +1,55 @@
+name: observe-workflow
+
+on:
+  workflow_run:
+    workflows:
+      - 'Push Event Tests'
+    types:
+      - 'completed'
+
+permissions:
+  actions: 'read'
+
+jobs:
+  send-telemetry:
+    name: 'Send CI Telemetry'
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: 'ubuntu-latest'
+    steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      - name: Verify auth header format
+        env:
+          HEADER: ${{ secrets.REPO_GRAFANA_TRACE_AUTH_HEADER }}
+        run: |
+          if [ -z "$HEADER" ]; then
+            echo "::error::REPO_GRAFANA_TRACE_AUTH_HEADER is empty"
+            exit 1
+          elif [[ "$HEADER" == *=* ]]; then
+            echo "OK: Header contains '=' (header name: ${HEADER%%=*})" # greedy match from the right to equals, i.e. grab everything before the first equals
+          elif [[ "$HEADER" == *:* ]]; then
+            echo "::error::Header uses ':' instead of '=' (header name: ${HEADER%%:*}) - OpenTelemetry drops this!"  # greedy match from the right to colon, i.e. grab everything before the first colon
+            exit 1
+          else
+            echo "::error::Header contains neither '=' nor ':'"
+            exit 1
+          fi
+      - name: Run
+        id: run
+        uses: dojo-engineering/github-actions-opentelemetry@feat/telemetry-with-metrics
+        env:
+          OTEL_SERVICE_NAME: github-actions-opentelemetry
+          OTEL_EXPORTER_OTLP_ENDPOINT: https://telemetry.preprod.dojo.tech/tempo/write
+          OTEL_EXPORTER_OTLP_HEADERS:
+            ${{ secrets.REPO_GRAFANA_TRACE_AUTH_HEADER }}
+          OTEL_RESOURCE_ATTRIBUTES:
+            'environment=ci,cicd.pipeline.name=${{
+            github.event.workflow_run.name }},cicd.pipeline.run.url.full=${{
+            github.event.workflow_run.html_url }},vcs.repository.name=${{
+            github.event.workflow_run.repository.name }},vcs.ref.head.name=${{
+            github.event.workflow_run.head_branch }}'
+          FEATURE_METRICS: 'false'
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
