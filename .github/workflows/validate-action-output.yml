@@ -99,6 +99,8 @@ jobs:
           (.resourceSpans[]?.scopeSpans[]?.spans[]?.endTimeUnixNano) = "0" |
           .resourceSpans[]?.scopeSpans[]?.spans[]?.attributes[]? |= (
             if .key == "run_id" then .value = {"intValue": "0"}
+            elif (.key == "run_attempt" or .key == "workflow.run_attempt" or .key == "job.run_attempt") then .value = {"intValue": "1"}
+            elif .key == "workflow.is_retry" then .value = {"boolValue": false}
             elif .key == "job.id" then .value = {"intValue": "0"}
             elif .key == "cicd.pipeline.task.run.id" then .value = {"intValue": "0"}
             elif .key == "url" then .value = {"stringValue": "https://example.com/actions/runs/0"}
@@ -137,7 +139,10 @@ jobs:
           (.resourceMetrics[]?.scopeMetrics[]?.metrics[]?.sum?.dataPoints[]? | select(has("asDouble")) | .asDouble) = 0 |
           (.resourceMetrics[]?.scopeMetrics[]?.metrics[]?.sum?.dataPoints[]? | select(has("asInt")) | .asInt) = "0" |
           (.resourceMetrics[]?.scopeMetrics[]?.metrics[]?.sum?.dataPoints[]?.attributes[]? |= (
-            if .key == "workflow.run_id" then .value = {"intValue": "0"} else . end
+            if .key == "workflow.run_id" then .value = {"intValue": "0"}
+            elif (.key == "workflow.run_attempt" or .key == "job.run_attempt") then .value = {"intValue": "1"}
+            elif .key == "workflow.is_retry" then .value = {"stringValue": "false"}
+            else . end
           )) |
 
           # sort metrics array by name to ensure stable output

@@ -61853,9 +61853,16 @@ const fetchWorkflowResults = async (octokit, workflowContext, delayMs = 1000, ma
             if (workflowJobs.length === 0) {
                 throw new Error(`no completed jobs found for workflow run.`);
             }
+            const workflow = toWorkflowRun(workflowRes);
+            const attemptStartedAt = getWorkflowAttemptStartedAt(workflow, workflowJobs);
+            // GitHub can label reused jobs as part of a rerun while retaining their previous start times.
+            const jobsRunInAttempt = workflowJobs.filter(job => job.started_at.getTime() >= attemptStartedAt.getTime());
+            if (jobsRunInAttempt.length === 0) {
+                throw new Error(`no completed jobs found for workflow run.`);
+            }
             return {
-                workflow: toWorkflowRun(workflowRes),
-                workflowJobs
+                workflow,
+                workflowJobs: jobsRunInAttempt
             };
         }, {
             delay: delayMs,

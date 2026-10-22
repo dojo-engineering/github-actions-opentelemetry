@@ -113,7 +113,7 @@ describe('fetchWorkflowResults', () => {
     ])
   })
 
-  test('should include only jobs from the requested attempt', async () => {
+  test('should include only jobs performed in the requested attempt', async () => {
     const getWorkflowRunAttempt = vi.fn().mockResolvedValue({
       data: {
         id: 12345,
@@ -121,6 +121,7 @@ describe('fetchWorkflowResults', () => {
         status: 'completed',
         conclusion: 'success',
         created_at: '2023-01-01T00:00:00Z',
+        run_started_at: '2023-01-01T00:10:00Z',
         run_attempt: 2,
         html_url: 'https://github.com/test-owner/test-repo/actions/runs/12345',
         repository: {
@@ -154,16 +155,25 @@ describe('fetchWorkflowResults', () => {
       conclusion: 'success',
       run_attempt: 1
     }
+    const reusedPreviousAttemptSuccess = {
+      ...previousAttemptSuccess,
+      id: 3,
+      created_at: '2023-01-01T00:10:00Z',
+      run_attempt: 2
+    }
     const secondAttemptRerunJob = {
       ...jobFields,
-      id: 3,
+      id: 4,
       name: 'rerun-job',
+      created_at: '2023-01-01T00:10:00Z',
+      started_at: '2023-01-01T00:11:00Z',
+      completed_at: '2023-01-01T00:15:00Z',
       conclusion: 'failure',
       run_attempt: 2
     }
     const futureAttemptJob = {
       ...jobFields,
-      id: 4,
+      id: 5,
       name: 'future-job',
       conclusion: 'success',
       run_attempt: 3
@@ -172,13 +182,17 @@ describe('fetchWorkflowResults', () => {
       .fn()
       .mockResolvedValueOnce({
         data: {
-          total_count: 4,
-          jobs: [firstAttemptRerunJob, previousAttemptSuccess]
+          total_count: 5,
+          jobs: [
+            firstAttemptRerunJob,
+            previousAttemptSuccess,
+            reusedPreviousAttemptSuccess
+          ]
         }
       })
       .mockResolvedValueOnce({
         data: {
-          total_count: 4,
+          total_count: 5,
           jobs: [secondAttemptRerunJob, futureAttemptJob]
         }
       })
@@ -222,6 +236,59 @@ describe('fetchWorkflowResults', () => {
         conclusion
       }))
     ).toEqual([{ name: 'rerun-job', run_attempt: 2, conclusion: 'failure' }])
+  })
+
+  test('should reject an attempt containing only reused jobs', async () => {
+    const getWorkflowRunAttempt = vi.fn().mockResolvedValue({
+      data: {
+        id: 12345,
+        name: 'Test Workflow',
+        status: 'completed',
+        conclusion: 'success',
+        created_at: '2023-01-01T00:00:00Z',
+        run_started_at: '2023-01-01T00:10:00Z',
+        run_attempt: 2,
+        html_url: 'https://github.com/test-owner/test-repo/actions/runs/12345',
+        repository: {
+          full_name: 'test-owner/test-repo'
+        },
+        event: 'push'
+      }
+    })
+    const listJobsForWorkflowRun = vi.fn().mockResolvedValue({
+      data: {
+        total_count: 1,
+        jobs: [
+          {
+            id: 1,
+            name: 'previously-successful-job',
+            status: 'completed',
+            conclusion: 'success',
+            created_at: '2023-01-01T00:10:00Z',
+            started_at: '2023-01-01T00:01:00Z',
+            completed_at: '2023-01-01T00:05:00Z',
+            run_attempt: 2,
+            workflow_name: 'Test Workflow',
+            run_id: 12345,
+            runner_name: null,
+            runner_group_name: null,
+            steps: []
+          }
+        ]
+      }
+    })
+    const mockOctokit = {
+      rest: {
+        actions: {
+          getWorkflowRunAttempt,
+          listJobsForWorkflowRun
+        }
+      }
+    } as unknown as Octokit
+
+    await expect(
+      fetchWorkflowResults(mockOctokit, testWorkflowContext, 0, 1)
+    ).rejects.toThrow('no completed jobs found for workflow run.')
   })
 
   test('should retain every job from the requested attempt, including duplicate names', async () => {
