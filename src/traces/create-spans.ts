@@ -138,9 +138,9 @@ const buildWorkflowAttributes = (
   workflowJobs: WorkflowJobs,
   latestCompletedAt: Date
 ): opentelemetry.Attributes => {
-  const wallClockDurationSec = calcDiffSec(
-    workflowRun.created_at,
-    latestCompletedAt
+  const wallClockDurationSec = Math.max(
+    0,
+    calcDiffSec(workflowRun.created_at, latestCompletedAt)
   )
 
   let totalExecutionDurationSec = 0

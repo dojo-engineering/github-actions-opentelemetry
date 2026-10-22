@@ -61759,13 +61759,7 @@ const toWorkflowStep = (step) => {
         ...(step.number !== undefined && { number: step.number })
     };
 };
-const toWorkflowJob = (job, eventName, targetAttemptNumber) => {
-    if (targetAttemptNumber !== undefined &&
-        job.run_attempt !== undefined &&
-        job.run_attempt !== targetAttemptNumber) {
-        console.log(`Skipping job from previous attempt: ${job.name} (job run_attempt: ${job.run_attempt}, target attempt: ${targetAttemptNumber})`);
-        return null;
-    }
+const toWorkflowJob = (job, eventName) => {
     if (eventName === 'workflow_run' && job.status !== 'completed') {
         // This error is for backward compatibility.
         throw new Error('job.status must be completed on workflow_run event');
@@ -61849,8 +61843,9 @@ const fetchWorkflowResults = async (octokit, workflowContext, delayMs = 1000, ma
         const results = await (0,cjs/* retryAsync */.tH)(async () => {
             const workflowRes = await fetchWorkflow(octokit, workflowContext);
             const workflowJobsRes = await fetchWorkflowJobs(octokit, workflowContext);
-            const workflowJobs = workflowJobsRes
-                .map(job => toWorkflowJob(job, workflowRes.event, workflowContext.attempt_number))
+            const latestWorkflowJobs = selectLatestJobsForAttempt(workflowJobsRes, workflowContext.attempt_number);
+            const workflowJobs = latestWorkflowJobs
+                .map(job => toWorkflowJob(job, workflowRes.event))
                 .filter((job) => job !== null);
             if (workflowJobs.length === 0) {
                 throw new Error(`no completed jobs found for workflow run.`);
@@ -61889,13 +61884,43 @@ const fetchWorkflow = async (octokit, workflowContext) => {
     };
 };
 const fetchWorkflowJobs = async (octokit, workflowContext) => {
-    const res = await octokit.rest.actions.listJobsForWorkflowRun({
-        owner: workflowContext.owner,
-        repo: workflowContext.repo,
-        run_id: workflowContext.runId,
-        per_page: 100
-    });
-    return res.data.jobs;
+    const workflowJobs = [];
+    let page = 1;
+    while (true) {
+        const res = await octokit.rest.actions.listJobsForWorkflowRun({
+            owner: workflowContext.owner,
+            repo: workflowContext.repo,
+            run_id: workflowContext.runId,
+            filter: 'all',
+            per_page: 100,
+            page
+        });
+        workflowJobs.push(...res.data.jobs);
+        if (workflowJobs.length >= res.data.total_count) {
+            return workflowJobs;
+        }
+        if (res.data.jobs.length === 0) {
+            throw new Error('GitHub returned no jobs before all workflow jobs loaded');
+        }
+        page++;
+    }
+};
+const selectLatestJobsForAttempt = (workflowJobs, targetAttemptNumber) => {
+    const latestJobsByName = new Map();
+    for (const job of workflowJobs) {
+        const attemptNumber = job.run_attempt ?? 1;
+        if (attemptNumber > targetAttemptNumber) {
+            continue;
+        }
+        const existing = latestJobsByName.get(job.name);
+        if (!existing || attemptNumber > existing.attemptNumber) {
+            latestJobsByName.set(job.name, { attemptNumber, jobs: [job] });
+        }
+        else if (attemptNumber === existing.attemptNumber) {
+            existing.jobs.push(job);
+        }
+    }
+    return [...latestJobsByName.values()].flatMap(entry => entry.jobs);
 };
 const getWorkflowContext = (context, settings) => {
     const owner = settings.owner ?? context.repo.owner;
@@ -62162,23 +62187,23 @@ const createWorkflowCounters = (workflow, workflowRunJobs) => {
     let totalBillableMinutes = 0;
     let totalRoundingWasteSec = 0;
     for (const job of workflowRunJobs) {
-        const jobDurationSec = calcDiffSec(job.started_at, job.completed_at);
+        const jobDurationSec = Math.max(0, calcDiffSec(job.started_at, job.completed_at));
         const billable = calcJobBillable(jobDurationSec, job.conclusion, job.labels);
-        totalExecutionDurationSec += Math.max(0, jobDurationSec);
+        totalExecutionDurationSec += jobDurationSec;
         totalBillableMinutes += billable.billableMinutes;
         totalRoundingWasteSec += billable.roundingWasteSec;
     }
     createCounter(descriptorNames.WORKFLOW_RUNS, 1, workflowMetricsAttributes, {
         unit: '{run}'
     });
-    createCounter(descriptorNames.WORKFLOW_DURATION, calcDiffSec(workflow.created_at, jobCompletedAtMax), workflowMetricsAttributes, { unit: 's' });
+    createCounter(descriptorNames.WORKFLOW_DURATION, Math.max(0, calcDiffSec(workflow.created_at, jobCompletedAtMax)), workflowMetricsAttributes, { unit: 's' });
     createCounter(descriptorNames.WORKFLOW_EXECUTION_DURATION, totalExecutionDurationSec, workflowMetricsAttributes, { unit: 's' });
     createCounter(descriptorNames.WORKFLOW_BILLABLE_TIME, totalBillableMinutes, workflowMetricsAttributes, { unit: 'min' });
     createCounter(descriptorNames.WORKFLOW_ROUNDING_WASTE, totalRoundingWasteSec, workflowMetricsAttributes, { unit: 's' });
 };
 const createJobCounters = (workflow, workflowRunJobs) => {
     for (const job of workflowRunJobs) {
-        const jobDurationSec = calcDiffSec(job.started_at, job.completed_at);
+        const jobDurationSec = Math.max(0, calcDiffSec(job.started_at, job.completed_at));
         const billable = calcJobBillable(jobDurationSec, job.conclusion, job.labels);
         const jobMetricsAttributes = createMetricsAttributes(workflow, job, billable);
         createCounter(descriptorNames.JOB_RUNS, 1, jobMetricsAttributes, { unit: '{job}' });
@@ -62288,7 +62313,7 @@ const getSpanStatusFromConclusion = (status) => {
     }
 };
 const buildWorkflowAttributes = (workflowRun, workflowJobs, latestCompletedAt) => {
-    const wallClockDurationSec = calcDiffSec(workflowRun.created_at, latestCompletedAt);
+    const wallClockDurationSec = Math.max(0, calcDiffSec(workflowRun.created_at, latestCompletedAt));
     let totalExecutionDurationSec = 0;
     let totalQueuedDurationSec = 0;
     let maxQueuedDurationSec = 0;

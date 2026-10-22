@@ -54,9 +54,12 @@ export const createWorkflowCounters = (
   let totalRoundingWasteSec = 0
 
   for (const job of workflowRunJobs) {
-    const jobDurationSec = calcDiffSec(job.started_at, job.completed_at)
+    const jobDurationSec = Math.max(
+      0,
+      calcDiffSec(job.started_at, job.completed_at)
+    )
     const billable = calcJobBillable(jobDurationSec, job.conclusion, job.labels)
-    totalExecutionDurationSec += Math.max(0, jobDurationSec)
+    totalExecutionDurationSec += jobDurationSec
     totalBillableMinutes += billable.billableMinutes
     totalRoundingWasteSec += billable.roundingWasteSec
   }
@@ -66,7 +69,7 @@ export const createWorkflowCounters = (
   })
   createCounter(
     dn.WORKFLOW_DURATION,
-    calcDiffSec(workflow.created_at, jobCompletedAtMax),
+    Math.max(0, calcDiffSec(workflow.created_at, jobCompletedAtMax)),
     workflowMetricsAttributes,
     { unit: 's' }
   )
@@ -95,7 +98,10 @@ export const createJobCounters = (
   workflowRunJobs: WorkflowJobs
 ): void => {
   for (const job of workflowRunJobs) {
-    const jobDurationSec = calcDiffSec(job.started_at, job.completed_at)
+    const jobDurationSec = Math.max(
+      0,
+      calcDiffSec(job.started_at, job.completed_at)
+    )
     const billable = calcJobBillable(jobDurationSec, job.conclusion, job.labels)
     const jobMetricsAttributes = createMetricsAttributes(
       workflow,

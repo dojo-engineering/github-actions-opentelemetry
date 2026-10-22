@@ -40,6 +40,7 @@ describe('fetchWorkflowResults', () => {
     })
     const listJobsForWorkflowRun = vi.fn().mockResolvedValue({
       data: {
+        total_count: 1,
         jobs: [
           {
             id: 1,
@@ -84,7 +85,9 @@ describe('fetchWorkflowResults', () => {
       owner: 'test-owner',
       repo: 'test-repo',
       run_id: 12345,
-      per_page: 100
+      filter: 'all',
+      per_page: 100,
+      page: 1
     })
     expect(result.workflow).toMatchObject({
       id: 12345,
@@ -101,6 +104,124 @@ describe('fetchWorkflowResults', () => {
         name: 'test-job',
         run_id: 12345,
         status: 'completed',
+        conclusion: 'success'
+      }
+    ])
+  })
+
+  test('should keep the latest job attempt up to the requested attempt', async () => {
+    const getWorkflowRunAttempt = vi.fn().mockResolvedValue({
+      data: {
+        id: 12345,
+        name: 'Test Workflow',
+        status: 'completed',
+        conclusion: 'success',
+        created_at: '2023-01-01T00:00:00Z',
+        run_attempt: 2,
+        html_url: 'https://github.com/test-owner/test-repo/actions/runs/12345',
+        repository: {
+          full_name: 'test-owner/test-repo'
+        },
+        event: 'push'
+      }
+    })
+    const jobFields = {
+      status: 'completed' as const,
+      created_at: '2023-01-01T00:00:00Z',
+      started_at: '2023-01-01T00:01:00Z',
+      completed_at: '2023-01-01T00:05:00Z',
+      workflow_name: 'Test Workflow',
+      run_id: 12345,
+      runner_name: null,
+      runner_group_name: null,
+      steps: []
+    }
+    const firstAttemptRerunJob = {
+      ...jobFields,
+      id: 1,
+      name: 'rerun-job',
+      conclusion: 'success',
+      run_attempt: 1
+    }
+    const previousAttemptSuccess = {
+      ...jobFields,
+      id: 2,
+      name: 'previously-successful-job',
+      conclusion: 'success',
+      run_attempt: 1
+    }
+    const secondAttemptRerunJob = {
+      ...jobFields,
+      id: 3,
+      name: 'rerun-job',
+      conclusion: 'failure',
+      run_attempt: 2
+    }
+    const futureAttemptJob = {
+      ...jobFields,
+      id: 4,
+      name: 'future-job',
+      conclusion: 'success',
+      run_attempt: 3
+    }
+    const listJobsForWorkflowRun = vi
+      .fn()
+      .mockResolvedValueOnce({
+        data: {
+          total_count: 4,
+          jobs: [firstAttemptRerunJob, previousAttemptSuccess]
+        }
+      })
+      .mockResolvedValueOnce({
+        data: {
+          total_count: 4,
+          jobs: [secondAttemptRerunJob, futureAttemptJob]
+        }
+      })
+    const mockOctokit = {
+      rest: {
+        actions: {
+          getWorkflowRunAttempt,
+          listJobsForWorkflowRun
+        }
+      }
+    } as unknown as Octokit
+
+    const result = await fetchWorkflowResults(
+      mockOctokit,
+      testWorkflowContext,
+      0,
+      1
+    )
+
+    expect(listJobsForWorkflowRun).toHaveBeenCalledTimes(2)
+    expect(listJobsForWorkflowRun).toHaveBeenNthCalledWith(1, {
+      owner: 'test-owner',
+      repo: 'test-repo',
+      run_id: 12345,
+      filter: 'all',
+      per_page: 100,
+      page: 1
+    })
+    expect(listJobsForWorkflowRun).toHaveBeenNthCalledWith(2, {
+      owner: 'test-owner',
+      repo: 'test-repo',
+      run_id: 12345,
+      filter: 'all',
+      per_page: 100,
+      page: 2
+    })
+    expect(
+      result.workflowJobs.map(({ name, run_attempt, conclusion }) => ({
+        name,
+        run_attempt,
+        conclusion
+      }))
+    ).toEqual([
+      { name: 'rerun-job', run_attempt: 2, conclusion: 'failure' },
+      {
+        name: 'previously-successful-job',
+        run_attempt: 1,
         conclusion: 'success'
       }
     ])
@@ -155,6 +276,7 @@ describe('fetchWorkflowResults', () => {
           }),
           listJobsForWorkflowRun: async () => ({
             data: {
+              total_count: 1,
               jobs: [
                 // Return jobs that will be filtered out (not completed)
                 {
@@ -203,6 +325,7 @@ describe('fetchWorkflowResults', () => {
           }),
           listJobsForWorkflowRun: async () => ({
             data: {
+              total_count: 3,
               jobs: [
                 // Completed job - should be included
                 {
@@ -699,22 +822,16 @@ describe('Type converters', () => {
       expect(result).toEqual(expected)
     })
 
-    test('should skip jobs from previous attempts when targetAttemptNumber does not match', () => {
+    test('should convert previous-attempt jobs for collection-level selection', () => {
       const jobFromAttempt1 = {
         ...mockJobResponse,
         run_attempt: 1,
         labels: ['ubuntu-latest']
       }
-      const jobFromAttempt2 = {
-        ...mockJobResponse,
-        run_attempt: 2,
-        labels: ['ubuntu-latest']
-      }
 
-      expect(toWorkflowJob(jobFromAttempt1 as never, 'push', 2)).toBeNull()
-      const result = toWorkflowJob(jobFromAttempt2 as never, 'push', 2)
+      const result = toWorkflowJob(jobFromAttempt1 as never, 'push')
       expect(result).not.toBeNull()
-      expect(result?.run_attempt).toBe(2)
+      expect(result?.run_attempt).toBe(1)
       expect(result?.labels).toEqual(['ubuntu-latest'])
     })
   })

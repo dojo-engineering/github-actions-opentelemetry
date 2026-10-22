@@ -1,6 +1,10 @@
 import { describe, test, expect, vi } from 'vitest'
 import * as opentelemetry from '@opentelemetry/api'
-import { createCounter, createJobCounters } from './create-counters.js'
+import {
+  createCounter,
+  createJobCounters,
+  createWorkflowCounters
+} from './create-counters.js'
 import {
   InMemoryMetricExporter,
   AggregationTemporality,
@@ -121,6 +125,51 @@ describe('createJobCounters', () => {
       .scopeMetrics[0].metrics.map(m => m.descriptor.name)
     expect(metricNames).not.toContain('github.job.queued_duration')
     expect(metricNames).toContain('github.job.duration')
+
+    mockGetMeter.mockRestore()
+  })
+
+  test('should clamp negative job and workflow durations to zero', async () => {
+    const { provider, exporter } = createMeterProvider()
+    const mockGetMeter = vi
+      .spyOn(opentelemetry.metrics, 'getMeter')
+      .mockImplementation(name => provider.getMeter(name))
+    const jobWithNegativeDuration: WorkflowJob = {
+      id: 789,
+      name: 'Negative Duration Job',
+      status: 'completed',
+      conclusion: 'success',
+      created_at: new Date('2023-01-01T00:00:00Z'),
+      started_at: new Date('2023-01-01T00:05:00Z'),
+      completed_at: new Date('2023-01-01T00:04:00Z'),
+      workflow_name: 'Test Workflow',
+      run_id: 123,
+      runner_name: null,
+      runner_group_name: null,
+      steps: []
+    }
+    const workflowWithNegativeDuration: WorkflowRun = {
+      ...mockWorkflow,
+      created_at: new Date('2023-01-01T00:06:00Z')
+    }
+
+    createJobCounters(workflowWithNegativeDuration, [jobWithNegativeDuration])
+    createWorkflowCounters(workflowWithNegativeDuration, [
+      jobWithNegativeDuration
+    ])
+    await provider.forceFlush()
+    await provider.shutdown()
+
+    const metrics = exporter.getMetrics()[0].scopeMetrics[0].metrics
+    const jobDuration = metrics.find(
+      metric => metric.descriptor.name === 'github.job.duration'
+    )
+    const workflowDuration = metrics.find(
+      metric => metric.descriptor.name === 'github.workflow.duration'
+    )
+
+    expect(jobDuration?.dataPoints.map(point => point.value)).toEqual([0])
+    expect(workflowDuration?.dataPoints.map(point => point.value)).toEqual([0])
 
     mockGetMeter.mockRestore()
   })

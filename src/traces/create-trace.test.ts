@@ -392,6 +392,25 @@ describe('should export expected spans', () => {
     expect(spansWithJobConclusion).toHaveLength(2)
   })
 
+  test('should clamp negative workflow wall-clock duration to zero', async () => {
+    const workflowWithNegativeWallClock = {
+      ...workflowRunResults,
+      workflow: {
+        ...workflowRun,
+        created_at: new Date('2024-09-01T00:30:00Z')
+      }
+    }
+
+    await createTrace(workflowWithNegativeWallClock)
+    await forceFlush()
+
+    const rootSpan = findSpanByName(
+      exporter.getFinishedSpans(),
+      workflowRun.name
+    )
+    expect(rootSpan.attributes['workflow.wall_clock_duration_s']).toBe(0)
+  })
+
   test('should capture and return valid trace ID as string', async () => {
     const traceId = await createTrace(workflowRunResults)
     await forceFlush()

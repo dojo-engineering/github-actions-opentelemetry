@@ -106,20 +106,8 @@ export const toWorkflowStep = (step: WorkflowStepResponse): WorkflowStep => {
 }
 export const toWorkflowJob = (
   job: WorkflowJobResponse,
-  eventName: string,
-  targetAttemptNumber?: number
+  eventName: string
 ): WorkflowJob | null => {
-  if (
-    targetAttemptNumber !== undefined &&
-    job.run_attempt !== undefined &&
-    job.run_attempt !== targetAttemptNumber
-  ) {
-    console.log(
-      `Skipping job from previous attempt: ${job.name} (job run_attempt: ${job.run_attempt}, target attempt: ${targetAttemptNumber})`
-    )
-    return null
-  }
-
   if (eventName === 'workflow_run' && job.status !== 'completed') {
     // This error is for backward compatibility.
     throw new Error('job.status must be completed on workflow_run event')

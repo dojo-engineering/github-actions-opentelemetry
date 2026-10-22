@@ -5,6 +5,7 @@ import {
   WorkflowResults,
   GitHubContext,
   WorkflowJob,
+  WorkflowJobResponse,
   toWorkflowRun as toWorkflow,
   toWorkflowJob,
   WorkflowResponse,
@@ -39,14 +40,12 @@ export const fetchWorkflowResults = async (
           octokit,
           workflowContext
         )
-        const workflowJobs = workflowJobsRes
-          .map(job =>
-            toWorkflowJob(
-              job,
-              workflowRes.event,
-              workflowContext.attempt_number
-            )
-          )
+        const latestWorkflowJobs = selectLatestJobsForAttempt(
+          workflowJobsRes,
+          workflowContext.attempt_number
+        )
+        const workflowJobs = latestWorkflowJobs
+          .map(job => toWorkflowJob(job, workflowRes.event))
           .filter((job): job is WorkflowJob => job !== null)
         if (workflowJobs.length === 0) {
           throw new Error(`no completed jobs found for workflow run.`)
@@ -93,13 +92,53 @@ const fetchWorkflowJobs = async (
   octokit: Octokit,
   workflowContext: WorkflowContext
 ): Promise<WorkflowJobsResponse> => {
-  const res = await octokit.rest.actions.listJobsForWorkflowRun({
-    owner: workflowContext.owner,
-    repo: workflowContext.repo,
-    run_id: workflowContext.runId,
-    per_page: 100
-  })
-  return res.data.jobs
+  const workflowJobs: WorkflowJobsResponse = []
+  let page = 1
+
+  while (true) {
+    const res = await octokit.rest.actions.listJobsForWorkflowRun({
+      owner: workflowContext.owner,
+      repo: workflowContext.repo,
+      run_id: workflowContext.runId,
+      filter: 'all',
+      per_page: 100,
+      page
+    })
+    workflowJobs.push(...res.data.jobs)
+    if (workflowJobs.length >= res.data.total_count) {
+      return workflowJobs
+    }
+    if (res.data.jobs.length === 0) {
+      throw new Error('GitHub returned no jobs before all workflow jobs loaded')
+    }
+    page++
+  }
+}
+
+const selectLatestJobsForAttempt = (
+  workflowJobs: WorkflowJobsResponse,
+  targetAttemptNumber: number
+): WorkflowJobsResponse => {
+  const latestJobsByName = new Map<
+    string,
+    { attemptNumber: number; jobs: WorkflowJobResponse[] }
+  >()
+
+  for (const job of workflowJobs) {
+    const attemptNumber = job.run_attempt ?? 1
+    if (attemptNumber > targetAttemptNumber) {
+      continue
+    }
+
+    const existing = latestJobsByName.get(job.name)
+    if (!existing || attemptNumber > existing.attemptNumber) {
+      latestJobsByName.set(job.name, { attemptNumber, jobs: [job] })
+    } else if (attemptNumber === existing.attemptNumber) {
+      existing.jobs.push(job)
+    }
+  }
+
+  return [...latestJobsByName.values()].flatMap(entry => entry.jobs)
 }
 
 export const getWorkflowContext = (
