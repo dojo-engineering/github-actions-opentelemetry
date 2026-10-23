@@ -10,8 +10,8 @@ permissions:
   contents: read
 
 jobs:
-  test:
-    name: Format, Lint & Test
+  checks:
+    name: Lint, Test & Check dist/
     runs-on: ubuntu-latest
     services:
       # Anything is fine as long as it accepts metrics and traces with OTLP
@@ -21,6 +21,8 @@ jobs:
         ports:
           - 4318:4318
 
+    # Each check after install runs even if an earlier check failed, so a
+    # single run reports every problem.
     steps:
       - name: Checkout
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
@@ -32,44 +34,34 @@ jobs:
           cache: npm
 
       - name: Install Dependencies
+        id: install
         run: npm ci
 
       - name: Check Format
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
         run: npm run format:check
 
       - name: Lint
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
         run: npm run lint
 
       - name: Test
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: npm run test
 
-  # In TypeScript actions, `dist/index.js` is the code that runs when the action
-  # is referenced with `uses:`. This fails if the committed dist/ does not match
-  # a fresh build of the sources.
-  check-dist:
-    name: Check dist/
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
-
-      - name: Setup Node.js
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
-        with:
-          node-version-file: .node-version
-          cache: npm
-
-      - name: Install Dependencies
-        run: npm ci
-
+      # In TypeScript actions, `dist/index.js` is the code that runs when the
+      # action is referenced with `uses:`. Use `package` rather than `bundle`
+      # because `bundle` runs `prettier --write`, which would rewrite sources.
       - name: Build dist/ Directory
-        run: npm run bundle
+        id: build
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: npm run package
 
       - name: Compare Directories
         id: diff
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
         run: |
           if [ ! -d dist/ ]; then
             echo "Expected dist/ directory does not exist.  See status below:"
