@@ -141,13 +141,15 @@ jobs:
         env:
           OTEL_SERVICE_NAME: github-actions-opentelemetry
           OTEL_EXPORTER_OTLP_ENDPOINT: https://collector-example.com
-          # Additional OTLP headers. Useful for OTLP authentication.
+          # Additional OTLP headers use comma-separated header-name=value pairs.
+          # Grafana Tempo API-key auth: store X-API-Key=<token> as the full secret value.
+          # Reference that secret directly; do not add another header-name prefix.
           # e.g.
           # New Relic: api-key=YOUR_NEWRELIC_API_KEY
           # Google Cloud Run: Authorization=Bearer <value of $(gcloud auth print-identity-token)>
           # Basic Authentication: Authorization=Basic <base64-encoded value of userid:password>
           OTEL_EXPORTER_OTLP_HEADERS:
-            api-key=${ secrets.API_KEY },other-config-value=value
+            ${{ secrets.REPO_GRAFANA_TRACE_AUTH_HEADER }}
           OTEL_RESOURCE_ATTRIBUTES: 'environment=ci,team=backend'
         with:
           # Required for collecting workflow data
@@ -194,13 +196,15 @@ jobs:
         env:
           OTEL_SERVICE_NAME: github-actions-opentelemetry
           OTEL_EXPORTER_OTLP_ENDPOINT: https://collector-example.com
-          # Additional OTLP headers. Useful for OTLP authentication.
+          # Additional OTLP headers use comma-separated header-name=value pairs.
+          # Grafana Tempo API-key auth: store X-API-Key=<token> as the full secret value.
+          # Reference that secret directly; do not add another header-name prefix.
           # e.g.
           # New Relic: api-key=YOUR_NEWRELIC_API_KEY
           # Google Cloud Run: Authorization=Bearer <value of $(gcloud auth print-identity-token)>
           # Basic Authentication: Authorization=Basic <base64-encoded value of userid:password>
           OTEL_EXPORTER_OTLP_HEADERS:
-            api-key=${ secrets.API_KEY },other-config-value=value
+            ${{ secrets.REPO_GRAFANA_TRACE_AUTH_HEADER }}
           OTEL_RESOURCE_ATTRIBUTES: 'environment=ci,team=backend'
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -210,17 +214,24 @@ jobs:
 
 To configure the action, you need to set the following environment variables:
 
-| Environment Variable                  | Required | Default Value | Description                                                                                        |
-| ------------------------------------- | -------- | ------------- | -------------------------------------------------------------------------------------------------- |
-| `OTEL_SERVICE_NAME`                   | Yes      | -             | Service name.                                                                                      |
-| `OTEL_EXPORTER_OTLP_ENDPOINT`         | Yes      | -             | OTLP Endpoint for Traces and Metrics. e.g., <https://collector-example.com>                        |
-| `OTEL_EXPORTER_OTLP_METRICS_ENDPOINT` | No       | -             | OTLP Endpoint for Metrics instead of OTEL_EXPORTER_OTLP_ENDPOINT.                                  |
-| `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT`  | No       | -             | OTLP Endpoint for Traces instead of OTEL_EXPORTER_OTLP_ENDPOINT.                                   |
-| `OTEL_EXPORTER_OTLP_HEADERS`          | No       | -             | Additional OTLP headers. Useful for authentication. e.g., "api-key=key,other-config-value=value"   |
-| `OTEL_RESOURCE_ATTRIBUTES`            | No       | -             | Additional resource attributes for traces and metrics. e.g., "environment=production,team=backend" |
-| `FEATURE_TRACE`                       | No       | `true`        | Enable trace feature.                                                                              |
-| `FEATURE_METRICS`                     | No       | `true`        | Enable Metrics feature.                                                                            |
-| `OTEL_LOG_LEVEL`                      | No       | `info`        | Log level.                                                                                         |
+| Environment Variable                  | Required | Default Value | Description                                                                                          |
+| ------------------------------------- | -------- | ------------- | ---------------------------------------------------------------------------------------------------- |
+| `OTEL_SERVICE_NAME`                   | Yes      | -             | Service name.                                                                                        |
+| `OTEL_EXPORTER_OTLP_ENDPOINT`         | Yes      | -             | OTLP Endpoint for Traces and Metrics. e.g., <https://collector-example.com>                          |
+| `OTEL_EXPORTER_OTLP_METRICS_ENDPOINT` | No       | -             | OTLP Endpoint for Metrics instead of OTEL_EXPORTER_OTLP_ENDPOINT.                                    |
+| `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT`  | No       | -             | OTLP Endpoint for Traces instead of OTEL_EXPORTER_OTLP_ENDPOINT.                                     |
+| `OTEL_EXPORTER_OTLP_HEADERS`          | No       | -             | Comma-separated OTLP headers in `header-name=header-value` format. See the Grafana Tempo note below. |
+| `OTEL_RESOURCE_ATTRIBUTES`            | No       | -             | Additional resource attributes for traces and metrics. e.g., "environment=production,team=backend"   |
+| `FEATURE_TRACE`                       | No       | `true`        | Enable trace feature.                                                                                |
+| `FEATURE_METRICS`                     | No       | `true`        | Enable Metrics feature.                                                                              |
+| `OTEL_LOG_LEVEL`                      | No       | `info`        | Log level.                                                                                           |
+
+For a Grafana Tempo endpoint configured for API-key authentication, use
+`X-API-Key=<token>`. Store the complete pair in the GitHub secret and assign
+that secret directly to `OTEL_EXPORTER_OTLP_HEADERS`; do not add another
+header-name prefix such as `api-key=`. `OTEL_EXPORTER_OTLP_HEADERS` uses `=`
+between the header name and value, not the HTTP wire format's `:`.
+Authentication requirements depend on the Tempo endpoint or gateway.
 
 ### Getting Started
 
