@@ -148,7 +148,8 @@ jobs:
           # New Relic: api-key=YOUR_NEWRELIC_API_KEY
           # Google Cloud Run: Authorization=Bearer <value of $(gcloud auth print-identity-token)>
           # Basic Authentication: Authorization=Basic <base64-encoded value of userid:password>
-          OTEL_EXPORTER_OTLP_HEADERS: ${{ secrets.REPO_GRAFANA_TRACE_AUTH_HEADER }}
+          OTEL_EXPORTER_OTLP_HEADERS:
+            ${{ secrets.REPO_GRAFANA_TRACE_AUTH_HEADER }}
           OTEL_RESOURCE_ATTRIBUTES: 'environment=ci,team=backend'
         with:
           # Required for collecting workflow data
@@ -202,7 +203,8 @@ jobs:
           # New Relic: api-key=YOUR_NEWRELIC_API_KEY
           # Google Cloud Run: Authorization=Bearer <value of $(gcloud auth print-identity-token)>
           # Basic Authentication: Authorization=Basic <base64-encoded value of userid:password>
-          OTEL_EXPORTER_OTLP_HEADERS: ${{ secrets.REPO_GRAFANA_TRACE_AUTH_HEADER }}
+          OTEL_EXPORTER_OTLP_HEADERS:
+            ${{ secrets.REPO_GRAFANA_TRACE_AUTH_HEADER }}
           OTEL_RESOURCE_ATTRIBUTES: 'environment=ci,team=backend'
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -228,8 +230,8 @@ For a Grafana Tempo endpoint configured for API-key authentication, use
 `X-API-Key=<token>`. Store the complete pair in the GitHub secret and assign
 that secret directly to `OTEL_EXPORTER_OTLP_HEADERS`; do not add another
 header-name prefix such as `api-key=`. `OTEL_EXPORTER_OTLP_HEADERS` uses `=`
-between the header name and value, not the HTTP wire format's `:`. Authentication
-requirements depend on the Tempo endpoint or gateway.
+between the header name and value, not the HTTP wire format's `:`.
+Authentication requirements depend on the Tempo endpoint or gateway.
 
 ### Getting Started
 
