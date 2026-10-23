@@ -41,15 +41,18 @@ jobs:
         uses: dojo-engineering/github-actions-opentelemetry@feat/telemetry-with-metrics
         env:
           OTEL_SERVICE_NAME: github-actions-opentelemetry
-          OTEL_EXPORTER_OTLP_ENDPOINT: https://telemetry.preprod.dojo.tech/tempo/write
-          OTEL_EXPORTER_OTLP_HEADERS:
-            ${{ secrets.REPO_GRAFANA_TRACE_AUTH_HEADER }}
+          OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://telemetry.preprod.dojo.tech/tempo/write
+          OTEL_EXPORTER_OTLP_TRACES_HEADERS:
+            X-API-Key=${{ secrets.REPO_GRAFANA_TRACES_AUTH_TOKEN }}
+          OTEL_EXPORTER_OTLP_METRICS_ENDPOINT: https://telemetry.preprod.dojo.tech/mimir/write/api/v1/push
+          OTEL_EXPORTER_OTLP_METRICS_HEADERS:
+            X-API-Key=${{ secrets.REPO_GRAFANA_METRICS_AUTH_TOKEN
+            }},X-Scope-Orgid=dojo
           OTEL_RESOURCE_ATTRIBUTES:
             'environment=ci,cicd.pipeline.name=${{
             github.event.workflow_run.name }},cicd.pipeline.run.url.full=${{
             github.event.workflow_run.html_url }},vcs.repository.name=${{
             github.event.workflow_run.repository.name }},vcs.ref.head.name=${{
             github.event.workflow_run.head_branch }}'
-          FEATURE_METRICS: 'false'
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
