@@ -41,7 +41,7 @@ jobs:
     steps:
       - name: Checkout
         id: checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
 
       # Create directory with proper permissions
       - name: Create log directory with proper permissions
@@ -156,7 +156,7 @@ jobs:
       # Upload collector logs as GitHub artifact for debugging
       - name: Upload collector logs as artifact
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: ${{ inputs.artifact-name }}
           path: collector-logs/

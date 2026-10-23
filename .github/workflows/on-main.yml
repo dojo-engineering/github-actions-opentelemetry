@@ -1,0 +1,75 @@
+name: On Main
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+jobs:
+  # Re-run the PR checks against the merged commit before tagging: PRs aren't
+  # required to be up to date with main, and the tag is what consumers run.
+  checks:
+    name: Checks
+    uses: ./.github/workflows/checks.yml
+
+  tag-version:
+    name: Tag version
+    needs:
+      - checks
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Resolve initial SemVer baseline
+        id: baseline
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tags="$(gh api --paginate "repos/${GITHUB_REPOSITORY}/tags?per_page=100" --jq '.[].name')"
+          if printf '%s\n' "$tags" | grep -Eq '^v[0-9]+\.[0-9]+\.[0-9]+$'; then
+            echo 'previous_tag=' >> "$GITHUB_OUTPUT"
+            echo 'previous_version=' >> "$GITHUB_OUTPUT"
+          else
+            echo 'previous_tag=v1' >> "$GITHUB_OUTPUT"
+            echo 'previous_version=1.0.0' >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Bump and push semantic version tag
+        id: tag
+        uses: mathieudutour/github-tag-action@af99e60ce8132224b8e6ebab5023449fe256ed46 # v7
+        with:
+          github_token: ${{ github.token }}
+          commit_analyzer_preset: conventionalcommits
+          release_branches: main
+          tag_prefix: v
+          initial_version: 1.0.0
+          previous_tag: ${{ steps.baseline.outputs.previous_tag }}
+          previous_version: ${{ steps.baseline.outputs.previous_version }}
+          default_bump: patch
+          parse_squash_commits: false
+          fetch_all_tags: true
+          rolling_tags: false
+
+      - name: Update v1 alias
+        if: ${{ startsWith(steps.tag.outputs.new_tag, 'v1.') }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api --method PATCH \
+            "repos/${GITHUB_REPOSITORY}/git/refs/tags/v1" \
+            -f sha="${GITHUB_SHA}" \
+            -F force=true

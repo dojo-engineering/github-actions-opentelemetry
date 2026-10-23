@@ -1,9 +1,8 @@
 name: Example Workflow 01
 
+# Manually triggered demo that generates telemetry via example-run-action.yml.
 on:
-  push:
-    branches:
-      - getting-started
+  workflow_dispatch:
 
 jobs:
   example-app:
