@@ -5,7 +5,7 @@
 
 [![On Main](https://github.com/dojo-engineering/github-actions-opentelemetry/actions/workflows/on-main.yml/badge.svg?branch=main)](https://github.com/dojo-engineering/github-actions-opentelemetry/actions/workflows/on-main.yml)
 [![Push Event Tests](https://github.com/dojo-engineering/github-actions-opentelemetry/actions/workflows/push-event-tests.yml/badge.svg?branch=main)](https://github.com/dojo-engineering/github-actions-opentelemetry/actions/workflows/push-event-tests.yml)
-[![Workflow Run Tests](https://github.com/dojo-engineering/github-actions-opentelemetry/actions/workflows/workflow-run-tests.yml/badge.svg)](https://github.com/dojo-engineering/github-actions-opentelemetry/actions/workflows/workflow-run-tests.yml)
+[![Workflow Run Tests](https://github.com/dojo-engineering/github-actions-opentelemetry/actions/workflows/workflow-run-tests.yml/badge.svg?branch=main)](https://github.com/dojo-engineering/github-actions-opentelemetry/actions/workflows/workflow-run-tests.yml)
 [![Coverage](./badges/coverage.svg)](./badges/coverage.svg)
 
 This action sends metrics and traces of GitHub Actions to an OpenTelemetry
