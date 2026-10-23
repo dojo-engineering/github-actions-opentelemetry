@@ -37,7 +37,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -122,7 +122,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -207,7 +207,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -292,7 +292,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -377,7 +377,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -462,7 +462,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -547,7 +547,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -632,7 +632,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -717,7 +717,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -802,7 +802,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -887,7 +887,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -972,7 +972,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -991,91 +991,6 @@
                         "key": "job.name",
                         "value": {
                           "stringValue": "Example Application Pipeline (2, 2) / Test Application"
-                        }
-                      },
-                      {
-                        "key": "job.run_attempt",
-                        "value": {
-                          "intValue": "1"
-                        }
-                      },
-                      {
-                        "key": "job.conclusion",
-                        "value": {
-                          "stringValue": "success"
-                        }
-                      },
-                      {
-                        "key": "runner.group",
-                        "value": {
-                          "stringValue": "GitHub Actions"
-                        }
-                      },
-                      {
-                        "key": "runner.runs_on",
-                        "value": {
-                          "stringValue": "ubuntu-latest"
-                        }
-                      },
-                      {
-                        "key": "runner.os",
-                        "value": {
-                          "stringValue": "linux"
-                        }
-                      },
-                      {
-                        "key": "runner.arch",
-                        "value": {
-                          "stringValue": "amd64"
-                        }
-                      },
-                      {
-                        "key": "workflow.run_id",
-                        "value": {
-                          "intValue": "0"
-                        }
-                      }
-                    ],
-                    "startTimeUnixNano": "0",
-                    "timeUnixNano": "0"
-                  },
-                  {
-                    "asDouble": 0,
-                    "attributes": [
-                      {
-                        "key": "workflow.name",
-                        "value": {
-                          "stringValue": "Push Event Tests"
-                        }
-                      },
-                      {
-                        "key": "repository",
-                        "value": {
-                          "stringValue": "__EXPECTED_REPOSITORY__"
-                        }
-                      },
-                      {
-                        "key": "workflow.event",
-                        "value": {
-                          "stringValue": "push"
-                        }
-                      },
-                      {
-                        "key": "workflow.is_retry",
-                        "value": {
-                          "stringValue": "false"
-                        }
-                      },
-                      {
-                        "key": "workflow.run_attempt",
-                        "value": {
-                          "intValue": "1"
-                        }
-                      },
-                      {
-                        "key": "job.name",
-                        "value": {
-                          "stringValue": "TypeScript Tests"
                         }
                       },
                       {
@@ -1152,7 +1067,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -1237,7 +1152,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -1322,7 +1237,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -1407,7 +1322,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -1492,7 +1407,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -1577,7 +1492,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -1662,7 +1577,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -1747,7 +1662,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -1832,7 +1747,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -1917,7 +1832,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -2002,7 +1917,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -2087,7 +2002,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -2106,91 +2021,6 @@
                         "key": "job.name",
                         "value": {
                           "stringValue": "Example Application Pipeline (2, 2) / Test Application"
-                        }
-                      },
-                      {
-                        "key": "job.run_attempt",
-                        "value": {
-                          "intValue": "1"
-                        }
-                      },
-                      {
-                        "key": "job.conclusion",
-                        "value": {
-                          "stringValue": "success"
-                        }
-                      },
-                      {
-                        "key": "runner.group",
-                        "value": {
-                          "stringValue": "GitHub Actions"
-                        }
-                      },
-                      {
-                        "key": "runner.runs_on",
-                        "value": {
-                          "stringValue": "ubuntu-latest"
-                        }
-                      },
-                      {
-                        "key": "runner.os",
-                        "value": {
-                          "stringValue": "linux"
-                        }
-                      },
-                      {
-                        "key": "runner.arch",
-                        "value": {
-                          "stringValue": "amd64"
-                        }
-                      },
-                      {
-                        "key": "workflow.run_id",
-                        "value": {
-                          "intValue": "0"
-                        }
-                      }
-                    ],
-                    "startTimeUnixNano": "0",
-                    "timeUnixNano": "0"
-                  },
-                  {
-                    "asDouble": 0,
-                    "attributes": [
-                      {
-                        "key": "workflow.name",
-                        "value": {
-                          "stringValue": "Push Event Tests"
-                        }
-                      },
-                      {
-                        "key": "repository",
-                        "value": {
-                          "stringValue": "__EXPECTED_REPOSITORY__"
-                        }
-                      },
-                      {
-                        "key": "workflow.event",
-                        "value": {
-                          "stringValue": "push"
-                        }
-                      },
-                      {
-                        "key": "workflow.is_retry",
-                        "value": {
-                          "stringValue": "false"
-                        }
-                      },
-                      {
-                        "key": "workflow.run_attempt",
-                        "value": {
-                          "intValue": "1"
-                        }
-                      },
-                      {
-                        "key": "job.name",
-                        "value": {
-                          "stringValue": "TypeScript Tests"
                         }
                       },
                       {
@@ -2267,7 +2097,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -2352,7 +2182,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -2437,7 +2267,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -2522,7 +2352,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -2607,7 +2437,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -2692,7 +2522,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -2777,7 +2607,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -2862,7 +2692,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -2947,7 +2777,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -3032,7 +2862,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -3117,7 +2947,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -3202,7 +3032,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -3221,91 +3051,6 @@
                         "key": "job.name",
                         "value": {
                           "stringValue": "Example Application Pipeline (2, 2) / Test Application"
-                        }
-                      },
-                      {
-                        "key": "job.run_attempt",
-                        "value": {
-                          "intValue": "1"
-                        }
-                      },
-                      {
-                        "key": "job.conclusion",
-                        "value": {
-                          "stringValue": "success"
-                        }
-                      },
-                      {
-                        "key": "runner.group",
-                        "value": {
-                          "stringValue": "GitHub Actions"
-                        }
-                      },
-                      {
-                        "key": "runner.runs_on",
-                        "value": {
-                          "stringValue": "ubuntu-latest"
-                        }
-                      },
-                      {
-                        "key": "runner.os",
-                        "value": {
-                          "stringValue": "linux"
-                        }
-                      },
-                      {
-                        "key": "runner.arch",
-                        "value": {
-                          "stringValue": "amd64"
-                        }
-                      },
-                      {
-                        "key": "workflow.run_id",
-                        "value": {
-                          "intValue": "0"
-                        }
-                      }
-                    ],
-                    "startTimeUnixNano": "0",
-                    "timeUnixNano": "0"
-                  },
-                  {
-                    "asDouble": 0,
-                    "attributes": [
-                      {
-                        "key": "workflow.name",
-                        "value": {
-                          "stringValue": "Push Event Tests"
-                        }
-                      },
-                      {
-                        "key": "repository",
-                        "value": {
-                          "stringValue": "__EXPECTED_REPOSITORY__"
-                        }
-                      },
-                      {
-                        "key": "workflow.event",
-                        "value": {
-                          "stringValue": "push"
-                        }
-                      },
-                      {
-                        "key": "workflow.is_retry",
-                        "value": {
-                          "stringValue": "false"
-                        }
-                      },
-                      {
-                        "key": "workflow.run_attempt",
-                        "value": {
-                          "intValue": "1"
-                        }
-                      },
-                      {
-                        "key": "job.name",
-                        "value": {
-                          "stringValue": "TypeScript Tests"
                         }
                       },
                       {
@@ -3382,7 +3127,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -3467,7 +3212,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -3552,7 +3297,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -3637,7 +3382,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -3722,7 +3467,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -3807,7 +3552,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -3892,7 +3637,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -3977,7 +3722,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -4062,7 +3807,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -4147,7 +3892,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -4232,7 +3977,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -4317,7 +4062,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -4336,91 +4081,6 @@
                         "key": "job.name",
                         "value": {
                           "stringValue": "Example Application Pipeline (2, 2) / Test Application"
-                        }
-                      },
-                      {
-                        "key": "job.run_attempt",
-                        "value": {
-                          "intValue": "1"
-                        }
-                      },
-                      {
-                        "key": "job.conclusion",
-                        "value": {
-                          "stringValue": "success"
-                        }
-                      },
-                      {
-                        "key": "runner.group",
-                        "value": {
-                          "stringValue": "GitHub Actions"
-                        }
-                      },
-                      {
-                        "key": "runner.runs_on",
-                        "value": {
-                          "stringValue": "ubuntu-latest"
-                        }
-                      },
-                      {
-                        "key": "runner.os",
-                        "value": {
-                          "stringValue": "linux"
-                        }
-                      },
-                      {
-                        "key": "runner.arch",
-                        "value": {
-                          "stringValue": "amd64"
-                        }
-                      },
-                      {
-                        "key": "workflow.run_id",
-                        "value": {
-                          "intValue": "0"
-                        }
-                      }
-                    ],
-                    "startTimeUnixNano": "0",
-                    "timeUnixNano": "0"
-                  },
-                  {
-                    "asDouble": 0,
-                    "attributes": [
-                      {
-                        "key": "workflow.name",
-                        "value": {
-                          "stringValue": "Push Event Tests"
-                        }
-                      },
-                      {
-                        "key": "repository",
-                        "value": {
-                          "stringValue": "__EXPECTED_REPOSITORY__"
-                        }
-                      },
-                      {
-                        "key": "workflow.event",
-                        "value": {
-                          "stringValue": "push"
-                        }
-                      },
-                      {
-                        "key": "workflow.is_retry",
-                        "value": {
-                          "stringValue": "false"
-                        }
-                      },
-                      {
-                        "key": "workflow.run_attempt",
-                        "value": {
-                          "intValue": "1"
-                        }
-                      },
-                      {
-                        "key": "job.name",
-                        "value": {
-                          "stringValue": "TypeScript Tests"
                         }
                       },
                       {
@@ -4497,7 +4157,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -4582,7 +4242,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -4667,7 +4327,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -4752,7 +4412,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -4837,7 +4497,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -4922,7 +4582,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -5007,7 +4667,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -5092,7 +4752,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -5177,7 +4837,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -5262,7 +4922,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -5347,7 +5007,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -5432,7 +5092,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -5451,91 +5111,6 @@
                         "key": "job.name",
                         "value": {
                           "stringValue": "Example Application Pipeline (2, 2) / Test Application"
-                        }
-                      },
-                      {
-                        "key": "job.run_attempt",
-                        "value": {
-                          "intValue": "1"
-                        }
-                      },
-                      {
-                        "key": "job.conclusion",
-                        "value": {
-                          "stringValue": "success"
-                        }
-                      },
-                      {
-                        "key": "runner.group",
-                        "value": {
-                          "stringValue": "GitHub Actions"
-                        }
-                      },
-                      {
-                        "key": "runner.runs_on",
-                        "value": {
-                          "stringValue": "ubuntu-latest"
-                        }
-                      },
-                      {
-                        "key": "runner.os",
-                        "value": {
-                          "stringValue": "linux"
-                        }
-                      },
-                      {
-                        "key": "runner.arch",
-                        "value": {
-                          "stringValue": "amd64"
-                        }
-                      },
-                      {
-                        "key": "workflow.run_id",
-                        "value": {
-                          "intValue": "0"
-                        }
-                      }
-                    ],
-                    "startTimeUnixNano": "0",
-                    "timeUnixNano": "0"
-                  },
-                  {
-                    "asDouble": 0,
-                    "attributes": [
-                      {
-                        "key": "workflow.name",
-                        "value": {
-                          "stringValue": "Push Event Tests"
-                        }
-                      },
-                      {
-                        "key": "repository",
-                        "value": {
-                          "stringValue": "__EXPECTED_REPOSITORY__"
-                        }
-                      },
-                      {
-                        "key": "workflow.event",
-                        "value": {
-                          "stringValue": "push"
-                        }
-                      },
-                      {
-                        "key": "workflow.is_retry",
-                        "value": {
-                          "stringValue": "false"
-                        }
-                      },
-                      {
-                        "key": "workflow.run_attempt",
-                        "value": {
-                          "intValue": "1"
-                        }
-                      },
-                      {
-                        "key": "job.name",
-                        "value": {
-                          "stringValue": "TypeScript Tests"
                         }
                       },
                       {
@@ -5612,7 +5187,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -5697,7 +5272,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -5782,7 +5357,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -5867,7 +5442,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -5952,7 +5527,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -6037,7 +5612,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -6122,7 +5697,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -6207,7 +5782,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -6273,18 +5848,58 @@
                     ],
                     "startTimeUnixNano": "0",
                     "timeUnixNano": "0"
-                  }
-                ]
-              },
-              "name": "github.job.duration",
-              "unit": "s"
-            },
-            {
-              "gauge": {
-                "dataPoints": [
+                  },
                   {
                     "asDouble": 0,
                     "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "workflow.run_attempt",
+                        "value": {
+                          "intValue": "1"
+                        }
+                      },
+                      {
+                        "key": "job.name",
+                        "value": {
+                          "stringValue": "Example Application Pipeline (2, 1) / Test Application"
+                        }
+                      },
+                      {
+                        "key": "job.run_attempt",
+                        "value": {
+                          "intValue": "1"
+                        }
+                      },
+                      {
+                        "key": "job.conclusion",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      },
                       {
                         "key": "runner.group",
                         "value": {
@@ -6337,7 +5952,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -6422,7 +6037,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -6507,7 +6122,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -6526,91 +6141,6 @@
                         "key": "job.name",
                         "value": {
                           "stringValue": "Example Application Pipeline (2, 2) / Test Application"
-                        }
-                      },
-                      {
-                        "key": "job.run_attempt",
-                        "value": {
-                          "intValue": "1"
-                        }
-                      },
-                      {
-                        "key": "job.conclusion",
-                        "value": {
-                          "stringValue": "success"
-                        }
-                      },
-                      {
-                        "key": "runner.group",
-                        "value": {
-                          "stringValue": "GitHub Actions"
-                        }
-                      },
-                      {
-                        "key": "runner.runs_on",
-                        "value": {
-                          "stringValue": "ubuntu-latest"
-                        }
-                      },
-                      {
-                        "key": "runner.os",
-                        "value": {
-                          "stringValue": "linux"
-                        }
-                      },
-                      {
-                        "key": "runner.arch",
-                        "value": {
-                          "stringValue": "amd64"
-                        }
-                      },
-                      {
-                        "key": "workflow.run_id",
-                        "value": {
-                          "intValue": "0"
-                        }
-                      }
-                    ],
-                    "startTimeUnixNano": "0",
-                    "timeUnixNano": "0"
-                  },
-                  {
-                    "asDouble": 0,
-                    "attributes": [
-                      {
-                        "key": "workflow.name",
-                        "value": {
-                          "stringValue": "Push Event Tests"
-                        }
-                      },
-                      {
-                        "key": "repository",
-                        "value": {
-                          "stringValue": "__EXPECTED_REPOSITORY__"
-                        }
-                      },
-                      {
-                        "key": "workflow.event",
-                        "value": {
-                          "stringValue": "push"
-                        }
-                      },
-                      {
-                        "key": "workflow.is_retry",
-                        "value": {
-                          "stringValue": "false"
-                        }
-                      },
-                      {
-                        "key": "workflow.run_attempt",
-                        "value": {
-                          "intValue": "1"
-                        }
-                      },
-                      {
-                        "key": "job.name",
-                        "value": {
-                          "stringValue": "TypeScript Tests"
                         }
                       },
                       {
@@ -6687,7 +6217,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -6740,7 +6270,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -6793,7 +6323,60 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
+                        }
+                      },
+                      {
+                        "key": "workflow.is_retry",
+                        "value": {
+                          "stringValue": "false"
+                        }
+                      },
+                      {
+                        "key": "workflow.run_attempt",
+                        "value": {
+                          "intValue": "1"
+                        }
+                      },
+                      {
+                        "key": "workflow.run_id",
+                        "value": {
+                          "intValue": "0"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "0",
+                    "timeUnixNano": "0"
+                  }
+                ],
+                "isMonotonic": true
+              },
+              "unit": "s"
+            },
+            {
+              "name": "github.workflow.rounding_waste",
+              "sum": {
+                "aggregationTemporality": 2,
+                "dataPoints": [
+                  {
+                    "asDouble": 0,
+                    "attributes": [
+                      {
+                        "key": "workflow.name",
+                        "value": {
+                          "stringValue": "Push Event Tests"
+                        }
+                      },
+                      {
+                        "key": "repository",
+                        "value": {
+                          "stringValue": "__EXPECTED_REPOSITORY__"
+                        }
+                      },
+                      {
+                        "key": "workflow.event",
+                        "value": {
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {
@@ -6846,7 +6429,7 @@
                       {
                         "key": "workflow.event",
                         "value": {
-                          "stringValue": "push"
+                          "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                         }
                       },
                       {

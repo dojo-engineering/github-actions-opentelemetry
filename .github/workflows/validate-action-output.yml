@@ -166,14 +166,17 @@ jobs:
       - name: Materialize expected files
         env:
           EXPECTED_REPOSITORY: ${{ inputs.expected-repository }}
+          EXPECTED_WORKFLOW_EVENT: ${{ github.event_name }}
           TEST_DATA_DIRECTORY: ${{ inputs.test-data-directory }}
         run: |
           jq --arg expected_repository "$EXPECTED_REPOSITORY" \
-            'walk(if type == "string" then gsub("__EXPECTED_REPOSITORY__"; $expected_repository) else . end)' \
+            --arg expected_workflow_event "$EXPECTED_WORKFLOW_EVENT" \
+            'walk(if type == "string" then gsub("__EXPECTED_REPOSITORY__"; $expected_repository) | gsub("__EXPECTED_WORKFLOW_EVENT__"; $expected_workflow_event) else . end)' \
             ".github/test-data/${TEST_DATA_DIRECTORY}/traces-expected.json" \
             > "$RUNNER_TEMP/traces-expected.json"
           jq --arg expected_repository "$EXPECTED_REPOSITORY" \
-            'walk(if type == "string" then gsub("__EXPECTED_REPOSITORY__"; $expected_repository) else . end)' \
+            --arg expected_workflow_event "$EXPECTED_WORKFLOW_EVENT" \
+            'walk(if type == "string" then gsub("__EXPECTED_REPOSITORY__"; $expected_repository) | gsub("__EXPECTED_WORKFLOW_EVENT__"; $expected_workflow_event) else . end)' \
             ".github/test-data/${TEST_DATA_DIRECTORY}/metrics-expected.json" \
             > "$RUNNER_TEMP/metrics-expected.json"
 

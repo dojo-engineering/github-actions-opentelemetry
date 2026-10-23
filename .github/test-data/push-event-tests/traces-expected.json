@@ -4366,7 +4366,7 @@
                 {
                   "key": "workflow.event",
                   "value": {
-                    "stringValue": "pull_request"
+                    "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
                   }
                 },
                 {
