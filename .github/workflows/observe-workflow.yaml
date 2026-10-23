@@ -44,7 +44,7 @@ jobs:
           OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://telemetry.preprod.dojo.tech/tempo/write
           OTEL_EXPORTER_OTLP_TRACES_HEADERS:
             X-API-Key=${{ secrets.REPO_GRAFANA_TRACES_AUTH_TOKEN }}
-          OTEL_EXPORTER_OTLP_METRICS_ENDPOINT: https://telemetry.preprod.dojo.tech/mimir/write/api/v1/push
+          OTEL_EXPORTER_OTLP_METRICS_ENDPOINT: https://telemetry.preprod.dojo.tech/mimir/write
           OTEL_EXPORTER_OTLP_METRICS_HEADERS:
             X-API-Key=${{ secrets.REPO_GRAFANA_METRICS_AUTH_TOKEN
             }},X-Scope-Orgid=dojo
