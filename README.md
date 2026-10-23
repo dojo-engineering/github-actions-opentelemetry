@@ -212,17 +212,17 @@ jobs:
 
 To configure the action, you need to set the following environment variables:
 
-| Environment Variable                  | Required | Default Value | Description                                                                                        |
-| ------------------------------------- | -------- | ------------- | -------------------------------------------------------------------------------------------------- |
-| `OTEL_SERVICE_NAME`                   | Yes      | -             | Service name.                                                                                      |
-| `OTEL_EXPORTER_OTLP_ENDPOINT`         | Yes      | -             | OTLP Endpoint for Traces and Metrics. e.g., <https://collector-example.com>                        |
-| `OTEL_EXPORTER_OTLP_METRICS_ENDPOINT` | No       | -             | OTLP Endpoint for Metrics instead of OTEL_EXPORTER_OTLP_ENDPOINT.                                  |
-| `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT`  | No       | -             | OTLP Endpoint for Traces instead of OTEL_EXPORTER_OTLP_ENDPOINT.                                   |
+| Environment Variable                  | Required | Default Value | Description                                                                                          |
+| ------------------------------------- | -------- | ------------- | ---------------------------------------------------------------------------------------------------- |
+| `OTEL_SERVICE_NAME`                   | Yes      | -             | Service name.                                                                                        |
+| `OTEL_EXPORTER_OTLP_ENDPOINT`         | Yes      | -             | OTLP Endpoint for Traces and Metrics. e.g., <https://collector-example.com>                          |
+| `OTEL_EXPORTER_OTLP_METRICS_ENDPOINT` | No       | -             | OTLP Endpoint for Metrics instead of OTEL_EXPORTER_OTLP_ENDPOINT.                                    |
+| `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT`  | No       | -             | OTLP Endpoint for Traces instead of OTEL_EXPORTER_OTLP_ENDPOINT.                                     |
 | `OTEL_EXPORTER_OTLP_HEADERS`          | No       | -             | Comma-separated OTLP headers in `header-name=header-value` format. See the Grafana Tempo note below. |
-| `OTEL_RESOURCE_ATTRIBUTES`            | No       | -             | Additional resource attributes for traces and metrics. e.g., "environment=production,team=backend" |
-| `FEATURE_TRACE`                       | No       | `true`        | Enable trace feature.                                                                              |
-| `FEATURE_METRICS`                     | No       | `true`        | Enable Metrics feature.                                                                            |
-| `OTEL_LOG_LEVEL`                      | No       | `info`        | Log level.                                                                                         |
+| `OTEL_RESOURCE_ATTRIBUTES`            | No       | -             | Additional resource attributes for traces and metrics. e.g., "environment=production,team=backend"   |
+| `FEATURE_TRACE`                       | No       | `true`        | Enable trace feature.                                                                                |
+| `FEATURE_METRICS`                     | No       | `true`        | Enable Metrics feature.                                                                              |
+| `OTEL_LOG_LEVEL`                      | No       | `info`        | Log level.                                                                                           |
 
 For a Grafana Tempo endpoint configured for API-key authentication, use
 `X-API-Key=<token>`. When this header is supplied through a GitHub secret as in
