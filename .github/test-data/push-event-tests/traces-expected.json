@@ -262,7 +262,7 @@
                 {
                   "key": "job.name",
                   "value": {
-                    "stringValue": "TypeScript Tests"
+                    "stringValue": "Example Application Pipeline (1, 1) / Build Application"
                   }
                 },
                 {
@@ -274,7 +274,7 @@
                 {
                   "key": "step.name",
                   "value": {
-                    "stringValue": "Check Format"
+                    "stringValue": "Checkout"
                   }
                 },
                 {
@@ -286,7 +286,7 @@
                 {
                   "key": "step.number",
                   "value": {
-                    "intValue": "6"
+                    "intValue": "2"
                   }
                 }
               ],
@@ -718,7 +718,7 @@
                 {
                   "key": "job.name",
                   "value": {
-                    "stringValue": "TypeScript Tests"
+                    "stringValue": "Example Application Pipeline (1, 1) / Build Application"
                   }
                 },
                 {
@@ -730,7 +730,64 @@
                 {
                   "key": "step.name",
                   "value": {
-                    "stringValue": "Checkout"
+                    "stringValue": "Complete job"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "6"
+                  }
+                }
+              ],
+              "endTimeUnixNano": "0",
+              "flags": 257,
+              "kind": 1,
+              "name": "Complete job",
+              "parentSpanId": "0000000000000000",
+              "spanId": "0000000000000000",
+              "startTimeUnixNano": "0",
+              "status": {
+                "code": 1
+              },
+              "traceId": "00000000000000000000000000000000"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (1, 1) / Deploy Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Complete job"
                   }
                 },
                 {
@@ -1313,63 +1370,6 @@
                   "key": "step.number",
                   "value": {
                     "intValue": "7"
-                  }
-                }
-              ],
-              "endTimeUnixNano": "0",
-              "flags": 257,
-              "kind": 1,
-              "name": "Complete job",
-              "parentSpanId": "0000000000000000",
-              "spanId": "0000000000000000",
-              "startTimeUnixNano": "0",
-              "status": {
-                "code": 1
-              },
-              "traceId": "00000000000000000000000000000000"
-            },
-            {
-              "attributes": [
-                {
-                  "key": "span.type",
-                  "value": {
-                    "stringValue": "step"
-                  }
-                },
-                {
-                  "key": "job.id",
-                  "value": {
-                    "intValue": "0"
-                  }
-                },
-                {
-                  "key": "job.name",
-                  "value": {
-                    "stringValue": "TypeScript Tests"
-                  }
-                },
-                {
-                  "key": "job.run_attempt",
-                  "value": {
-                    "intValue": "1"
-                  }
-                },
-                {
-                  "key": "step.name",
-                  "value": {
-                    "stringValue": "Complete job"
-                  }
-                },
-                {
-                  "key": "step.conclusion",
-                  "value": {
-                    "stringValue": "success"
-                  }
-                },
-                {
-                  "key": "step.number",
-                  "value": {
-                    "intValue": "17"
                   }
                 }
               ],
@@ -3646,63 +3646,6 @@
                 {
                   "key": "job.name",
                   "value": {
-                    "stringValue": "TypeScript Tests"
-                  }
-                },
-                {
-                  "key": "job.run_attempt",
-                  "value": {
-                    "intValue": "1"
-                  }
-                },
-                {
-                  "key": "step.name",
-                  "value": {
-                    "stringValue": "Initialize containers"
-                  }
-                },
-                {
-                  "key": "step.conclusion",
-                  "value": {
-                    "stringValue": "success"
-                  }
-                },
-                {
-                  "key": "step.number",
-                  "value": {
-                    "intValue": "2"
-                  }
-                }
-              ],
-              "endTimeUnixNano": "0",
-              "flags": 257,
-              "kind": 1,
-              "name": "Initialize containers",
-              "parentSpanId": "0000000000000000",
-              "spanId": "0000000000000000",
-              "startTimeUnixNano": "0",
-              "status": {
-                "code": 1
-              },
-              "traceId": "00000000000000000000000000000000"
-            },
-            {
-              "attributes": [
-                {
-                  "key": "span.type",
-                  "value": {
-                    "stringValue": "step"
-                  }
-                },
-                {
-                  "key": "job.id",
-                  "value": {
-                    "intValue": "0"
-                  }
-                },
-                {
-                  "key": "job.name",
-                  "value": {
                     "stringValue": "Example Application Pipeline (1, 1) / Build Application"
                   }
                 },
@@ -4159,63 +4102,6 @@
                 {
                   "key": "job.name",
                   "value": {
-                    "stringValue": "TypeScript Tests"
-                  }
-                },
-                {
-                  "key": "job.run_attempt",
-                  "value": {
-                    "intValue": "1"
-                  }
-                },
-                {
-                  "key": "step.name",
-                  "value": {
-                    "stringValue": "Install Dependencies"
-                  }
-                },
-                {
-                  "key": "step.conclusion",
-                  "value": {
-                    "stringValue": "success"
-                  }
-                },
-                {
-                  "key": "step.number",
-                  "value": {
-                    "intValue": "5"
-                  }
-                }
-              ],
-              "endTimeUnixNano": "0",
-              "flags": 257,
-              "kind": 1,
-              "name": "Install Dependencies",
-              "parentSpanId": "0000000000000000",
-              "spanId": "0000000000000000",
-              "startTimeUnixNano": "0",
-              "status": {
-                "code": 1
-              },
-              "traceId": "00000000000000000000000000000000"
-            },
-            {
-              "attributes": [
-                {
-                  "key": "span.type",
-                  "value": {
-                    "stringValue": "step"
-                  }
-                },
-                {
-                  "key": "job.id",
-                  "value": {
-                    "intValue": "0"
-                  }
-                },
-                {
-                  "key": "job.name",
-                  "value": {
                     "stringValue": "Example Application Pipeline (1, 1) / Test Application"
                   }
                 },
@@ -4247,7 +4133,7 @@
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
-              "name": "Example Application Pipeline (2, 2) / Test Application with time of waiting runner",
+              "name": "Lint",
               "parentSpanId": "0000000000000000",
               "spanId": "0000000000000000",
               "startTimeUnixNano": "0",
@@ -4257,110 +4143,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
-              "endTimeUnixNano": "0",
-              "flags": 257,
-              "kind": 1,
-              "name": "Install Dependencies",
-              "parentSpanId": "0000000000000000",
-              "spanId": "0000000000000000",
-              "startTimeUnixNano": "0",
-              "status": {
-                "code": 1
-              },
-              "traceId": "00000000000000000000000000000000"
-            },
-            {
-              "endTimeUnixNano": "0",
-              "flags": 257,
-              "kind": 1,
-              "name": "Install Dependencies",
-              "parentSpanId": "0000000000000000",
-              "spanId": "0000000000000000",
-              "startTimeUnixNano": "0",
-              "status": {
-                "code": 1
-              },
-              "traceId": "00000000000000000000000000000000"
-            },
-            {
-              "endTimeUnixNano": "0",
-              "flags": 257,
-              "kind": 1,
-              "name": "Install Dependencies",
-              "parentSpanId": "0000000000000000",
-              "spanId": "0000000000000000",
-              "startTimeUnixNano": "0",
-              "status": {
-                "code": 1
-              },
-              "traceId": "00000000000000000000000000000000"
-            },
-            {
-              "endTimeUnixNano": "0",
-              "flags": 257,
-              "kind": 1,
-              "name": "Install Dependencies",
-              "parentSpanId": "0000000000000000",
-              "spanId": "0000000000000000",
-              "startTimeUnixNano": "0",
-              "status": {
-                "code": 1
-              },
-              "traceId": "00000000000000000000000000000000"
-            },
-            {
-              "endTimeUnixNano": "0",
-              "flags": 257,
-              "kind": 1,
-              "name": "Install Dependencies",
-              "parentSpanId": "0000000000000000",
-              "spanId": "0000000000000000",
-              "startTimeUnixNano": "0",
-              "status": {
-                "code": 1
-              },
-              "traceId": "00000000000000000000000000000000"
-            },
-            {
-              "endTimeUnixNano": "0",
-              "flags": 257,
-              "kind": 1,
-              "name": "Install Dependencies",
-              "parentSpanId": "0000000000000000",
-              "spanId": "0000000000000000",
-              "startTimeUnixNano": "0",
-              "status": {
-                "code": 1
-              },
-              "traceId": "00000000000000000000000000000000"
-            },
-            {
-              "endTimeUnixNano": "0",
-              "flags": 257,
-              "kind": 1,
-              "name": "Install Dependencies",
-              "parentSpanId": "0000000000000000",
-              "spanId": "0000000000000000",
-              "startTimeUnixNano": "0",
-              "status": {
-                "code": 1
-              },
-              "traceId": "00000000000000000000000000000000"
-            },
-            {
-              "endTimeUnixNano": "0",
-              "flags": 257,
-              "kind": 1,
-              "name": "Install Dependencies",
-              "parentSpanId": "0000000000000000",
-              "spanId": "0000000000000000",
-              "startTimeUnixNano": "0",
-              "status": {
-                "code": 1
-              },
-              "traceId": "00000000000000000000000000000000"
-            },
-            {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (1, 2) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Lint"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "5"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -4490,63 +4316,6 @@
             {
               "attributes": [
                 {
-                  "key": "span.type",
-                  "value": {
-                    "stringValue": "step"
-                  }
-                },
-                {
-                  "key": "job.id",
-                  "value": {
-                    "intValue": "0"
-                  }
-                },
-                {
-                  "key": "job.name",
-                  "value": {
-                    "stringValue": "TypeScript Tests"
-                  }
-                },
-                {
-                  "key": "job.run_attempt",
-                  "value": {
-                    "intValue": "1"
-                  }
-                },
-                {
-                  "key": "step.name",
-                  "value": {
-                    "stringValue": "Lint"
-                  }
-                },
-                {
-                  "key": "step.conclusion",
-                  "value": {
-                    "stringValue": "success"
-                  }
-                },
-                {
-                  "key": "step.number",
-                  "value": {
-                    "intValue": "7"
-                  }
-                }
-              ],
-              "endTimeUnixNano": "0",
-              "flags": 257,
-              "kind": 1,
-              "name": "Lint",
-              "parentSpanId": "0000000000000000",
-              "spanId": "0000000000000000",
-              "startTimeUnixNano": "0",
-              "status": {
-                "code": 1
-              },
-              "traceId": "00000000000000000000000000000000"
-            },
-            {
-              "attributes": [
-                {
                   "key": "repository",
                   "value": {
                     "stringValue": "__EXPECTED_REPOSITORY__"
@@ -4597,7 +4366,7 @@
                 {
                   "key": "workflow.event",
                   "value": {
-                    "stringValue": "push"
+                    "stringValue": "pull_request"
                   }
                 },
                 {
@@ -4651,7 +4420,7 @@
                 {
                   "key": "workflow.jobs_count",
                   "value": {
-                    "intValue": "13"
+                    "intValue": "12"
                   }
                 }
               ],
@@ -5366,7 +5135,7 @@
                 {
                   "key": "job.name",
                   "value": {
-                    "stringValue": "TypeScript Tests"
+                    "stringValue": "Example Application Pipeline (1, 1) / Build Application"
                   }
                 },
                 {
@@ -5378,7 +5147,7 @@
                 {
                   "key": "step.name",
                   "value": {
-                    "stringValue": "Set up job"
+                    "stringValue": "Setup"
                   }
                 },
                 {
@@ -5390,7 +5159,7 @@
                 {
                   "key": "step.number",
                   "value": {
-                    "intValue": "1"
+                    "intValue": "3"
                   }
                 }
               ],
@@ -5822,7 +5591,7 @@
                 {
                   "key": "job.name",
                   "value": {
-                    "stringValue": "TypeScript Tests"
+                    "stringValue": "Example Application Pipeline (1, 1) / Test Application"
                   }
                 },
                 {
@@ -5834,7 +5603,7 @@
                 {
                   "key": "step.name",
                   "value": {
-                    "stringValue": "Setup Node.js"
+                    "stringValue": "Test"
                   }
                 },
                 {
@@ -5846,7 +5615,7 @@
                 {
                   "key": "step.number",
                   "value": {
-                    "intValue": "4"
+                    "intValue": "6"
                   }
                 }
               ],
@@ -5868,6 +5637,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -5877,6 +5652,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Test"
@@ -5913,6 +5694,12 @@
                   "key": "span.type",
                   "value": {
                     "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -5922,6 +5709,12 @@
                   }
                 },
                 {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "step.name",
                   "value": {
                     "stringValue": "Test"
@@ -5937,12 +5730,6 @@
                   "key": "step.number",
                   "value": {
                     "intValue": "6"
-                  }
-                },
-                {
-                  "key": "job.run_attempt",
-                  "value": {
-                    "intValue": "1"
                   }
                 }
               ],
@@ -5967,9 +5754,21 @@
                   }
                 },
                 {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
                   "key": "job.name",
                   "value": {
                     "stringValue": "Example Application Pipeline (2, 2) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
                   }
                 },
                 {
