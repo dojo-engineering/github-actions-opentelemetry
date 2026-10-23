@@ -1,0 +1,83 @@
+name: Checks
+# Reusable workflow containing all static checks, tests and the dist/ check.
+# Called by prs.yml (the merge gate) and on-main.yml (a safety net before
+# tagging, because consumers run the committed dist/ via the version tags).
+
+on:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    name: Lint, Test & Check dist/
+    runs-on: ubuntu-latest
+    services:
+      # Anything is fine as long as it accepts metrics and traces with OTLP
+      # because the tests do not check stored data.
+      collector:
+        image: otel/opentelemetry-collector-contrib:0.115.1
+        ports:
+          - 4318:4318
+
+    # Each check after install runs even if an earlier check failed, so a
+    # single run reports every problem.
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version-file: .node-version
+          cache: npm
+
+      - name: Install Dependencies
+        id: install
+        run: npm ci
+
+      - name: Check Format
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: npm run format:check
+
+      - name: Lint
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: npm run lint
+
+      - name: Test
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: npm run test
+
+      # In TypeScript actions, `dist/index.js` is the code that runs when the
+      # action is referenced with `uses:`. Use `package` rather than `bundle`
+      # because `bundle` runs `prettier --write`, which would rewrite sources.
+      - name: Build dist/ Directory
+        id: build
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: npm run package
+
+      - name: Compare Directories
+        id: diff
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: |
+          if [ ! -d dist/ ]; then
+            echo "Expected dist/ directory does not exist.  See status below:"
+            ls -la ./
+            exit 1
+          fi
+          if [ "$(git diff --ignore-space-at-eol --text dist/ | wc -l)" -gt "0" ]; then
+            echo "Detected uncommitted changes after build. Run 'npm run bundle' and commit dist/. See diff below:"
+            git diff --ignore-space-at-eol --text dist/
+            exit 1
+          fi
+
+      - name: Upload expected dist/
+        if: ${{ failure() && steps.diff.outcome == 'failure' }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: dist
+          path: dist/
+          retention-days: 5

@@ -1,0 +1,38 @@
+name: PRs
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    name: Checks
+    uses: ./.github/workflows/checks.yml
+
+  # Single, stable job name to mark as a required status check in branch
+  # protection, so jobs can be added to or renamed in checks.yml freely.
+  pr-checks-passed:
+    name: PR Checks Passed
+    if: ${{ always() }}
+    needs:
+      - checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify all checks succeeded
+        env:
+          RESULTS: ${{ join(needs.*.result, ' ') }}
+        run: |
+          for result in $RESULTS; do
+            if [ "$result" != "success" ]; then
+              echo "::error::Not all checks succeeded: $RESULTS"
+              exit 1
+            fi
+          done

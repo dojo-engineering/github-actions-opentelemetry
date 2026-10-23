@@ -388,37 +388,6 @@
                     ],
                     "startTimeUnixNano": "0",
                     "timeUnixNano": "0"
-                  },
-                  {
-                    "asDouble": 0,
-                    "attributes": [
-                      {
-                        "key": "workflow.name",
-                        "value": {
-                          "stringValue": "Push Event Tests"
-                        }
-                      },
-                      {
-                        "key": "repository",
-                        "value": {
-                          "stringValue": "__EXPECTED_REPOSITORY__"
-                        }
-                      },
-                      {
-                        "key": "job.name",
-                        "value": {
-                          "stringValue": "TypeScript Tests"
-                        }
-                      },
-                      {
-                        "key": "job.conclusion",
-                        "value": {
-                          "stringValue": "success"
-                        }
-                      }
-                    ],
-                    "startTimeUnixNano": "0",
-                    "timeUnixNano": "0"
                   }
                 ]
               },
@@ -788,37 +757,6 @@
                         "key": "job.name",
                         "value": {
                           "stringValue": "Example Application Pipeline (2, 2) / Test Application"
-                        }
-                      },
-                      {
-                        "key": "job.conclusion",
-                        "value": {
-                          "stringValue": "success"
-                        }
-                      }
-                    ],
-                    "startTimeUnixNano": "0",
-                    "timeUnixNano": "0"
-                  },
-                  {
-                    "asDouble": 0,
-                    "attributes": [
-                      {
-                        "key": "workflow.name",
-                        "value": {
-                          "stringValue": "Push Event Tests"
-                        }
-                      },
-                      {
-                        "key": "repository",
-                        "value": {
-                          "stringValue": "__EXPECTED_REPOSITORY__"
-                        }
-                      },
-                      {
-                        "key": "job.name",
-                        "value": {
-                          "stringValue": "TypeScript Tests"
                         }
                       },
                       {

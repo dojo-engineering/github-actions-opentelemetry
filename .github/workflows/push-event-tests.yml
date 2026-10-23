@@ -1,52 +1,25 @@
 name: Push Event Tests
+# End-to-end test of the action in "current workflow" mode. Must remain a
+# standalone workflow: the action collects every job in this run, and the
+# expected test data assumes this workflow's name and job set.
 
 on:
+  pull_request:
+    branches:
+      - main
   push:
+    branches:
+      - main
 
 permissions:
   contents: read
 
+concurrency:
+  group:
+    ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
-  test-typescript:
-    name: TypeScript Tests
-    runs-on: ubuntu-latest
-    services:
-      # Anything is fine as long as it accepts metrics and traces with OTLP because the tests does not check stored data.
-      collector:
-        image: otel/opentelemetry-collector-contrib:0.115.1
-        ports:
-          - 4318:4318
-
-    steps:
-      - name: Checkout
-        id: checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        id: setup-node
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: .node-version
-          cache: npm
-
-      - name: Install Dependencies
-        id: npm-ci
-        run: npm ci
-
-      - name: Check Format
-        id: npm-format-check
-        run: npm run format:check
-
-      - name: Lint
-        id: npm-lint
-        run: npm run lint
-
-      - name: Test
-        id: npm-test
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm run test
-
   example-app:
     name: Example Application Pipeline
     strategy:
@@ -58,11 +31,9 @@ jobs:
       fixed-sleep: ${{ matrix.fixed-sleep }}
       random-sleep: ${{ matrix.random-sleep }}
 
-  # Test the action for push/pull_request events using the reusable workflow
+  # Test the action for push events using the reusable workflow
   test-action:
-    needs:
-      - test-typescript
-      - example-app
+    needs: example-app
     name: Test Action (Push Event)
     uses: ./.github/workflows/validate-action-output.yml
     with:

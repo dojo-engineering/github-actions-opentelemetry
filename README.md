@@ -3,9 +3,9 @@
 > [!IMPORTANT] This github action is currently owned by payments maturity
 > (resilliance). But Platform B&P may also be able to assit
 
-![CI](https://github.com/actions/typescript-action/actions/workflows/ci.yml/badge.svg)
-[![Check dist/](https://github.com/actions/typescript-action/actions/workflows/check-dist.yml/badge.svg)](https://github.com/actions/typescript-action/actions/workflows/check-dist.yml)
-[![CodeQL](https://github.com/actions/typescript-action/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/actions/typescript-action/actions/workflows/codeql-analysis.yml)
+[![On Main](https://github.com/dojo-engineering/github-actions-opentelemetry/actions/workflows/on-main.yml/badge.svg?branch=main)](https://github.com/dojo-engineering/github-actions-opentelemetry/actions/workflows/on-main.yml)
+[![Push Event Tests](https://github.com/dojo-engineering/github-actions-opentelemetry/actions/workflows/push-event-tests.yml/badge.svg?branch=main)](https://github.com/dojo-engineering/github-actions-opentelemetry/actions/workflows/push-event-tests.yml)
+[![Workflow Run Tests](https://github.com/dojo-engineering/github-actions-opentelemetry/actions/workflows/workflow-run-tests.yml/badge.svg?branch=main)](https://github.com/dojo-engineering/github-actions-opentelemetry/actions/workflows/workflow-run-tests.yml)
 [![Coverage](./badges/coverage.svg)](./badges/coverage.svg)
 
 This action sends metrics and traces of GitHub Actions to an OpenTelemetry
