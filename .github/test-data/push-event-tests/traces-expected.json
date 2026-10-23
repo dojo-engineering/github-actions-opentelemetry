@@ -18,6 +18,50 @@
           },
           "spans": [
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (1, 1) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Build"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "5"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -31,6 +75,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (1, 2) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Build"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "5"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -44,6 +132,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (2, 1) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Build"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "5"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -57,6 +189,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (2, 2) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Build"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "5"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -70,6 +246,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (1, 1) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Checkout"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "2"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -83,6 +303,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (1, 1) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Checkout"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "2"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -96,6 +360,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (1, 2) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Checkout"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "2"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -109,6 +417,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (1, 2) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Checkout"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "2"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -122,6 +474,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (2, 1) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Checkout"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "2"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -135,6 +531,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (2, 1) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Checkout"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "2"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -148,6 +588,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (2, 2) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Checkout"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "2"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -161,6 +645,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (2, 2) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Checkout"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "2"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -174,6 +702,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (1, 1) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Complete job"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "6"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -187,6 +759,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (1, 1) / Deploy Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Complete job"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "3"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -200,6 +816,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (1, 1) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Complete job"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "7"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -213,6 +873,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (1, 2) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Complete job"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "6"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -226,6 +930,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (1, 2) / Deploy Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Complete job"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "3"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -239,6 +987,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (1, 2) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Complete job"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "7"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -252,6 +1044,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (2, 1) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Complete job"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "6"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -265,6 +1101,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (2, 1) / Deploy Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Complete job"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "3"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -278,6 +1158,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (2, 1) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Complete job"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "7"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -291,6 +1215,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (2, 2) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Complete job"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "6"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -304,6 +1272,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (2, 2) / Deploy Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Complete job"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "3"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -317,6 +1329,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (2, 2) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Complete job"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "7"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -330,45 +1386,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
-              "endTimeUnixNano": "0",
-              "flags": 257,
-              "kind": 1,
-              "name": "Deploy",
-              "parentSpanId": "0000000000000000",
-              "spanId": "0000000000000000",
-              "startTimeUnixNano": "0",
-              "status": {
-                "code": 1
-              },
-              "traceId": "00000000000000000000000000000000"
-            },
-            {
-              "endTimeUnixNano": "0",
-              "flags": 257,
-              "kind": 1,
-              "name": "Deploy",
-              "parentSpanId": "0000000000000000",
-              "spanId": "0000000000000000",
-              "startTimeUnixNano": "0",
-              "status": {
-                "code": 1
-              },
-              "traceId": "00000000000000000000000000000000"
-            },
-            {
-              "endTimeUnixNano": "0",
-              "flags": 257,
-              "kind": 1,
-              "name": "Deploy",
-              "parentSpanId": "0000000000000000",
-              "spanId": "0000000000000000",
-              "startTimeUnixNano": "0",
-              "status": {
-                "code": 1
-              },
-              "traceId": "00000000000000000000000000000000"
-            },
-            {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (1, 1) / Deploy Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Deploy"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "2"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -384,15 +1445,216 @@
             {
               "attributes": [
                 {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
                   "key": "job.id",
                   "value": {
                     "intValue": "0"
                   }
                 },
                 {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (1, 2) / Deploy Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Deploy"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "2"
+                  }
+                }
+              ],
+              "endTimeUnixNano": "0",
+              "flags": 257,
+              "kind": 1,
+              "name": "Deploy",
+              "parentSpanId": "0000000000000000",
+              "spanId": "0000000000000000",
+              "startTimeUnixNano": "0",
+              "status": {
+                "code": 1
+              },
+              "traceId": "00000000000000000000000000000000"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (2, 1) / Deploy Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Deploy"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "2"
+                  }
+                }
+              ],
+              "endTimeUnixNano": "0",
+              "flags": 257,
+              "kind": 1,
+              "name": "Deploy",
+              "parentSpanId": "0000000000000000",
+              "spanId": "0000000000000000",
+              "startTimeUnixNano": "0",
+              "status": {
+                "code": 1
+              },
+              "traceId": "00000000000000000000000000000000"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (2, 2) / Deploy Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Deploy"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "2"
+                  }
+                }
+              ],
+              "endTimeUnixNano": "0",
+              "flags": 257,
+              "kind": 1,
+              "name": "Deploy",
+              "parentSpanId": "0000000000000000",
+              "spanId": "0000000000000000",
+              "startTimeUnixNano": "0",
+              "status": {
+                "code": 1
+              },
+              "traceId": "00000000000000000000000000000000"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "job"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (1, 1) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "job.conclusion",
                   "value": {
                     "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "job.labels",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      ]
+                    }
                   }
                 },
                 {
@@ -405,6 +1667,66 @@
                   "key": "runner.group",
                   "value": {
                     "stringValue": "GitHub Actions"
+                  }
+                },
+                {
+                  "key": "runner.runs_on",
+                  "value": {
+                    "stringValue": "ubuntu-latest"
+                  }
+                },
+                {
+                  "key": "runner.os",
+                  "value": {
+                    "stringValue": "linux"
+                  }
+                },
+                {
+                  "key": "runner.arch",
+                  "value": {
+                    "stringValue": "amd64"
+                  }
+                },
+                {
+                  "key": "job.queued_duration_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.execution_duration_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.raw_billable_minutes",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.billable_minutes",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.billable_multiplier",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "job.rounding_waste_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.steps_count",
+                  "value": {
+                    "intValue": "6"
                   }
                 }
               ],
@@ -423,27 +1745,27 @@
             {
               "attributes": [
                 {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "job.wrapper"
+                  }
+                },
+                {
                   "key": "job.id",
                   "value": {
                     "intValue": "0"
                   }
                 },
                 {
-                  "key": "job.conclusion",
+                  "key": "job.name",
                   "value": {
-                    "stringValue": "success"
+                    "stringValue": "Example Application Pipeline (1, 1) / Build Application"
                   }
                 },
                 {
-                  "key": "runner.name",
+                  "key": "job.run_attempt",
                   "value": {
-                    "stringValue": "GitHub Actions 0"
-                  }
-                },
-                {
-                  "key": "runner.group",
-                  "value": {
-                    "stringValue": "GitHub Actions"
+                    "intValue": "1"
                   }
                 }
               ],
@@ -462,15 +1784,45 @@
             {
               "attributes": [
                 {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "job"
+                  }
+                },
+                {
                   "key": "job.id",
                   "value": {
                     "intValue": "0"
                   }
                 },
                 {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (1, 1) / Deploy Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "job.conclusion",
                   "value": {
                     "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "job.labels",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      ]
+                    }
                   }
                 },
                 {
@@ -483,6 +1835,66 @@
                   "key": "runner.group",
                   "value": {
                     "stringValue": "GitHub Actions"
+                  }
+                },
+                {
+                  "key": "runner.runs_on",
+                  "value": {
+                    "stringValue": "ubuntu-latest"
+                  }
+                },
+                {
+                  "key": "runner.os",
+                  "value": {
+                    "stringValue": "linux"
+                  }
+                },
+                {
+                  "key": "runner.arch",
+                  "value": {
+                    "stringValue": "amd64"
+                  }
+                },
+                {
+                  "key": "job.queued_duration_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.execution_duration_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.raw_billable_minutes",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.billable_minutes",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.billable_multiplier",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "job.rounding_waste_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.steps_count",
+                  "value": {
+                    "intValue": "3"
                   }
                 }
               ],
@@ -501,27 +1913,27 @@
             {
               "attributes": [
                 {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "job.wrapper"
+                  }
+                },
+                {
                   "key": "job.id",
                   "value": {
                     "intValue": "0"
                   }
                 },
                 {
-                  "key": "job.conclusion",
+                  "key": "job.name",
                   "value": {
-                    "stringValue": "success"
+                    "stringValue": "Example Application Pipeline (1, 1) / Deploy Application"
                   }
                 },
                 {
-                  "key": "runner.name",
+                  "key": "job.run_attempt",
                   "value": {
-                    "stringValue": "GitHub Actions 0"
-                  }
-                },
-                {
-                  "key": "runner.group",
-                  "value": {
-                    "stringValue": "GitHub Actions"
+                    "intValue": "1"
                   }
                 }
               ],
@@ -540,15 +1952,45 @@
             {
               "attributes": [
                 {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "job"
+                  }
+                },
+                {
                   "key": "job.id",
                   "value": {
                     "intValue": "0"
                   }
                 },
                 {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (1, 1) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "job.conclusion",
                   "value": {
                     "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "job.labels",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      ]
+                    }
                   }
                 },
                 {
@@ -561,6 +2003,66 @@
                   "key": "runner.group",
                   "value": {
                     "stringValue": "GitHub Actions"
+                  }
+                },
+                {
+                  "key": "runner.runs_on",
+                  "value": {
+                    "stringValue": "ubuntu-latest"
+                  }
+                },
+                {
+                  "key": "runner.os",
+                  "value": {
+                    "stringValue": "linux"
+                  }
+                },
+                {
+                  "key": "runner.arch",
+                  "value": {
+                    "stringValue": "amd64"
+                  }
+                },
+                {
+                  "key": "job.queued_duration_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.execution_duration_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.raw_billable_minutes",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.billable_minutes",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.billable_multiplier",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "job.rounding_waste_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.steps_count",
+                  "value": {
+                    "intValue": "7"
                   }
                 }
               ],
@@ -579,27 +2081,27 @@
             {
               "attributes": [
                 {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "job.wrapper"
+                  }
+                },
+                {
                   "key": "job.id",
                   "value": {
                     "intValue": "0"
                   }
                 },
                 {
-                  "key": "job.conclusion",
+                  "key": "job.name",
                   "value": {
-                    "stringValue": "success"
+                    "stringValue": "Example Application Pipeline (1, 1) / Test Application"
                   }
                 },
                 {
-                  "key": "runner.name",
+                  "key": "job.run_attempt",
                   "value": {
-                    "stringValue": "GitHub Actions 0"
-                  }
-                },
-                {
-                  "key": "runner.group",
-                  "value": {
-                    "stringValue": "GitHub Actions"
+                    "intValue": "1"
                   }
                 }
               ],
@@ -618,15 +2120,45 @@
             {
               "attributes": [
                 {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "job"
+                  }
+                },
+                {
                   "key": "job.id",
                   "value": {
                     "intValue": "0"
                   }
                 },
                 {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (1, 2) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "job.conclusion",
                   "value": {
                     "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "job.labels",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      ]
+                    }
                   }
                 },
                 {
@@ -639,6 +2171,66 @@
                   "key": "runner.group",
                   "value": {
                     "stringValue": "GitHub Actions"
+                  }
+                },
+                {
+                  "key": "runner.runs_on",
+                  "value": {
+                    "stringValue": "ubuntu-latest"
+                  }
+                },
+                {
+                  "key": "runner.os",
+                  "value": {
+                    "stringValue": "linux"
+                  }
+                },
+                {
+                  "key": "runner.arch",
+                  "value": {
+                    "stringValue": "amd64"
+                  }
+                },
+                {
+                  "key": "job.queued_duration_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.execution_duration_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.raw_billable_minutes",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.billable_minutes",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.billable_multiplier",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "job.rounding_waste_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.steps_count",
+                  "value": {
+                    "intValue": "6"
                   }
                 }
               ],
@@ -657,27 +2249,27 @@
             {
               "attributes": [
                 {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "job.wrapper"
+                  }
+                },
+                {
                   "key": "job.id",
                   "value": {
                     "intValue": "0"
                   }
                 },
                 {
-                  "key": "job.conclusion",
+                  "key": "job.name",
                   "value": {
-                    "stringValue": "success"
+                    "stringValue": "Example Application Pipeline (1, 2) / Build Application"
                   }
                 },
                 {
-                  "key": "runner.name",
+                  "key": "job.run_attempt",
                   "value": {
-                    "stringValue": "GitHub Actions 0"
-                  }
-                },
-                {
-                  "key": "runner.group",
-                  "value": {
-                    "stringValue": "GitHub Actions"
+                    "intValue": "1"
                   }
                 }
               ],
@@ -696,15 +2288,45 @@
             {
               "attributes": [
                 {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "job"
+                  }
+                },
+                {
                   "key": "job.id",
                   "value": {
                     "intValue": "0"
                   }
                 },
                 {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (1, 2) / Deploy Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "job.conclusion",
                   "value": {
                     "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "job.labels",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      ]
+                    }
                   }
                 },
                 {
@@ -717,6 +2339,66 @@
                   "key": "runner.group",
                   "value": {
                     "stringValue": "GitHub Actions"
+                  }
+                },
+                {
+                  "key": "runner.runs_on",
+                  "value": {
+                    "stringValue": "ubuntu-latest"
+                  }
+                },
+                {
+                  "key": "runner.os",
+                  "value": {
+                    "stringValue": "linux"
+                  }
+                },
+                {
+                  "key": "runner.arch",
+                  "value": {
+                    "stringValue": "amd64"
+                  }
+                },
+                {
+                  "key": "job.queued_duration_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.execution_duration_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.raw_billable_minutes",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.billable_minutes",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.billable_multiplier",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "job.rounding_waste_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.steps_count",
+                  "value": {
+                    "intValue": "3"
                   }
                 }
               ],
@@ -735,27 +2417,27 @@
             {
               "attributes": [
                 {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "job.wrapper"
+                  }
+                },
+                {
                   "key": "job.id",
                   "value": {
                     "intValue": "0"
                   }
                 },
                 {
-                  "key": "job.conclusion",
+                  "key": "job.name",
                   "value": {
-                    "stringValue": "success"
+                    "stringValue": "Example Application Pipeline (1, 2) / Deploy Application"
                   }
                 },
                 {
-                  "key": "runner.name",
+                  "key": "job.run_attempt",
                   "value": {
-                    "stringValue": "GitHub Actions 0"
-                  }
-                },
-                {
-                  "key": "runner.group",
-                  "value": {
-                    "stringValue": "GitHub Actions"
+                    "intValue": "1"
                   }
                 }
               ],
@@ -774,15 +2456,45 @@
             {
               "attributes": [
                 {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "job"
+                  }
+                },
+                {
                   "key": "job.id",
                   "value": {
                     "intValue": "0"
                   }
                 },
                 {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (1, 2) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "job.conclusion",
                   "value": {
                     "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "job.labels",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      ]
+                    }
                   }
                 },
                 {
@@ -795,6 +2507,66 @@
                   "key": "runner.group",
                   "value": {
                     "stringValue": "GitHub Actions"
+                  }
+                },
+                {
+                  "key": "runner.runs_on",
+                  "value": {
+                    "stringValue": "ubuntu-latest"
+                  }
+                },
+                {
+                  "key": "runner.os",
+                  "value": {
+                    "stringValue": "linux"
+                  }
+                },
+                {
+                  "key": "runner.arch",
+                  "value": {
+                    "stringValue": "amd64"
+                  }
+                },
+                {
+                  "key": "job.queued_duration_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.execution_duration_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.raw_billable_minutes",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.billable_minutes",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.billable_multiplier",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "job.rounding_waste_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.steps_count",
+                  "value": {
+                    "intValue": "7"
                   }
                 }
               ],
@@ -813,27 +2585,27 @@
             {
               "attributes": [
                 {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "job.wrapper"
+                  }
+                },
+                {
                   "key": "job.id",
                   "value": {
                     "intValue": "0"
                   }
                 },
                 {
-                  "key": "job.conclusion",
+                  "key": "job.name",
                   "value": {
-                    "stringValue": "success"
+                    "stringValue": "Example Application Pipeline (1, 2) / Test Application"
                   }
                 },
                 {
-                  "key": "runner.name",
+                  "key": "job.run_attempt",
                   "value": {
-                    "stringValue": "GitHub Actions 0"
-                  }
-                },
-                {
-                  "key": "runner.group",
-                  "value": {
-                    "stringValue": "GitHub Actions"
+                    "intValue": "1"
                   }
                 }
               ],
@@ -852,15 +2624,45 @@
             {
               "attributes": [
                 {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "job"
+                  }
+                },
+                {
                   "key": "job.id",
                   "value": {
                     "intValue": "0"
                   }
                 },
                 {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (2, 1) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "job.conclusion",
                   "value": {
                     "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "job.labels",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      ]
+                    }
                   }
                 },
                 {
@@ -873,6 +2675,66 @@
                   "key": "runner.group",
                   "value": {
                     "stringValue": "GitHub Actions"
+                  }
+                },
+                {
+                  "key": "runner.runs_on",
+                  "value": {
+                    "stringValue": "ubuntu-latest"
+                  }
+                },
+                {
+                  "key": "runner.os",
+                  "value": {
+                    "stringValue": "linux"
+                  }
+                },
+                {
+                  "key": "runner.arch",
+                  "value": {
+                    "stringValue": "amd64"
+                  }
+                },
+                {
+                  "key": "job.queued_duration_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.execution_duration_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.raw_billable_minutes",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.billable_minutes",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.billable_multiplier",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "job.rounding_waste_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.steps_count",
+                  "value": {
+                    "intValue": "6"
                   }
                 }
               ],
@@ -891,27 +2753,27 @@
             {
               "attributes": [
                 {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "job.wrapper"
+                  }
+                },
+                {
                   "key": "job.id",
                   "value": {
                     "intValue": "0"
                   }
                 },
                 {
-                  "key": "job.conclusion",
+                  "key": "job.name",
                   "value": {
-                    "stringValue": "success"
+                    "stringValue": "Example Application Pipeline (2, 1) / Build Application"
                   }
                 },
                 {
-                  "key": "runner.name",
+                  "key": "job.run_attempt",
                   "value": {
-                    "stringValue": "GitHub Actions 0"
-                  }
-                },
-                {
-                  "key": "runner.group",
-                  "value": {
-                    "stringValue": "GitHub Actions"
+                    "intValue": "1"
                   }
                 }
               ],
@@ -930,15 +2792,45 @@
             {
               "attributes": [
                 {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "job"
+                  }
+                },
+                {
                   "key": "job.id",
                   "value": {
                     "intValue": "0"
                   }
                 },
                 {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (2, 1) / Deploy Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "job.conclusion",
                   "value": {
                     "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "job.labels",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      ]
+                    }
                   }
                 },
                 {
@@ -951,6 +2843,66 @@
                   "key": "runner.group",
                   "value": {
                     "stringValue": "GitHub Actions"
+                  }
+                },
+                {
+                  "key": "runner.runs_on",
+                  "value": {
+                    "stringValue": "ubuntu-latest"
+                  }
+                },
+                {
+                  "key": "runner.os",
+                  "value": {
+                    "stringValue": "linux"
+                  }
+                },
+                {
+                  "key": "runner.arch",
+                  "value": {
+                    "stringValue": "amd64"
+                  }
+                },
+                {
+                  "key": "job.queued_duration_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.execution_duration_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.raw_billable_minutes",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.billable_minutes",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.billable_multiplier",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "job.rounding_waste_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.steps_count",
+                  "value": {
+                    "intValue": "3"
                   }
                 }
               ],
@@ -969,27 +2921,27 @@
             {
               "attributes": [
                 {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "job.wrapper"
+                  }
+                },
+                {
                   "key": "job.id",
                   "value": {
                     "intValue": "0"
                   }
                 },
                 {
-                  "key": "job.conclusion",
+                  "key": "job.name",
                   "value": {
-                    "stringValue": "success"
+                    "stringValue": "Example Application Pipeline (2, 1) / Deploy Application"
                   }
                 },
                 {
-                  "key": "runner.name",
+                  "key": "job.run_attempt",
                   "value": {
-                    "stringValue": "GitHub Actions 0"
-                  }
-                },
-                {
-                  "key": "runner.group",
-                  "value": {
-                    "stringValue": "GitHub Actions"
+                    "intValue": "1"
                   }
                 }
               ],
@@ -1008,15 +2960,45 @@
             {
               "attributes": [
                 {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "job"
+                  }
+                },
+                {
                   "key": "job.id",
                   "value": {
                     "intValue": "0"
                   }
                 },
                 {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (2, 1) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "job.conclusion",
                   "value": {
                     "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "job.labels",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      ]
+                    }
                   }
                 },
                 {
@@ -1029,6 +3011,66 @@
                   "key": "runner.group",
                   "value": {
                     "stringValue": "GitHub Actions"
+                  }
+                },
+                {
+                  "key": "runner.runs_on",
+                  "value": {
+                    "stringValue": "ubuntu-latest"
+                  }
+                },
+                {
+                  "key": "runner.os",
+                  "value": {
+                    "stringValue": "linux"
+                  }
+                },
+                {
+                  "key": "runner.arch",
+                  "value": {
+                    "stringValue": "amd64"
+                  }
+                },
+                {
+                  "key": "job.queued_duration_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.execution_duration_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.raw_billable_minutes",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.billable_minutes",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.billable_multiplier",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "job.rounding_waste_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.steps_count",
+                  "value": {
+                    "intValue": "7"
                   }
                 }
               ],
@@ -1047,27 +3089,27 @@
             {
               "attributes": [
                 {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "job.wrapper"
+                  }
+                },
+                {
                   "key": "job.id",
                   "value": {
                     "intValue": "0"
                   }
                 },
                 {
-                  "key": "job.conclusion",
+                  "key": "job.name",
                   "value": {
-                    "stringValue": "success"
+                    "stringValue": "Example Application Pipeline (2, 1) / Test Application"
                   }
                 },
                 {
-                  "key": "runner.name",
+                  "key": "job.run_attempt",
                   "value": {
-                    "stringValue": "GitHub Actions 0"
-                  }
-                },
-                {
-                  "key": "runner.group",
-                  "value": {
-                    "stringValue": "GitHub Actions"
+                    "intValue": "1"
                   }
                 }
               ],
@@ -1086,15 +3128,45 @@
             {
               "attributes": [
                 {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "job"
+                  }
+                },
+                {
                   "key": "job.id",
                   "value": {
                     "intValue": "0"
                   }
                 },
                 {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (2, 2) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "job.conclusion",
                   "value": {
                     "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "job.labels",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      ]
+                    }
                   }
                 },
                 {
@@ -1107,6 +3179,66 @@
                   "key": "runner.group",
                   "value": {
                     "stringValue": "GitHub Actions"
+                  }
+                },
+                {
+                  "key": "runner.runs_on",
+                  "value": {
+                    "stringValue": "ubuntu-latest"
+                  }
+                },
+                {
+                  "key": "runner.os",
+                  "value": {
+                    "stringValue": "linux"
+                  }
+                },
+                {
+                  "key": "runner.arch",
+                  "value": {
+                    "stringValue": "amd64"
+                  }
+                },
+                {
+                  "key": "job.queued_duration_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.execution_duration_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.raw_billable_minutes",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.billable_minutes",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.billable_multiplier",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "job.rounding_waste_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.steps_count",
+                  "value": {
+                    "intValue": "6"
                   }
                 }
               ],
@@ -1125,27 +3257,27 @@
             {
               "attributes": [
                 {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "job.wrapper"
+                  }
+                },
+                {
                   "key": "job.id",
                   "value": {
                     "intValue": "0"
                   }
                 },
                 {
-                  "key": "job.conclusion",
+                  "key": "job.name",
                   "value": {
-                    "stringValue": "success"
+                    "stringValue": "Example Application Pipeline (2, 2) / Build Application"
                   }
                 },
                 {
-                  "key": "runner.name",
+                  "key": "job.run_attempt",
                   "value": {
-                    "stringValue": "GitHub Actions 0"
-                  }
-                },
-                {
-                  "key": "runner.group",
-                  "value": {
-                    "stringValue": "GitHub Actions"
+                    "intValue": "1"
                   }
                 }
               ],
@@ -1164,15 +3296,45 @@
             {
               "attributes": [
                 {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "job"
+                  }
+                },
+                {
                   "key": "job.id",
                   "value": {
                     "intValue": "0"
                   }
                 },
                 {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (2, 2) / Deploy Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "job.conclusion",
                   "value": {
                     "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "job.labels",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      ]
+                    }
                   }
                 },
                 {
@@ -1185,6 +3347,66 @@
                   "key": "runner.group",
                   "value": {
                     "stringValue": "GitHub Actions"
+                  }
+                },
+                {
+                  "key": "runner.runs_on",
+                  "value": {
+                    "stringValue": "ubuntu-latest"
+                  }
+                },
+                {
+                  "key": "runner.os",
+                  "value": {
+                    "stringValue": "linux"
+                  }
+                },
+                {
+                  "key": "runner.arch",
+                  "value": {
+                    "stringValue": "amd64"
+                  }
+                },
+                {
+                  "key": "job.queued_duration_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.execution_duration_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.raw_billable_minutes",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.billable_minutes",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.billable_multiplier",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "job.rounding_waste_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.steps_count",
+                  "value": {
+                    "intValue": "3"
                   }
                 }
               ],
@@ -1203,27 +3425,27 @@
             {
               "attributes": [
                 {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "job.wrapper"
+                  }
+                },
+                {
                   "key": "job.id",
                   "value": {
                     "intValue": "0"
                   }
                 },
                 {
-                  "key": "job.conclusion",
+                  "key": "job.name",
                   "value": {
-                    "stringValue": "success"
+                    "stringValue": "Example Application Pipeline (2, 2) / Deploy Application"
                   }
                 },
                 {
-                  "key": "runner.name",
+                  "key": "job.run_attempt",
                   "value": {
-                    "stringValue": "GitHub Actions 0"
-                  }
-                },
-                {
-                  "key": "runner.group",
-                  "value": {
-                    "stringValue": "GitHub Actions"
+                    "intValue": "1"
                   }
                 }
               ],
@@ -1242,15 +3464,45 @@
             {
               "attributes": [
                 {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "job"
+                  }
+                },
+                {
                   "key": "job.id",
                   "value": {
                     "intValue": "0"
                   }
                 },
                 {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (2, 2) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
                   "key": "job.conclusion",
                   "value": {
                     "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "job.labels",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      ]
+                    }
                   }
                 },
                 {
@@ -1263,6 +3515,66 @@
                   "key": "runner.group",
                   "value": {
                     "stringValue": "GitHub Actions"
+                  }
+                },
+                {
+                  "key": "runner.runs_on",
+                  "value": {
+                    "stringValue": "ubuntu-latest"
+                  }
+                },
+                {
+                  "key": "runner.os",
+                  "value": {
+                    "stringValue": "linux"
+                  }
+                },
+                {
+                  "key": "runner.arch",
+                  "value": {
+                    "stringValue": "amd64"
+                  }
+                },
+                {
+                  "key": "job.queued_duration_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.execution_duration_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.raw_billable_minutes",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.billable_minutes",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.billable_multiplier",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "job.rounding_waste_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.steps_count",
+                  "value": {
+                    "intValue": "7"
                   }
                 }
               ],
@@ -1281,27 +3593,27 @@
             {
               "attributes": [
                 {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "job.wrapper"
+                  }
+                },
+                {
                   "key": "job.id",
                   "value": {
                     "intValue": "0"
                   }
                 },
                 {
-                  "key": "job.conclusion",
+                  "key": "job.name",
                   "value": {
-                    "stringValue": "success"
+                    "stringValue": "Example Application Pipeline (2, 2) / Test Application"
                   }
                 },
                 {
-                  "key": "runner.name",
+                  "key": "job.run_attempt",
                   "value": {
-                    "stringValue": "GitHub Actions 0"
-                  }
-                },
-                {
-                  "key": "runner.group",
-                  "value": {
-                    "stringValue": "GitHub Actions"
+                    "intValue": "1"
                   }
                 }
               ],
@@ -1318,6 +3630,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (1, 1) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Install Dependencies"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "4"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -1331,6 +3687,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (1, 1) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Install Dependencies"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "4"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -1344,6 +3744,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (1, 2) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Install Dependencies"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "4"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -1357,6 +3801,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (1, 2) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Install Dependencies"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "4"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -1370,6 +3858,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (2, 1) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Install Dependencies"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "4"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -1383,6 +3915,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (2, 1) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Install Dependencies"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "4"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -1396,6 +3972,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (2, 2) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Install Dependencies"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "4"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -1409,6 +4029,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (2, 2) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Install Dependencies"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "4"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -1422,6 +4086,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (1, 1) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Lint"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "5"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -1435,6 +4143,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (1, 2) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Lint"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "5"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -1448,6 +4200,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (2, 1) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Lint"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "5"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -1461,6 +4257,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (2, 2) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Lint"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "5"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -1516,6 +4356,72 @@
                   "value": {
                     "stringValue": "https://example.com/actions/runs/0"
                   }
+                },
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "workflow"
+                  }
+                },
+                {
+                  "key": "workflow.event",
+                  "value": {
+                    "stringValue": "__EXPECTED_WORKFLOW_EVENT__"
+                  }
+                },
+                {
+                  "key": "workflow.is_retry",
+                  "value": {
+                    "boolValue": false
+                  }
+                },
+                {
+                  "key": "workflow.wall_clock_duration_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "workflow.execution_duration_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "workflow.queued_duration_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "workflow.max_queued_duration_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "workflow.raw_billable_minutes",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "workflow.billable_minutes",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "workflow.rounding_waste_s",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "workflow.jobs_count",
+                  "value": {
+                    "intValue": "12"
+                  }
                 }
               ],
               "endTimeUnixNano": "0",
@@ -1529,6 +4435,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (1, 1) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Set up job"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "1"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -1542,6 +4492,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (1, 1) / Deploy Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Set up job"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "1"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -1555,6 +4549,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (1, 1) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Set up job"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "1"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -1568,6 +4606,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (1, 2) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Set up job"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "1"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -1581,6 +4663,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (1, 2) / Deploy Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Set up job"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "1"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -1594,6 +4720,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (1, 2) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Set up job"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "1"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -1607,6 +4777,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (2, 1) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Set up job"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "1"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -1620,6 +4834,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (2, 1) / Deploy Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Set up job"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "1"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -1633,6 +4891,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (2, 1) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Set up job"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "1"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -1646,6 +4948,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (2, 2) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Set up job"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "1"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -1659,6 +5005,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (2, 2) / Deploy Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Set up job"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "1"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -1672,6 +5062,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (2, 2) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Set up job"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "1"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -1685,6 +5119,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (1, 1) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Setup"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "3"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -1698,6 +5176,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (1, 1) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Setup"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "3"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -1711,6 +5233,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (1, 2) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Setup"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "3"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -1724,6 +5290,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (1, 2) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Setup"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "3"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -1737,6 +5347,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (2, 1) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Setup"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "3"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -1750,6 +5404,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (2, 1) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Setup"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "3"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -1763,6 +5461,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (2, 2) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Setup"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "3"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -1776,6 +5518,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (2, 2) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Setup"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "3"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -1789,6 +5575,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (1, 1) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Test"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "6"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -1802,6 +5632,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (1, 2) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Test"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "6"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -1815,6 +5689,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (2, 1) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Test"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "6"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -1828,6 +5746,50 @@
               "traceId": "00000000000000000000000000000000"
             },
             {
+              "attributes": [
+                {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "step"
+                  }
+                },
+                {
+                  "key": "job.id",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "job.name",
+                  "value": {
+                    "stringValue": "Example Application Pipeline (2, 2) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "step.name",
+                  "value": {
+                    "stringValue": "Test"
+                  }
+                },
+                {
+                  "key": "step.conclusion",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                },
+                {
+                  "key": "step.number",
+                  "value": {
+                    "intValue": "6"
+                  }
+                }
+              ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
@@ -1843,15 +5805,45 @@
             {
               "attributes": [
                 {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "queue"
+                  }
+                },
+                {
                   "key": "job.id",
                   "value": {
                     "intValue": "0"
                   }
                 },
                 {
-                  "key": "job.conclusion",
+                  "key": "job.name",
                   "value": {
-                    "stringValue": "success"
+                    "stringValue": "Example Application Pipeline (1, 1) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "job.labels",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "key": "job.queued_duration_s",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -1865,12 +5857,30 @@
                   "value": {
                     "stringValue": "GitHub Actions"
                   }
+                },
+                {
+                  "key": "runner.runs_on",
+                  "value": {
+                    "stringValue": "ubuntu-latest"
+                  }
+                },
+                {
+                  "key": "runner.os",
+                  "value": {
+                    "stringValue": "linux"
+                  }
+                },
+                {
+                  "key": "runner.arch",
+                  "value": {
+                    "stringValue": "amd64"
+                  }
                 }
               ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
-              "name": "waiting runner for Example Application Pipeline (1, 1) / Build Application",
+              "name": "job.queue",
               "parentSpanId": "0000000000000000",
               "spanId": "0000000000000000",
               "startTimeUnixNano": "0",
@@ -1882,15 +5892,45 @@
             {
               "attributes": [
                 {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "queue"
+                  }
+                },
+                {
                   "key": "job.id",
                   "value": {
                     "intValue": "0"
                   }
                 },
                 {
-                  "key": "job.conclusion",
+                  "key": "job.name",
                   "value": {
-                    "stringValue": "success"
+                    "stringValue": "Example Application Pipeline (1, 1) / Deploy Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "job.labels",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "key": "job.queued_duration_s",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -1904,12 +5944,30 @@
                   "value": {
                     "stringValue": "GitHub Actions"
                   }
+                },
+                {
+                  "key": "runner.runs_on",
+                  "value": {
+                    "stringValue": "ubuntu-latest"
+                  }
+                },
+                {
+                  "key": "runner.os",
+                  "value": {
+                    "stringValue": "linux"
+                  }
+                },
+                {
+                  "key": "runner.arch",
+                  "value": {
+                    "stringValue": "amd64"
+                  }
                 }
               ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
-              "name": "waiting runner for Example Application Pipeline (1, 1) / Deploy Application",
+              "name": "job.queue",
               "parentSpanId": "0000000000000000",
               "spanId": "0000000000000000",
               "startTimeUnixNano": "0",
@@ -1921,15 +5979,45 @@
             {
               "attributes": [
                 {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "queue"
+                  }
+                },
+                {
                   "key": "job.id",
                   "value": {
                     "intValue": "0"
                   }
                 },
                 {
-                  "key": "job.conclusion",
+                  "key": "job.name",
                   "value": {
-                    "stringValue": "success"
+                    "stringValue": "Example Application Pipeline (1, 1) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "job.labels",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "key": "job.queued_duration_s",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -1943,12 +6031,30 @@
                   "value": {
                     "stringValue": "GitHub Actions"
                   }
+                },
+                {
+                  "key": "runner.runs_on",
+                  "value": {
+                    "stringValue": "ubuntu-latest"
+                  }
+                },
+                {
+                  "key": "runner.os",
+                  "value": {
+                    "stringValue": "linux"
+                  }
+                },
+                {
+                  "key": "runner.arch",
+                  "value": {
+                    "stringValue": "amd64"
+                  }
                 }
               ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
-              "name": "waiting runner for Example Application Pipeline (1, 1) / Test Application",
+              "name": "job.queue",
               "parentSpanId": "0000000000000000",
               "spanId": "0000000000000000",
               "startTimeUnixNano": "0",
@@ -1960,15 +6066,45 @@
             {
               "attributes": [
                 {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "queue"
+                  }
+                },
+                {
                   "key": "job.id",
                   "value": {
                     "intValue": "0"
                   }
                 },
                 {
-                  "key": "job.conclusion",
+                  "key": "job.name",
                   "value": {
-                    "stringValue": "success"
+                    "stringValue": "Example Application Pipeline (1, 2) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "job.labels",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "key": "job.queued_duration_s",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -1982,12 +6118,30 @@
                   "value": {
                     "stringValue": "GitHub Actions"
                   }
+                },
+                {
+                  "key": "runner.runs_on",
+                  "value": {
+                    "stringValue": "ubuntu-latest"
+                  }
+                },
+                {
+                  "key": "runner.os",
+                  "value": {
+                    "stringValue": "linux"
+                  }
+                },
+                {
+                  "key": "runner.arch",
+                  "value": {
+                    "stringValue": "amd64"
+                  }
                 }
               ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
-              "name": "waiting runner for Example Application Pipeline (1, 2) / Build Application",
+              "name": "job.queue",
               "parentSpanId": "0000000000000000",
               "spanId": "0000000000000000",
               "startTimeUnixNano": "0",
@@ -1999,15 +6153,45 @@
             {
               "attributes": [
                 {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "queue"
+                  }
+                },
+                {
                   "key": "job.id",
                   "value": {
                     "intValue": "0"
                   }
                 },
                 {
-                  "key": "job.conclusion",
+                  "key": "job.name",
                   "value": {
-                    "stringValue": "success"
+                    "stringValue": "Example Application Pipeline (1, 2) / Deploy Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "job.labels",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "key": "job.queued_duration_s",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -2021,12 +6205,30 @@
                   "value": {
                     "stringValue": "GitHub Actions"
                   }
+                },
+                {
+                  "key": "runner.runs_on",
+                  "value": {
+                    "stringValue": "ubuntu-latest"
+                  }
+                },
+                {
+                  "key": "runner.os",
+                  "value": {
+                    "stringValue": "linux"
+                  }
+                },
+                {
+                  "key": "runner.arch",
+                  "value": {
+                    "stringValue": "amd64"
+                  }
                 }
               ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
-              "name": "waiting runner for Example Application Pipeline (1, 2) / Deploy Application",
+              "name": "job.queue",
               "parentSpanId": "0000000000000000",
               "spanId": "0000000000000000",
               "startTimeUnixNano": "0",
@@ -2038,15 +6240,45 @@
             {
               "attributes": [
                 {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "queue"
+                  }
+                },
+                {
                   "key": "job.id",
                   "value": {
                     "intValue": "0"
                   }
                 },
                 {
-                  "key": "job.conclusion",
+                  "key": "job.name",
                   "value": {
-                    "stringValue": "success"
+                    "stringValue": "Example Application Pipeline (1, 2) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "job.labels",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "key": "job.queued_duration_s",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -2060,12 +6292,30 @@
                   "value": {
                     "stringValue": "GitHub Actions"
                   }
+                },
+                {
+                  "key": "runner.runs_on",
+                  "value": {
+                    "stringValue": "ubuntu-latest"
+                  }
+                },
+                {
+                  "key": "runner.os",
+                  "value": {
+                    "stringValue": "linux"
+                  }
+                },
+                {
+                  "key": "runner.arch",
+                  "value": {
+                    "stringValue": "amd64"
+                  }
                 }
               ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
-              "name": "waiting runner for Example Application Pipeline (1, 2) / Test Application",
+              "name": "job.queue",
               "parentSpanId": "0000000000000000",
               "spanId": "0000000000000000",
               "startTimeUnixNano": "0",
@@ -2077,15 +6327,45 @@
             {
               "attributes": [
                 {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "queue"
+                  }
+                },
+                {
                   "key": "job.id",
                   "value": {
                     "intValue": "0"
                   }
                 },
                 {
-                  "key": "job.conclusion",
+                  "key": "job.name",
                   "value": {
-                    "stringValue": "success"
+                    "stringValue": "Example Application Pipeline (2, 1) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "job.labels",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "key": "job.queued_duration_s",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -2099,12 +6379,30 @@
                   "value": {
                     "stringValue": "GitHub Actions"
                   }
+                },
+                {
+                  "key": "runner.runs_on",
+                  "value": {
+                    "stringValue": "ubuntu-latest"
+                  }
+                },
+                {
+                  "key": "runner.os",
+                  "value": {
+                    "stringValue": "linux"
+                  }
+                },
+                {
+                  "key": "runner.arch",
+                  "value": {
+                    "stringValue": "amd64"
+                  }
                 }
               ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
-              "name": "waiting runner for Example Application Pipeline (2, 1) / Build Application",
+              "name": "job.queue",
               "parentSpanId": "0000000000000000",
               "spanId": "0000000000000000",
               "startTimeUnixNano": "0",
@@ -2116,15 +6414,45 @@
             {
               "attributes": [
                 {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "queue"
+                  }
+                },
+                {
                   "key": "job.id",
                   "value": {
                     "intValue": "0"
                   }
                 },
                 {
-                  "key": "job.conclusion",
+                  "key": "job.name",
                   "value": {
-                    "stringValue": "success"
+                    "stringValue": "Example Application Pipeline (2, 1) / Deploy Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "job.labels",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "key": "job.queued_duration_s",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -2138,12 +6466,30 @@
                   "value": {
                     "stringValue": "GitHub Actions"
                   }
+                },
+                {
+                  "key": "runner.runs_on",
+                  "value": {
+                    "stringValue": "ubuntu-latest"
+                  }
+                },
+                {
+                  "key": "runner.os",
+                  "value": {
+                    "stringValue": "linux"
+                  }
+                },
+                {
+                  "key": "runner.arch",
+                  "value": {
+                    "stringValue": "amd64"
+                  }
                 }
               ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
-              "name": "waiting runner for Example Application Pipeline (2, 1) / Deploy Application",
+              "name": "job.queue",
               "parentSpanId": "0000000000000000",
               "spanId": "0000000000000000",
               "startTimeUnixNano": "0",
@@ -2155,15 +6501,45 @@
             {
               "attributes": [
                 {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "queue"
+                  }
+                },
+                {
                   "key": "job.id",
                   "value": {
                     "intValue": "0"
                   }
                 },
                 {
-                  "key": "job.conclusion",
+                  "key": "job.name",
                   "value": {
-                    "stringValue": "success"
+                    "stringValue": "Example Application Pipeline (2, 1) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "job.labels",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "key": "job.queued_duration_s",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -2177,12 +6553,30 @@
                   "value": {
                     "stringValue": "GitHub Actions"
                   }
+                },
+                {
+                  "key": "runner.runs_on",
+                  "value": {
+                    "stringValue": "ubuntu-latest"
+                  }
+                },
+                {
+                  "key": "runner.os",
+                  "value": {
+                    "stringValue": "linux"
+                  }
+                },
+                {
+                  "key": "runner.arch",
+                  "value": {
+                    "stringValue": "amd64"
+                  }
                 }
               ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
-              "name": "waiting runner for Example Application Pipeline (2, 1) / Test Application",
+              "name": "job.queue",
               "parentSpanId": "0000000000000000",
               "spanId": "0000000000000000",
               "startTimeUnixNano": "0",
@@ -2194,15 +6588,45 @@
             {
               "attributes": [
                 {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "queue"
+                  }
+                },
+                {
                   "key": "job.id",
                   "value": {
                     "intValue": "0"
                   }
                 },
                 {
-                  "key": "job.conclusion",
+                  "key": "job.name",
                   "value": {
-                    "stringValue": "success"
+                    "stringValue": "Example Application Pipeline (2, 2) / Build Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "job.labels",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "key": "job.queued_duration_s",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -2216,12 +6640,30 @@
                   "value": {
                     "stringValue": "GitHub Actions"
                   }
+                },
+                {
+                  "key": "runner.runs_on",
+                  "value": {
+                    "stringValue": "ubuntu-latest"
+                  }
+                },
+                {
+                  "key": "runner.os",
+                  "value": {
+                    "stringValue": "linux"
+                  }
+                },
+                {
+                  "key": "runner.arch",
+                  "value": {
+                    "stringValue": "amd64"
+                  }
                 }
               ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
-              "name": "waiting runner for Example Application Pipeline (2, 2) / Build Application",
+              "name": "job.queue",
               "parentSpanId": "0000000000000000",
               "spanId": "0000000000000000",
               "startTimeUnixNano": "0",
@@ -2233,15 +6675,45 @@
             {
               "attributes": [
                 {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "queue"
+                  }
+                },
+                {
                   "key": "job.id",
                   "value": {
                     "intValue": "0"
                   }
                 },
                 {
-                  "key": "job.conclusion",
+                  "key": "job.name",
                   "value": {
-                    "stringValue": "success"
+                    "stringValue": "Example Application Pipeline (2, 2) / Deploy Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "job.labels",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "key": "job.queued_duration_s",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -2255,12 +6727,30 @@
                   "value": {
                     "stringValue": "GitHub Actions"
                   }
+                },
+                {
+                  "key": "runner.runs_on",
+                  "value": {
+                    "stringValue": "ubuntu-latest"
+                  }
+                },
+                {
+                  "key": "runner.os",
+                  "value": {
+                    "stringValue": "linux"
+                  }
+                },
+                {
+                  "key": "runner.arch",
+                  "value": {
+                    "stringValue": "amd64"
+                  }
                 }
               ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
-              "name": "waiting runner for Example Application Pipeline (2, 2) / Deploy Application",
+              "name": "job.queue",
               "parentSpanId": "0000000000000000",
               "spanId": "0000000000000000",
               "startTimeUnixNano": "0",
@@ -2272,15 +6762,45 @@
             {
               "attributes": [
                 {
+                  "key": "span.type",
+                  "value": {
+                    "stringValue": "queue"
+                  }
+                },
+                {
                   "key": "job.id",
                   "value": {
                     "intValue": "0"
                   }
                 },
                 {
-                  "key": "job.conclusion",
+                  "key": "job.name",
                   "value": {
-                    "stringValue": "success"
+                    "stringValue": "Example Application Pipeline (2, 2) / Test Application"
+                  }
+                },
+                {
+                  "key": "job.run_attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "job.labels",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "ubuntu-latest"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "key": "job.queued_duration_s",
+                  "value": {
+                    "intValue": "0"
                   }
                 },
                 {
@@ -2294,12 +6814,30 @@
                   "value": {
                     "stringValue": "GitHub Actions"
                   }
+                },
+                {
+                  "key": "runner.runs_on",
+                  "value": {
+                    "stringValue": "ubuntu-latest"
+                  }
+                },
+                {
+                  "key": "runner.os",
+                  "value": {
+                    "stringValue": "linux"
+                  }
+                },
+                {
+                  "key": "runner.arch",
+                  "value": {
+                    "stringValue": "amd64"
+                  }
                 }
               ],
               "endTimeUnixNano": "0",
               "flags": 257,
               "kind": 1,
-              "name": "waiting runner for Example Application Pipeline (2, 2) / Test Application",
+              "name": "job.queue",
               "parentSpanId": "0000000000000000",
               "spanId": "0000000000000000",
               "startTimeUnixNano": "0",

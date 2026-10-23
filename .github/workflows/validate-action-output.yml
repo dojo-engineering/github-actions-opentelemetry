@@ -99,17 +99,34 @@ jobs:
           (.resourceSpans[]?.scopeSpans[]?.spans[]?.endTimeUnixNano) = "0" |
           .resourceSpans[]?.scopeSpans[]?.spans[]?.attributes[]? |= (
             if .key == "run_id" then .value = {"intValue": "0"}
+            elif (.key == "run_attempt" or .key == "workflow.run_attempt" or .key == "job.run_attempt") then .value = {"intValue": "1"}
+            elif .key == "workflow.is_retry" then .value = {"boolValue": false}
             elif .key == "job.id" then .value = {"intValue": "0"}
             elif .key == "cicd.pipeline.task.run.id" then .value = {"intValue": "0"}
             elif .key == "url" then .value = {"stringValue": "https://example.com/actions/runs/0"}
             elif .key == "cicd.pipeline.run.url.full" then .value = {"stringValue": "https://example.com/actions/runs/0"}
             elif .key == "runner.name" then .value = {"stringValue": "GitHub Actions 0"}
+            elif .key == "workflow.wall_clock_duration_s" then .value = {"intValue": "0"}
+            elif .key == "workflow.execution_duration_s" then .value = {"intValue": "0"}
+            elif .key == "workflow.queued_duration_s" then .value = {"intValue": "0"}
+            elif .key == "workflow.max_queued_duration_s" then .value = {"intValue": "0"}
+            elif .key == "workflow.raw_billable_minutes" then .value = {"intValue": "0"}
+            elif .key == "workflow.billable_minutes" then .value = {"intValue": "0"}
+            elif .key == "workflow.rounding_waste_s" then .value = {"intValue": "0"}
+            elif .key == "job.queued_duration_s" then .value = {"intValue": "0"}
+            elif .key == "job.execution_duration_s" then .value = {"intValue": "0"}
+            elif .key == "job.raw_billable_minutes" then .value = {"intValue": "0"}
+            elif .key == "job.billable_minutes" then .value = {"intValue": "0"}
+            elif .key == "job.rounding_waste_s" then .value = {"intValue": "0"}
             else .
             end
           ) | 
 
-          # sort spans by name because they can be in different order
-          (.resourceSpans[]?.scopeSpans[]?.spans) |= sort_by(.name) |
+          # sort spans by name and job.name because they can be in different order
+          (.resourceSpans[]?.scopeSpans[]?.spans) |= sort_by(
+            .name,
+            ([.attributes[]? | select(.key == "job.name") | .value.stringValue][0] // "")
+          ) |
 
           # sort all entries in objects to ensure stable output
           walk(if type == "object" then to_entries | sort_by(.key) | from_entries else . end)
@@ -117,15 +134,22 @@ jobs:
 
           # replace dynamic values with fixed values
           cat > /tmp/normalize-metrics.jq << 'EOF'
-          (.resourceMetrics[]?.scopeMetrics[]?.metrics[]?.gauge?.dataPoints[]?.startTimeUnixNano) = "0" |
-          (.resourceMetrics[]?.scopeMetrics[]?.metrics[]?.gauge?.dataPoints[]?.timeUnixNano) = "0" |
-          (.resourceMetrics[]?.scopeMetrics[]?.metrics[]?.gauge?.dataPoints[]?.asDouble) = 0 |
+          (.resourceMetrics[]?.scopeMetrics[]?.metrics[]?.sum?.dataPoints[]?.startTimeUnixNano) = "0" |
+          (.resourceMetrics[]?.scopeMetrics[]?.metrics[]?.sum?.dataPoints[]?.timeUnixNano) = "0" |
+          (.resourceMetrics[]?.scopeMetrics[]?.metrics[]?.sum?.dataPoints[]? | select(has("asDouble")) | .asDouble) = 0 |
+          (.resourceMetrics[]?.scopeMetrics[]?.metrics[]?.sum?.dataPoints[]? | select(has("asInt")) | .asInt) = "0" |
+          (.resourceMetrics[]?.scopeMetrics[]?.metrics[]?.sum?.dataPoints[]?.attributes[]? |= (
+            if .key == "workflow.run_id" then .value = {"intValue": "0"}
+            elif (.key == "workflow.run_attempt" or .key == "job.run_attempt") then .value = {"intValue": "1"}
+            elif .key == "workflow.is_retry" then .value = {"stringValue": "false"}
+            else . end
+          )) |
 
           # sort metrics array by name to ensure stable output
           (.resourceMetrics[]?.scopeMetrics[]?.metrics) |= sort_by(.name) |
 
-          # sort gauge data points by attributes for many data points
-          (.resourceMetrics[]?.scopeMetrics[]?.metrics[]?.gauge?.dataPoints) |= sort_by(
+          # sort sum data points by attributes for many data points
+          (.resourceMetrics[]?.scopeMetrics[]?.metrics[]?.sum?.dataPoints) |= sort_by(
             [.attributes[]? | select(.key == "job.name") | .value.stringValue][0] // "",
             [.attributes[]? | select(.key == "workflow.name") | .value.stringValue][0] // ""
           ) |           
@@ -142,14 +166,17 @@ jobs:
       - name: Materialize expected files
         env:
           EXPECTED_REPOSITORY: ${{ inputs.expected-repository }}
+          EXPECTED_WORKFLOW_EVENT: ${{ github.event_name }}
           TEST_DATA_DIRECTORY: ${{ inputs.test-data-directory }}
         run: |
           jq --arg expected_repository "$EXPECTED_REPOSITORY" \
-            'walk(if type == "string" then gsub("__EXPECTED_REPOSITORY__"; $expected_repository) else . end)' \
+            --arg expected_workflow_event "$EXPECTED_WORKFLOW_EVENT" \
+            'walk(if type == "string" then gsub("__EXPECTED_REPOSITORY__"; $expected_repository) | gsub("__EXPECTED_WORKFLOW_EVENT__"; $expected_workflow_event) else . end)' \
             ".github/test-data/${TEST_DATA_DIRECTORY}/traces-expected.json" \
             > "$RUNNER_TEMP/traces-expected.json"
           jq --arg expected_repository "$EXPECTED_REPOSITORY" \
-            'walk(if type == "string" then gsub("__EXPECTED_REPOSITORY__"; $expected_repository) else . end)' \
+            --arg expected_workflow_event "$EXPECTED_WORKFLOW_EVENT" \
+            'walk(if type == "string" then gsub("__EXPECTED_REPOSITORY__"; $expected_repository) | gsub("__EXPECTED_WORKFLOW_EVENT__"; $expected_workflow_event) else . end)' \
             ".github/test-data/${TEST_DATA_DIRECTORY}/metrics-expected.json" \
             > "$RUNNER_TEMP/metrics-expected.json"
 

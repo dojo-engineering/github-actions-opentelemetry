@@ -6,6 +6,12 @@ import {
 } from './create-spans.js'
 import { WorkflowJob } from '../github/types.js'
 import { ROOT_CONTEXT, SpanStatusCode } from '@opentelemetry/api'
+import * as core from '@actions/core'
+
+// Mock @actions/core
+vi.mock('@actions/core', () => ({
+  notice: vi.fn()
+}))
 
 // Mock console methods to avoid noise in test output
 vi.spyOn(console, 'warn').mockImplementation(() => {})
@@ -24,9 +30,11 @@ describe('createWorkflowJobSpan', () => {
     run_id: 12345,
     runner_name: 'test-runner',
     runner_group_name: 'test-group',
+    labels: ['ubuntu-latest'],
     steps: [
       {
         name: 'test-step',
+        number: 1,
         conclusion: 'success',
         started_at: new Date('2023-01-01T00:01:00Z'),
         completed_at: new Date('2023-01-01T00:02:00Z')
@@ -50,6 +58,21 @@ describe('createWorkflowJobSpan', () => {
   test('should process job with steps normally', () => {
     // Should not throw and not log warnings for normal job
     expect(() => createWorkflowJobSpan(ROOT_CONTEXT, mockJob)).not.toThrow()
+  })
+
+  test('should skip job.queue span and log notice when started_at is before created_at', () => {
+    const jobWithNegativeQueue: WorkflowJob = {
+      ...mockJob,
+      created_at: new Date('2023-01-01T00:02:00Z'),
+      started_at: new Date('2023-01-01T00:01:00Z')
+    }
+
+    expect(() =>
+      createWorkflowJobSpan(ROOT_CONTEXT, jobWithNegativeQueue)
+    ).not.toThrow()
+    expect(core.notice).toHaveBeenCalledWith(
+      'test-job: Skip to create "job.queue" span. This is a GitHub specification issue that occasionally occurs, so it can\'t be recover.'
+    )
   })
 })
 

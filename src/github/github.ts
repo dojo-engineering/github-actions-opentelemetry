@@ -5,6 +5,8 @@ import {
   WorkflowResults,
   GitHubContext,
   WorkflowJob,
+  Workflow,
+  WorkflowJobs,
   toWorkflowRun as toWorkflow,
   toWorkflowJob,
   WorkflowResponse,
@@ -39,15 +41,31 @@ export const fetchWorkflowResults = async (
           octokit,
           workflowContext
         )
-        const workflowJobs = workflowJobsRes
+        const attemptWorkflowJobs = selectJobsForAttempt(
+          workflowJobsRes,
+          workflowContext.attempt_number
+        )
+        const workflowJobs = attemptWorkflowJobs
           .map(job => toWorkflowJob(job, workflowRes.event))
           .filter((job): job is WorkflowJob => job !== null)
         if (workflowJobs.length === 0) {
           throw new Error(`no completed jobs found for workflow run.`)
         }
-        return {
-          workflow: toWorkflow(workflowRes),
+        const workflow = toWorkflow(workflowRes)
+        const attemptStartedAt = getWorkflowAttemptStartedAt(
+          workflow,
           workflowJobs
+        )
+        // GitHub can label reused jobs as part of a rerun while retaining their previous start times.
+        const jobsRunInAttempt = workflowJobs.filter(
+          job => job.started_at.getTime() >= attemptStartedAt.getTime()
+        )
+        if (jobsRunInAttempt.length === 0) {
+          throw new Error(`no completed jobs found for workflow run.`)
+        }
+        return {
+          workflow,
+          workflowJobs: jobsRunInAttempt
         }
       },
       {
@@ -87,14 +105,34 @@ const fetchWorkflowJobs = async (
   octokit: Octokit,
   workflowContext: WorkflowContext
 ): Promise<WorkflowJobsResponse> => {
-  const res = await octokit.rest.actions.listJobsForWorkflowRun({
-    owner: workflowContext.owner,
-    repo: workflowContext.repo,
-    run_id: workflowContext.runId,
-    per_page: 100
-  })
-  return res.data.jobs
+  const workflowJobs: WorkflowJobsResponse = []
+  let page = 1
+
+  while (true) {
+    const res = await octokit.rest.actions.listJobsForWorkflowRun({
+      owner: workflowContext.owner,
+      repo: workflowContext.repo,
+      run_id: workflowContext.runId,
+      filter: 'all',
+      per_page: 100,
+      page
+    })
+    workflowJobs.push(...res.data.jobs)
+    if (workflowJobs.length >= res.data.total_count) {
+      return workflowJobs
+    }
+    if (res.data.jobs.length === 0) {
+      throw new Error('GitHub returned no jobs before all workflow jobs loaded')
+    }
+    page++
+  }
 }
+
+const selectJobsForAttempt = (
+  workflowJobs: WorkflowJobsResponse,
+  targetAttemptNumber: number
+): WorkflowJobsResponse =>
+  workflowJobs.filter(job => (job.run_attempt ?? 1) === targetAttemptNumber)
 
 export const getWorkflowContext = (
   context: GitHubContext,
@@ -128,4 +166,30 @@ export const getLatestCompletedAt = (jobs: WorkflowJob[]): Date => {
   const jobCompletedAtDates = jobs.map(job => job.completed_at)
   const maxDateNumber = Math.max(...jobCompletedAtDates.map(Number))
   return new Date(maxDateNumber)
+}
+
+export const getWorkflowAttemptStartedAt = (
+  workflow: Workflow,
+  jobs: WorkflowJobs
+): Date => {
+  if (
+    workflow.run_started_at &&
+    Number.isFinite(workflow.run_started_at.getTime())
+  ) {
+    return workflow.run_started_at
+  }
+
+  const jobCreatedAtNumbers = jobs
+    .map(job => job.created_at.getTime())
+    .filter(Number.isFinite)
+  if (jobCreatedAtNumbers.length === 0) {
+    throw new Error(
+      'no valid job created_at dates found to get workflow attempt start time.'
+    )
+  }
+
+  core.notice(
+    'Workflow run_started_at is unavailable; using the earliest job created_at for attempt duration.'
+  )
+  return new Date(Math.min(...jobCreatedAtNumbers))
 }

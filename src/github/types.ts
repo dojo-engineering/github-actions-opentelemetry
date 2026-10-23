@@ -34,6 +34,7 @@ export type WorkflowStep = {
   readonly conclusion: StepConclusion
   readonly started_at: Date
   readonly completed_at: Date
+  readonly number?: number
 }
 export type WorkflowJob = {
   readonly created_at: Date
@@ -51,6 +52,8 @@ export type WorkflowJob = {
   readonly runner_group_name: string | null
   readonly workflow_name: string
   readonly steps: WorkflowStep[]
+  readonly labels?: string[]
+  readonly run_attempt?: number
 }
 export type WorkflowJobs = WorkflowJob[]
 export type Workflow = {
@@ -59,11 +62,13 @@ export type Workflow = {
   // TODO: use union type for conclusion
   readonly conclusion: string | null
   readonly created_at: Date
+  readonly run_started_at?: Date
   readonly run_attempt: number
   readonly html_url: string
   readonly repository: {
     readonly full_name: string
   }
+  readonly event?: string
 }
 export type WorkflowContext = {
   readonly owner: string
@@ -96,7 +101,8 @@ export const toWorkflowStep = (step: WorkflowStepResponse): WorkflowStep => {
     name: step.name,
     conclusion: step.conclusion,
     started_at: new Date(step.started_at),
-    completed_at: new Date(step.completed_at)
+    completed_at: new Date(step.completed_at),
+    ...(step.number !== undefined && { number: step.number })
   }
 }
 export const toWorkflowJob = (
@@ -139,7 +145,9 @@ export const toWorkflowJob = (
     run_id: toSafeNumber(job.run_id, 'Job run_id'),
     steps: job.steps?.map(toWorkflowStep) || [],
     runner_name: job.runner_name,
-    runner_group_name: job.runner_group_name
+    runner_group_name: job.runner_group_name,
+    ...(job.labels !== undefined && { labels: job.labels }),
+    ...(job.run_attempt !== undefined && { run_attempt: job.run_attempt })
   }
 }
 export const toWorkflowRun = (workflowRun: WorkflowResponse): Workflow => {
@@ -165,10 +173,14 @@ export const toWorkflowRun = (workflowRun: WorkflowResponse): Workflow => {
     name: workflowRun.name,
     conclusion: workflowRun.conclusion,
     created_at: new Date(workflowRun.created_at),
+    ...(workflowRun.run_started_at !== undefined && {
+      run_started_at: new Date(workflowRun.run_started_at)
+    }),
     run_attempt: workflowRun.run_attempt,
     html_url: workflowRun.html_url,
     repository: {
       full_name: workflowRun.repository.full_name
-    }
+    },
+    ...(workflowRun.event !== undefined && { event: workflowRun.event })
   }
 }
