@@ -179,6 +179,12 @@ export const getWorkflowAttemptStartedAt = (
     return workflow.run_started_at
   }
 
+  if (workflow.run_attempt > 1) {
+    throw new Error(
+      `workflow run_started_at is required for attempt ${workflow.run_attempt}.`
+    )
+  }
+
   const jobCreatedAtNumbers = jobs
     .map(job => job.created_at.getTime())
     .filter(Number.isFinite)

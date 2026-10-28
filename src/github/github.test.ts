@@ -774,7 +774,7 @@ describe('getWorkflowAttemptStartedAt', () => {
       name: workflow.name,
       conclusion: workflow.conclusion,
       created_at: workflow.created_at,
-      run_attempt: workflow.run_attempt,
+      run_attempt: 1,
       html_url: workflow.html_url,
       repository: workflow.repository
     }
@@ -782,6 +782,22 @@ describe('getWorkflowAttemptStartedAt', () => {
     expect(
       getWorkflowAttemptStartedAt(workflowWithoutAttemptStart, jobs)
     ).toEqual(new Date('2023-01-01T00:03:00Z'))
+  })
+
+  test('should require the workflow attempt start time for reruns', () => {
+    const workflowWithoutAttemptStart: Workflow = {
+      id: workflow.id,
+      name: workflow.name,
+      conclusion: workflow.conclusion,
+      created_at: workflow.created_at,
+      run_attempt: 2,
+      html_url: workflow.html_url,
+      repository: workflow.repository
+    }
+
+    expect(() =>
+      getWorkflowAttemptStartedAt(workflowWithoutAttemptStart, jobs)
+    ).toThrow('workflow run_started_at is required for attempt 2.')
   })
 })
 
