@@ -43,5 +43,6 @@ jobs:
             github.event.workflow_run.html_url }},vcs.repository.name=${{
             github.event.workflow_run.repository.name }},vcs.ref.head.name=${{
             github.event.workflow_run.head_branch }}'
+          OTEL_LOG_LEVEL: debug
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
