@@ -330,7 +330,7 @@ command.
 npm run all
 ```
 
-> [!NOTE]  
+> [!NOTE]
 > This command creates `index.js` and more on the `/dist` directory. You must
 > includes these artifacts on a commit because GitHub Actions uses these files.
 
@@ -371,3 +371,7 @@ contributing, ensure that your changes are well-documented and tested.
 
 If you encounter any issues or have questions, feel free to open an issue in the
 repository. We will do our best to assist you promptly.
+
+# Triggering CI
+
+Benign change
