@@ -57,9 +57,12 @@ export const fetchWorkflowResults = async (
           workflowJobs
         )
         // GitHub can label reused jobs as part of a rerun while retaining their previous start times.
-        const jobsRunInAttempt = workflowJobs.filter(
-          job => job.started_at.getTime() >= attemptStartedAt.getTime()
-        )
+        const jobsRunInAttempt =
+          workflow.run_attempt > 1
+            ? workflowJobs.filter(
+                job => job.started_at.getTime() >= attemptStartedAt.getTime()
+              )
+            : workflowJobs
         if (jobsRunInAttempt.length === 0) {
           throw new Error(`no completed jobs found for workflow run.`)
         }

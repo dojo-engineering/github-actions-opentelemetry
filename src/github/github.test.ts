@@ -113,6 +113,61 @@ describe('fetchWorkflowResults', () => {
     ])
   })
 
+  test('should retain first-attempt jobs that start before their creation time', async () => {
+    const getWorkflowRunAttempt = vi.fn().mockResolvedValue({
+      data: {
+        id: 12345,
+        name: 'Test Workflow',
+        status: 'completed',
+        conclusion: 'success',
+        created_at: '2023-01-01T00:00:00Z',
+        run_attempt: 1,
+        html_url: 'https://github.com/test-owner/test-repo/actions/runs/12345',
+        repository: {
+          full_name: 'test-owner/test-repo'
+        },
+        event: 'push'
+      }
+    })
+    const listJobsForWorkflowRun = vi.fn().mockResolvedValue({
+      data: {
+        total_count: 1,
+        jobs: [
+          {
+            id: 1,
+            name: 'test-job',
+            status: 'completed',
+            conclusion: 'success',
+            created_at: '2023-01-01T00:02:00Z',
+            started_at: '2023-01-01T00:01:00Z',
+            completed_at: '2023-01-01T00:05:00Z',
+            run_attempt: 1,
+            workflow_name: 'Test Workflow',
+            run_id: 12345,
+            steps: []
+          }
+        ]
+      }
+    })
+    const mockOctokit = {
+      rest: {
+        actions: {
+          getWorkflowRunAttempt,
+          listJobsForWorkflowRun
+        }
+      }
+    } as unknown as Octokit
+
+    const result = await fetchWorkflowResults(
+      mockOctokit,
+      { ...testWorkflowContext, attempt_number: 1 },
+      0,
+      1
+    )
+
+    expect(result.workflowJobs).toMatchObject([{ id: 1, name: 'test-job' }])
+  })
+
   test('should include only jobs performed in the requested attempt', async () => {
     const getWorkflowRunAttempt = vi.fn().mockResolvedValue({
       data: {
