@@ -20,13 +20,40 @@ Protocol (OTLP) endpoint. It helps you monitor and analyze GitHub Actions.
 
 ## Metrics
 
-| Descriptor Name              | Description            |
-| ---------------------------- | ---------------------- |
-| `github.workflow.duration`   | Duration of workflow   |
-| `github.job.duration`        | Duration of job        |
-| `github.job.queued_duration` | Duration of queued job |
+All metrics are exported as OpenTelemetry **Counters** (`createCounter`).
+Workflow metrics include `workflow.run_id` and `workflow.run_attempt`, so
+independent workflow runs and attempts use separate metric series. The default
+OTLP exporter temporality is cumulative. To get a total over a time range, sum
+the per-attempt points by `workflow.name`, dropping run, attempt, outcome, and
+event dimensions. Keep `repository` when totals should remain separate across
+repositories:
 
-Each metric has associated attributes.
+| Descriptor Name                 | Unit  | Description                                                                   |
+| ------------------------------- | ----- | ----------------------------------------------------------------------------- |
+| `github.workflow.runs`          | `1`   | Count of collected attempts (including partial reruns in `workflow_run` mode) |
+| `github.workflow.duration`      | `s`   | Elapsed duration of one workflow attempt                                      |
+| `github.workflow.billable_time` | `min` | GitHub-hosted billable time of workflow in minutes (with OS multipliers)      |
+| `github.job.runs`               | `1`   | Count of job runs                                                             |
+| `github.job.duration`           | `s`   | Duration of job                                                               |
+| `github.job.queued_duration`    | `s`   | Duration of queued job                                                        |
+| `github.job.billable_time`      | `min` | GitHub-hosted billable time of job (rounded up to 60s + OS multiplier)        |
+| `github.job.rounding_waste`     | `s`   | Billable rounding waste of job in seconds                                     |
+
+Each metric has associated attributes:
+
+- **Workflow metrics**: `workflow.name`, `repository`, `workflow.conclusion`,
+  `workflow.event`, `workflow.is_retry`, `workflow.run_attempt`,
+  `workflow.run_id`
+- **Job metrics**: `workflow.name`, `workflow.run_id`, `workflow.run_attempt`,
+  `repository`, `job.name`, `job.conclusion`, `job.run_attempt`, `runner.os`,
+  `runner.arch`, `runner.runs_on`, `runner.group`
+
+Each action invocation reports only jobs executed in that workflow attempt.
+`workflow.run_id` and `workflow.run_attempt` intentionally scope metric series
+per attempt; sum the per-attempt points by workflow name over the desired time
+range to calculate totals. Self-hosted jobs still contribute execution duration
+and runner metadata, but contribute zero to GitHub-hosted billable time and
+rounding waste.
 
 ![Prometheus Example Screen Shot](./img/metrics-prom.png)
 
@@ -36,12 +63,34 @@ Each metric has associated attributes.
 
 ![Attributes Sample](./img/trace-attributes.png)
 
-Traces include several attributes to help identify and analyze workflow
-execution:
+Traces include structured attributes and a `span.type` discriminator
+(`workflow`, `job.wrapper`, `queue`, `job`, `step`) to prevent double-counting
+while keeping a clean collapsible waterfall UI:
 
-- **Workflow-level attributes**: `run_id`, `run_attempt`, `repository`, `url`
-- **Job-level attributes**: `job.id`, `job.conclusion`, `runner.name`,
-  `runner.group`
+Each trace represents one workflow attempt. Reruns have the same `run_id` and a
+distinct `run_attempt`; only jobs executed in that attempt are included.
+
+- **Workflow-level attributes** (`span.type = 'workflow'`): `run_id`,
+  `run_attempt`, `repository`, `url`, `workflow.conclusion`, `workflow.event`,
+  `workflow.is_retry`, `workflow.wall_clock_duration_s`,
+  `workflow.execution_duration_s`, `workflow.queued_duration_s`,
+  `workflow.max_queued_duration_s`, `workflow.raw_billable_minutes`,
+  `workflow.billable_minutes`, `workflow.rounding_waste_s`,
+  `workflow.jobs_count`
+- **Job Wrapper attributes** (`span.type = 'job.wrapper'`): `job.id`,
+  `job.name`, `job.run_attempt`
+- **Job Queue attributes** (`name = 'job.queue'`, `span.type = 'queue'`):
+  `job.id`, `job.name`, `job.run_attempt`, `job.labels`,
+  `job.queued_duration_s`, `runner.name`, `runner.group`, `runner.runs_on`,
+  `runner.os`, `runner.arch`
+- **Job Execution attributes** (`span.type = 'job'`): `job.id`, `job.name`,
+  `job.run_attempt`, `job.conclusion`, `job.labels`, `runner.name`,
+  `runner.group`, `runner.runs_on`, `runner.os`, `runner.arch`,
+  `job.queued_duration_s`, `job.execution_duration_s`,
+  `job.raw_billable_minutes`, `job.billable_minutes`, `job.billable_multiplier`,
+  `job.rounding_waste_s`, `job.steps_count`
+- **Step attributes** (`span.type = 'step'`): `job.name`, `step.name`, `job.id`,
+  `job.run_attempt`, `step.conclusion`, `step.number`
 
 You can find a trace by the `run_id` attribute attached to the root span.
 `run_id` is visible in the workflow results URL. For example, if the URL is:
@@ -209,6 +258,9 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
+
+In current-workflow mode, only attempts that execute the telemetry job are
+reported. Use `workflow_run` mode to capture every partial rerun.
 
 ### Configuration
 

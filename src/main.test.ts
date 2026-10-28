@@ -37,6 +37,7 @@ const workflowResults: Awaited<ReturnType<typeof github.fetchWorkflowResults>> =
       name: 'Test Workflow',
       conclusion: 'success',
       created_at: new Date('2023-01-01T00:00:00Z'),
+      run_started_at: new Date('2023-01-01T00:00:00Z'),
       run_attempt: 1,
       html_url: 'https://github.com/test-owner/test-repo/actions/runs/12345',
       repository: {
@@ -50,6 +51,7 @@ const workflowResults: Awaited<ReturnType<typeof github.fetchWorkflowResults>> =
         created_at: new Date('2023-01-01T00:01:00Z'),
         started_at: new Date('2023-01-01T00:02:00Z'),
         completed_at: new Date('2023-01-01T00:03:00Z'),
+        run_attempt: 1,
         run_id: 12345,
         status: 'completed',
         conclusion: 'success',

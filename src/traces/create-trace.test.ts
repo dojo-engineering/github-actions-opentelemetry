@@ -14,9 +14,11 @@ import { SpanStatusCode } from '@opentelemetry/api'
 const workflowRunResults: WorkflowResults = {
   workflow: {
     created_at: new Date('2024-09-01T00:00:00Z'),
+    run_started_at: new Date('2024-09-01T00:01:00Z'),
     id: 10000000000,
     name: 'Test Run',
     run_attempt: 14,
+    event: 'push',
     repository: {
       full_name: 'test-owner/test-repo'
     },
@@ -29,26 +31,31 @@ const workflowRunResults: WorkflowResults = {
       started_at: new Date('2024-09-01T00:05:00Z'),
       completed_at: new Date('2024-09-01T00:10:00Z'),
       id: 30000000000,
+      run_attempt: 14,
       name: 'job1',
       run_id: 10000000000,
       workflow_name: 'Test Run',
       status: 'completed',
       conclusion: 'success',
+      labels: ['ubuntu-latest'],
       steps: [
         {
           name: 'step1_1',
+          number: 1,
           started_at: new Date('2024-09-01T00:05:10Z'),
           completed_at: new Date('2024-09-01T00:05:20Z'),
           conclusion: 'success'
         },
         {
           name: 'step1_2',
+          number: 2,
           started_at: new Date('2024-09-01T00:05:30Z'),
           completed_at: new Date('2024-09-01T00:05:35Z'),
           conclusion: 'success'
         },
         {
           name: 'step1_3',
+          number: 3,
           started_at: new Date('2024-09-01T00:05:40Z'),
           completed_at: new Date('2024-09-01T00:05:50Z'),
           conclusion: 'success'
@@ -62,26 +69,31 @@ const workflowRunResults: WorkflowResults = {
       started_at: new Date('2024-09-01T00:15:00Z'),
       completed_at: new Date('2024-09-01T00:20:00Z'),
       id: 30000000001,
+      run_attempt: 14,
       name: 'job2',
       run_id: 10000000000,
       workflow_name: 'Test Run',
       status: 'completed',
       conclusion: 'failure',
+      labels: ['macos-14'],
       steps: [
         {
           name: 'step2_1',
+          number: 1,
           started_at: new Date('2024-09-01T00:15:10Z'),
           completed_at: new Date('2024-09-01T00:15:20Z'),
           conclusion: 'success'
         },
         {
           name: 'step2_2',
+          number: 2,
           started_at: new Date('2024-09-01T00:15:30Z'),
           completed_at: new Date('2024-09-01T00:15:35Z'),
           conclusion: 'success'
         },
         {
           name: 'step2_3',
+          number: 3,
           started_at: new Date('2024-09-01T00:15:40Z'),
           completed_at: new Date('2024-09-01T00:15:50Z'),
           conclusion: 'failure'
@@ -124,7 +136,10 @@ describe('should export expected spans', () => {
     // workflow span
     expect(spans).toContainEqual({
       name: workflowRun.name,
-      startTime: [toEpochSec(workflowRun.created_at), 0],
+      startTime: [
+        toEpochSec(workflowRun.run_started_at ?? workflowRun.created_at),
+        0
+      ],
       endTime: [
         toEpochSec(workflowRunJobs[1].completed_at), // last job's completed_at
         0
@@ -154,10 +169,10 @@ describe('should export expected spans', () => {
       testedSpanCount++
     }
 
-    // waiting for a job span
+    // waiting for a job span (static 'job.queue' name)
     for (const job of workflowRunJobs) {
       expect(spans).toContainEqual({
-        name: `waiting runner for ${job.name}`,
+        name: 'job.queue',
         startTime: [toEpochSec(job.created_at), 0],
         endTime: [toEpochSec(job.started_at), 0]
       })
@@ -239,7 +254,7 @@ describe('should export expected spans', () => {
       spans,
       'job2 with time of waiting runner'
     )
-    const job2WaitingTime = findSpanByName(spans, 'waiting runner for job2')
+    const job2WaitingTime = findQueueSpanByJobName(spans, 'job2')
     const step2_1 = findSpanByName(spans, 'step2_1')
     const step2_2 = findSpanByName(spans, 'step2_2')
     const step2_3 = findSpanByName(spans, 'step2_3')
@@ -266,16 +281,13 @@ describe('should export expected spans', () => {
       spans,
       `${workflowRunJobs[0].name} with time of waiting runner`
     )
-    const child1_1 = findSpanByName(
-      spans,
-      `waiting runner for ${workflowRunJobs[0].name}`
-    )
+    const child1_1 = findQueueSpanByJobName(spans, workflowRunJobs[0].name)
     const child1_2 = findSpanByName(spans, 'job1')
     const child1_2_1 = findSpanByName(spans, 'step1_1')
     const child1_2_2 = findSpanByName(spans, 'step1_2')
     const child1_2_3 = findSpanByName(spans, 'step1_3')
     const child2 = findSpanByName(spans, 'job2 with time of waiting runner')
-    const child2_1 = findSpanByName(spans, 'waiting runner for job2')
+    const child2_1 = findQueueSpanByJobName(spans, 'job2')
     const child2_2 = findSpanByName(spans, 'job2')
     const child2_2_1 = findSpanByName(spans, 'step2_1')
     const child2_2_2 = findSpanByName(spans, 'step2_2')
@@ -298,6 +310,116 @@ describe('should export expected spans', () => {
       ].length + 1 // add 1 because rootSpan assertion is not existed.
 
     expect(spans).toHaveLength(assertionCount)
+  })
+
+  test('should verify span attributes and span.type layer separation without double counting', async () => {
+    await createTrace(workflowRunResults)
+    await forceFlush()
+
+    const spans = exporter.getFinishedSpans()
+
+    const rootSpan = findSpanByName(spans, workflowRun.name)
+    expect(rootSpan.attributes).toEqual({
+      repository: 'test-owner/test-repo',
+      run_id: 10000000000,
+      run_attempt: 14,
+      url: 'http://example.com/workflow_run',
+      'cicd.pipeline.task.run.id': 10000000000,
+      'cicd.pipeline.name': 'Test Run',
+      'cicd.pipeline.run.url.full': 'http://example.com/workflow_run',
+      'span.type': 'workflow',
+      'workflow.conclusion': 'failure',
+      'workflow.event': 'push',
+      'workflow.is_retry': true,
+      'workflow.wall_clock_duration_s': 1140,
+      'workflow.execution_duration_s': 600,
+      'workflow.queued_duration_s': 360,
+      'workflow.max_queued_duration_s': 180,
+      'workflow.raw_billable_minutes': 10,
+      'workflow.billable_minutes': 55,
+      'workflow.rounding_waste_s': 0,
+      'workflow.jobs_count': 2
+    })
+
+    const job1Wrapper = findSpanByName(
+      spans,
+      'job1 with time of waiting runner'
+    )
+    expect(job1Wrapper.attributes).toEqual({
+      'span.type': 'job.wrapper',
+      'job.id': 30000000000,
+      'job.name': 'job1',
+      'job.run_attempt': 14
+    })
+
+    const job1Queue = findQueueSpanByJobName(spans, 'job1')
+    expect(job1Queue.attributes).toEqual({
+      'span.type': 'queue',
+      'job.id': 30000000000,
+      'job.name': 'job1',
+      'job.run_attempt': 14,
+      'job.labels': ['ubuntu-latest'],
+      'job.queued_duration_s': 180,
+      'runner.runs_on': 'ubuntu-latest',
+      'runner.os': 'linux',
+      'runner.arch': 'amd64'
+    })
+
+    const job2Span = findSpanByName(spans, 'job2')
+    expect(job2Span.attributes).toEqual({
+      'span.type': 'job',
+      'job.id': 30000000001,
+      'job.name': 'job2',
+      'job.run_attempt': 14,
+      'job.conclusion': 'failure',
+      'job.labels': ['macos-14'],
+      'runner.runs_on': 'macos-14',
+      'runner.os': 'macos',
+      'runner.arch': 'arm64',
+      'job.queued_duration_s': 180,
+      'job.execution_duration_s': 300,
+      'job.raw_billable_minutes': 5,
+      'job.billable_minutes': 50,
+      'job.billable_multiplier': 10,
+      'job.rounding_waste_s': 0,
+      'job.steps_count': 3
+    })
+
+    const step1Span = findSpanByName(spans, 'step1_1')
+    expect(step1Span.attributes).toEqual({
+      'span.type': 'step',
+      'job.id': 30000000000,
+      'job.name': 'job1',
+      'job.run_attempt': 14,
+      'step.name': 'step1_1',
+      'step.conclusion': 'success',
+      'step.number': 1
+    })
+
+    // Ensure only actual job execution spans carry job.conclusion
+    const spansWithJobConclusion = spans.filter(
+      s => s.attributes['job.conclusion'] !== undefined
+    )
+    expect(spansWithJobConclusion).toHaveLength(2)
+  })
+
+  test('should clamp negative workflow wall-clock duration to zero', async () => {
+    const workflowWithNegativeWallClock = {
+      ...workflowRunResults,
+      workflow: {
+        ...workflowRun,
+        run_started_at: new Date('2024-09-01T00:30:00Z')
+      }
+    }
+
+    await createTrace(workflowWithNegativeWallClock)
+    await forceFlush()
+
+    const rootSpan = findSpanByName(
+      exporter.getFinishedSpans(),
+      workflowRun.name
+    )
+    expect(rootSpan.attributes['workflow.wall_clock_duration_s']).toBe(0)
   })
 
   test('should capture and return valid trace ID as string', async () => {
@@ -379,6 +501,17 @@ const toEpochSec = (date: Date): number => {
 const findSpanByName = (spans: ReadableSpan[], name: string): ReadableSpan => {
   const span = spans.find(s => s.name === name)
   if (!span) throw new Error(`${name} is not find in spans.`)
+  return span
+}
+
+const findQueueSpanByJobName = (
+  spans: ReadableSpan[],
+  jobName: string
+): ReadableSpan => {
+  const span = spans.find(
+    s => s.name === 'job.queue' && s.attributes['job.name'] === jobName
+  )
+  if (!span) throw new Error(`job.queue for ${jobName} is not find in spans.`)
   return span
 }
 

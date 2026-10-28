@@ -40,9 +40,12 @@ The action operates in two distinct modes based on the triggering event:
 - **Required Fields**: All processed jobs must have `conclusion`,
   `completed_at`, and `workflow_name`
 
-#### Self-Exclusion Logic
+#### Self-Exclusion & Re-run Filtering Logic
 
 - The GitHub Actions OpenTelemetry job excludes itself from telemetry collection
+- Only jobs whose `run_attempt` matches the target workflow attempt are
+  included. Earlier successful jobs are not repeated for failed-job reruns; jobs
+  actually rerun in a later attempt are counted again as new work.
 
 ## Metrics Specification
 
@@ -50,33 +53,63 @@ The action operates in two distinct modes based on the triggering event:
 
 - **Environment Variable**: `FEATURE_METRICS` (default: true)
 - **Meter Name**: `github-actions-metrics`
-- **Metric Type**: Gauge (point-in-time measurements)
-- **Unit**: Seconds (`s`)
+- **Metric Type**: Counter (`meter.createCounter`)
+- **Units**: Seconds (`s`), Minutes (`min`), or Count (`1`)
 
-### github.workflow.duration
+### Workflow Metrics
 
-- **Calculation**: `workflow.created_at` to latest `job.completed_at`
-- **Rationale**: GitHub workflows lack official end timestamps
+- `github.workflow.runs` (unit: `1`): Count of collected workflow attempts.
+  `workflow_run` mode captures each rerun, including partial reruns; current
+  workflow mode counts only attempts in which the telemetry job runs.
+- `github.workflow.duration` (unit: `s`): `workflow.run_started_at` to the
+  latest `job.completed_at` in that attempt (falls back to the earliest job
+  `created_at` if `run_started_at` is unavailable)
+- `github.workflow.billable_time` (unit: `min`): Sum of OS-multiplied billable
+  GitHub-hosted minutes across jobs executed in that attempt. Self-hosted jobs
+  contribute zero. Summing by workflow name across attempts gives total billable
+  usage, including jobs actually rerun.
 - **Attributes**:
   - `workflow.name`: Workflow name
+  - `workflow.run_id`: GitHub workflow run ID
   - `repository`: Full repository name (owner/repo)
+  - `workflow.conclusion`: Workflow completion status
+  - `workflow.event`: Triggering GitHub event name
+  - `workflow.run_attempt`: Numeric attempt number
+  - `workflow.is_retry`: `'true'` if `run_attempt > 1`, else `'false'`
 
-### github.job.duration
+`workflow.run_id` and `workflow.run_attempt` give each run attempt a distinct
+metric stream. The OTLP exporter uses cumulative temporality by default. To
+calculate totals over a time range, sum the per-attempt points by
+`workflow.name`, dropping run, attempt, outcome, and event dimensions. Include
+`repository` when totals should remain separate across repositories.
 
-- **Calculation**: `job.started_at` to `job.completed_at`
-- **Scope**: Individual job execution time
+### Job Metrics
+
+- `github.job.runs` (unit: `1`): Count of job runs
+- `github.job.duration` (unit: `s`): `job.started_at` to `job.completed_at`
+- `github.job.queued_duration` (unit: `s`): `job.created_at` to `job.started_at`
+  (skipped when negative)
+- `github.job.billable_time` (unit: `min`):
+  `max(1, ceil(duration_s / 60)) * os_multiplier` (or `0` for self-hosted,
+  skipped, or zero-duration jobs)
+- `github.job.rounding_waste` (unit: `s`):
+  `(raw_billable_minutes * 60) - duration_s` (zero for self-hosted jobs)
 - **Attributes**:
   - `workflow.name`: Parent workflow name
+  - `workflow.run_id`: Parent workflow run ID
   - `repository`: Full repository name
   - `job.name`: Job identifier
   - `job.conclusion`: Job completion status (success, failure, etc.)
+  - `workflow.run_attempt`: Numeric attempt number
+  - `job.run_attempt`: Numeric job attempt number
+  - `runner.os`: `'linux' | 'windows' | 'macos' | 'unknown'`
+  - `runner.arch`: `'arm64' | 'amd64' | 'unknown'`
+  - `runner.runs_on`: Normalized `runs-on` label set (if available)
+  - `runner.group`: Runner group (if available)
 
-### github.job.queued_duration
-
-- **Calculation**: `job.created_at` to `job.started_at`
-- **Edge Case**: Negative values are skipped with notice logs (GitHub API timing
-  issue)
-- **Attributes**: Same as `github.job.duration`
+Self-hosted jobs retain their execution-duration metrics and runner metadata;
+only GitHub-hosted billing metrics are zero. For macOS larger-runner labels,
+`*-large` is inferred as `amd64` and `*-xlarge` as `arm64`.
 
 ## Trace Specification
 
@@ -91,44 +124,67 @@ The action operates in two distinct modes based on the triggering event:
 #### Root Workflow Span
 
 - **Name**: Workflow name
-- **Duration**: `workflow.created_at` to latest `job.completed_at`
+- **Duration**: `workflow.run_started_at` to latest `job.completed_at` in that
+  attempt (falls back to the earliest job `created_at` if unavailable)
 - **Status**: Derived from workflow conclusion or 'in_progress'
 - **Attributes**:
-  - `repository`: Full repository name
-  - `run_id`: Workflow run ID
-  - `run_attempt`: Attempt number
-  - `url`: Workflow HTML URL
+  - `span.type`: `'workflow'`
+  - `repository`, `run_id`, `run_attempt`, `url`
+  - `cicd.pipeline.task.run.id`, `cicd.pipeline.name`,
+    `cicd.pipeline.run.url.full`
+  - `workflow.conclusion`, `workflow.event`, `workflow.is_retry`
+  - `workflow.wall_clock_duration_s`, `workflow.execution_duration_s`,
+    `workflow.queued_duration_s`, `workflow.max_queued_duration_s`
+  - `workflow.raw_billable_minutes`, `workflow.billable_minutes`,
+    `workflow.rounding_waste_s`, `workflow.jobs_count`
 
-#### Job Container Spans
+#### Job Container Spans (`span.type = 'job.wrapper'`)
 
 - **Name**: `{job.name} with time of waiting runner`
 - **Duration**: `job.created_at` to `job.completed_at` (includes queue time)
-- **Purpose**: Provides complete job timeline including waiting period
+- **Purpose**: Provides collapsible visual container in waterfall UIs without
+  duplicating `job.conclusion` or billable attributes
+- **Attributes**:
+  - `span.type`: `'job.wrapper'`
+  - `job.id`: GitHub job identifier
+  - `job.name`: Job name
+  - `job.run_attempt`: Numeric job attempt number
 
-#### Job Waiting Spans (Child)
+#### Job Queue Spans (Child, `span.type = 'queue'`)
 
-- **Name**: `waiting runner for {job.name}`
+- **Name**: `'job.queue'`
 - **Duration**: `job.created_at` to `job.started_at`
 - **Status**: Always 'success' (waiting is not an error condition)
 - **Edge Case**: Skipped when queue duration is negative
+- **Attributes**:
+  - `span.type`: `'queue'`
+  - `job.id`, `job.name`, `job.run_attempt`, `job.labels`,
+    `job.queued_duration_s`
+  - `runner.name`, `runner.group`, `runner.runs_on`, `runner.os`, `runner.arch`
 
-#### Job Execution Spans (Child)
+#### Job Execution Spans (Child, `span.type = 'job'`)
 
 - **Name**: Job name
 - **Duration**: `job.started_at` to `job.completed_at`
 - **Status**: Derived from job conclusion
 - **Attributes**:
-  - `job.id`: GitHub job identifier
-  - `job.conclusion`: Job completion status
-  - `runner.name`: Runner name (if available)
-  - `runner.group`: Runner group (if available)
+  - `span.type`: `'job'`
+  - `job.id`, `job.name`, `job.run_attempt`, `job.conclusion`, `job.labels`
+  - `runner.name`, `runner.group`, `runner.runs_on`, `runner.os`, `runner.arch`
+  - `job.queued_duration_s`, `job.execution_duration_s`,
+    `job.raw_billable_minutes`, `job.billable_minutes`,
+    `job.billable_multiplier`, `job.rounding_waste_s`, `job.steps_count`
 
-#### Step Spans (Grandchildren)
+#### Step Spans (Grandchildren, `span.type = 'step'`)
 
 - **Name**: Step name
 - **Duration**: `step.started_at` to `step.completed_at`
 - **Status**: Derived from step conclusion
 - **Validation**: Steps with null timestamps are skipped with warnings
+- **Attributes**:
+  - `span.type`: `'step'`
+  - `job.id`, `job.name`, `job.run_attempt`, `step.name`, `step.conclusion`,
+    `step.number`
 
 ### Status Code Mapping
 
